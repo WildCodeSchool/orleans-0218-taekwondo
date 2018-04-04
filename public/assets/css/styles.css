@@ -1,6 +1,6 @@
 /* ##### GLOBAL ##### */
 html { background-color: #E8E8E8; }
-a { color: #21379C; }
+a { color: #0047A0; }
 body { background-color: transparent; }
 
 /* ##### HELPERS ##### */
@@ -13,8 +13,8 @@ body { background-color: transparent; }
     background-color: white;
 }
 .navbar.navbar-custom .navbar-brand { white-space: nowrap; }
-.navbar-custom .navbar-toggle { border-color: #21379C; }
-.navbar-custom .navbar-toggle .icon-bar { background-color: #21379C; }
+.navbar-custom .navbar-toggle { border-color: #0047A0; }
+.navbar-custom .navbar-toggle .icon-bar { background-color: #0047A0; }
 .navbar-custom li a:hover, .navbar-custom li a:focus {
     background: none;
     border-color: #EEEEEE;
@@ -32,8 +32,8 @@ body { background-color: transparent; }
         white-space: nowrap;
     }
     .navbar-custom li.active a {
-        border-color: #21379C;
-        color: #21379C;
+        border-color: #0047A0;
+        color: #0047A0;
         font-weight: bold;
     }
     .navbar-custom .navbar-brand { margin-top: 1px; }
