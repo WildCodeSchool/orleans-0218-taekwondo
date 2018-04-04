@@ -1,20 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- HEAD -->
+    <head>
+        <!-- META -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{% block title %}{% endblock %}</title>
 
-    <title>{% block title %}{% endblock %}</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="/assets/plugins/bootstrap-3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/assets/css/styles.css"/>
+        {% block stylesheet %}{% endblock %}
+        <link rel="icon" href="/assets/images/favicon.png"/>
+    </head>
 
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    {% block stylesheet %}{% endblock %}
-    <link rel="icon" href="/assets/images/favicon.png">
-</head>
+    <!-- BODY -->
+    <body>
+        <!-- Navbar -->
+        {% block navbar %}
+            {% include '_navbar.html.twig' %}
+        {% endblock %}
+        
+        <!-- Content -->
+        {% block content %}{% endblock %}
+        
+        <!-- Footer -->
+        {% block footer %}
+            {% include '_footer.html.twig' %}
+        {% endblock %}
 
-<body>
-{% block content %}{% endblock %}
-</body>
-
-{% block javascript %}{% endblock %}
+        <!-- Javascript -->
+        <script type="text/javascript" src="/assets/plugins/jquery-3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/assets/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        {% block javascript %}{% endblock %}
+    </body>
 </html>
