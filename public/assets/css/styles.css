@@ -1,1 +1,47 @@
-html { background-color: #e8e8e8; }
+/* ##### GLOBAL ##### */
+html { background-color: #E8E8E8; }
+a { color: #21379C; }
+body { background-color: transparent; }
+
+/* ##### HELPERS ##### */
+.text-overflow { white-space: nowrap; }
+
+/* ##### NAVBAR ##### */
+.navbar.navbar-custom {
+    border: none;
+    border-radius: 0px;
+    background-color: white;
+}
+.navbar.navbar-custom .navbar-brand { white-space: nowrap; }
+.navbar-custom .navbar-toggle { border-color: #21379C; }
+.navbar-custom .navbar-toggle .icon-bar { background-color: #21379C; }
+.navbar-custom li a:hover, .navbar-custom li a:focus {
+    background: none;
+    border-color: #EEEEEE;
+}
+.navbar-custom li a {
+    text-transform: uppercase;
+    color: gray;
+    font-size: 12px;
+}
+@media (min-width: 768px) {
+    .navbar-custom { padding: 15px 0px; }
+    .navbar-custom li a {
+        border: 1px solid transparent;
+        padding: 10px;
+        white-space: nowrap;
+    }
+    .navbar-custom li.active a {
+        border-color: #21379C;
+        color: #21379C;
+        font-weight: bold;
+    }
+    .navbar-custom .navbar-brand { margin-top: 1px; }
+    .navbar-custom .collapse { overflow: auto !important; }
+    .navbar-custom .nav { display: flex; }
+    .navbar.navbar-custom > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
