@@ -12,6 +12,15 @@ class HomeController extends AbstractController
 {
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig');
+        $event = [
+            'title' => 'Titre exemple',
+            'date' => time(),
+            'description' => 'Description des activités de l\'event',
+            'image' => 'assets/images/flyers.jpg'
+        ];
+
+        return $this->twig->render('Home/index.html.twig', [
+            'events' => [ $event, $event, $event ]
+        ]);
     }
 }
