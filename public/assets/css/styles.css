@@ -1,1 +1,52 @@
 html { background-color: #e8e8e8; }
+
+
+/*  par Séb */
+footer {
+    background-color: whitesmoke;
+    border: 3px solid darkcyan;
+    font-size: 1.2em;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    display: block;
+    padding: 10px ;
+}
+
+li {
+    list-style-type: none;
+}
+
+.upper{
+    text-transform: uppercase;
+}
+
+.fb_and_website_links{
+    border: 3px solid red;
+}
+
+.localisation_and_logo{
+     border: 3px solid green;
+}
+
+.taekwondo_and_local_links{
+    border: 3px solid blue;
+}
+
+.symbol{
+    border: 3px solid yellow;
+    border-radius: 15px;
+}
+
+.olivet{
+    border: 3px solid black;
+    text-align: left;
+}
+
+.adress{
+    line-height: .8em;
+}
