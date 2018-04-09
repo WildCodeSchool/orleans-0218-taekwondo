@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Horaires -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Lundi</th>
+                                <th>Mardi</th>
+                                <th>Mercredi</th>
+                                <th>Jeudi</th>
+                                <th>Vendredi</th>
+                                <th>Samedi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% set debug_schedules = ['09h30 à 10h15', '10h15 à 11h30', '11h30 à 12h45', '18h à 19h15', '19h15 à 20h15', '20h15 à 21h30'] %}
+                            {% for schedule in debug_schedules %}
+                                <tr>
+                                    <th class="text-overflow">{{schedule}}</th>
+                                    <td></td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adresse -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {% for room in training_rooms %}
+                        <p>
+                            <b>{{ room.name }}</b><br/>
+                            <a href="#">{{ room.address }}</a>
+                        </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Map -->
+        <div class="col-md-6">
+            <div id="home-map" data-json="{{ training_rooms | json_encode() }}" data-access-token="{{ map_access_token }}"></div>
+        </div>
+    </div>
+</div>
