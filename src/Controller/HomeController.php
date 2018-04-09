@@ -13,6 +13,7 @@ class HomeController extends AbstractController
     public function index(): string
     {
         return $this->twig->render('Home/index.html.twig', [
+            'map_access_token' => MAP_ACCESS_TOKEN,
             'training_rooms' => [
                 [
                     'id' => 'uniq_room_first',

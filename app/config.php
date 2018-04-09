@@ -12,11 +12,14 @@
 
 define('APP_DEV', true);
 
-//Model (for connexion data, see unversionned db.php)
-//VIew
+// Model (for connexion data, see unversionned db.php)
+// View
 define('APP_VIEW_PATH', __DIR__ . '/../src/View/');
 define('APP_CACHE_PATH', __DIR__ . '/../temp/cache/');
 
-//Controller
+// Controller
 define('APP_CONTROLLER_NAMESPACE', '\Controller\\');
 define('APP_CONTROLLER_SUFFIX', 'Controller');
+
+// Custom parameters
+define('MAP_ACCESS_TOKEN', 'pk.eyJ1IjoidGFla3dvbmRvb2xpdmV0IiwiYSI6ImNqZmt3bGxhYTA5czgyeG43NzE5d2tucTIifQ.BZ5b1i4ZN9PMGbJ-1W4e3w');
