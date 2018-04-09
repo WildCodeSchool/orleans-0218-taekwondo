@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.streets',
-        accessToken: MapContainer.getAttribute('data-access-token') || alert('You\'re MAP_ACCESS_TOKEN is missing.') || null
+        accessToken: MapContainer.getAttribute('data-access-token') || alert('Your MAP_ACCESS_TOKEN is missing.') || null
     }).addTo(Map);
 
     // Our markers
