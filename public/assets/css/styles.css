@@ -45,3 +45,18 @@ body { background-color: transparent; }
         justify-content: space-between;
     }
 }
+
+/* ##### PRESENTATION CLUB ##### */
+.img-border-member-club {
+    border: 10px solid ghostwhite;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.trigram-water {
+    width: 60px;
+    position: absolute;
+    left: 100%;
+    top: 20px;
+}
