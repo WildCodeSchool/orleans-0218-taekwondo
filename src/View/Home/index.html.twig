@@ -6,3 +6,14 @@
     {% include 'Home/events.html.twig' %}
     {% include 'Home/access.html.twig' %}
 {% endblock %}
+
+{% block stylesheet %}
+    {{parent()}}
+    <link rel="stylesheet" href="assets/plugins/leaflet/leaflet.css"/>
+{% endblock %}
+
+{% block javascript %}
+    {{parent()}}
+    <script type="text/javascript" src="assets/plugins/leaflet/leaflet.js"></script>
+    <script type="text/javascript" src="assets/js/home-map.js"></script>
+{% endblock %}
