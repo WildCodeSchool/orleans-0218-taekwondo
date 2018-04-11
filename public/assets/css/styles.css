@@ -1,5 +1,5 @@
 /* ##### GLOBAL ##### */
-html { background-color: #E8E8E8; }
+html { background-color: #FCFAE1; }
 a { color: #0047A0; }
 body { background-color: transparent; }
 
@@ -45,6 +45,24 @@ body { background-color: transparent; }
         justify-content: space-between;
     }
 }
+/** ##### Access ##### */
+.access {
+    position: relative;
+}
+
+.access:after {
+    position: absolute;
+    content: '';
+    width: 300px;
+    height: 300px;
+    top: 0;
+    right: 0;
+    background-position: right;
+    background-image: url("../images/trigrams/earth.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.3;
+}
 
 
 /** ##### HORAIRES ##### */
@@ -66,10 +84,42 @@ body { background-color: transparent; }
     margin-bottom: 20px;
 }
 
+.presentation {
+    position: relative;
+}
 
-.trigram-water {
-    width: 60px;
+.presentation:after {
     position: absolute;
-    left: 100%;
-    top: 20px;
+    content: '';
+    width: 300px;
+    height: 300px;
+    top: 0;
+    right: 0;
+    background-position: right;
+    background-image: url("../images/trigrams/water.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.3;
+    color: #FCFAE1;
+
+}
+
+/** ##### EVENTS ##### */
+
+.events {
+    position: relative;
+}
+
+.events:after {
+    position: absolute;
+    content: '';
+    width: 300px;
+    height: 300px;
+    top: 0;
+    left: 0;
+    background-position: left;
+    background-image: url("../images/trigrams/sky.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.3;
 }
