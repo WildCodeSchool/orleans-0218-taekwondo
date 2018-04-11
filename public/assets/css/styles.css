@@ -46,6 +46,15 @@ body { background-color: transparent; }
     }
 }
 
+
+/** ##### HORAIRES ##### */
+.img-table {
+    background-image: url('../images/table/taekwondo_table.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
 /** ##### HOME MAP ##### */
 #home-map { height: 400px; }
 
