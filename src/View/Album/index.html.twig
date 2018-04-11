@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<section class="container">
+    <!-- Filters -->
+    <div class="row">
+        <form action="" method="POST" class="form-inline" role="form">
+            <div class="col-sm-6">
+                <select name="categoryId" class="form-control fullwidth">
+                    <option value="">-- Sélectionner une catégorie --</option>
+                </select>
+            </div>
+
+            <div class="col-sm-6">
+                <input type="text" name="galleryId" id="input" class="form-control fullwidth" placeholder="Rechercher une galerie">
+            </div>
+        </form>
+    </div>
+</section>
+<section class="container">
+    <!-- Elements -->
+    <div class="row">
+        {% for gallery in galleries %}
+            <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h4>{{ gallery.name }}</h4>
+                        <p>{{ gallery.nbImages }} Photos</p>
+                        <p>
+                            <a href="album/{{ gallery.id }}" class="btn btn-default btn-block">Visionner</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
