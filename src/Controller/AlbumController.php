@@ -1,20 +1,14 @@
 <?php
 namespace Controller;
 
+use Model\Album\Gallery;
+
 class AlbumController extends AbstractController {
     public function index(): string
     {
+        $galleriesManager = new Gallery\Manager();
         return $this->twig->render('Album/index.html.twig', [
-            'galleries' => [
-                [ 'id' => 0, 'name' => 'Ma galerie', 'nbImages' => 0],
-                [ 'id' => 0, 'name' => 'Ma galerie', 'nbImages' => 0],
-                [ 'id' => 0, 'name' => 'Ma galerie', 'nbImages' => 0],
-                [ 'id' => 0, 'name' => 'Ma galerie', 'nbImages' => 0],
-                [ 'id' => 0, 'name' => 'Ma galerie', 'nbImages' => 0],
-                [ 'id' => 0, 'name' => 'Ma galerie', 'nbImages' => 0],
-                [ 'id' => 0, 'name' => 'Ma galerie', 'nbImages' => 0],
-                [ 'id' => 0, 'name' => 'Ma galerie', 'nbImages' => 0]
-            ]
+            'galleries' => $galleriesManager->getAll()
         ]);
     }
 }
