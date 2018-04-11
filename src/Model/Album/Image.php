@@ -1,7 +1,7 @@
 <?php
-namespace Model\Album\Image;
+namespace Model\Album;
 
-class Instance {
+class Image {
     private $id;
     private $gallery_id;
     private $url;

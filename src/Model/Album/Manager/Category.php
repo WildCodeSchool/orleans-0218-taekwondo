@@ -1,9 +1,10 @@
 <?php
-namespace Model\Album\Category;
+namespace Model\Album\Manager;
 
 use Model\AbstractManager;
+use Model\Album;
 
-class Manager extends AbstractManager {
+class Category extends AbstractManager {
     const TABLE = 'category';
 
     public function __construct()
@@ -18,7 +19,7 @@ class Manager extends AbstractManager {
     public function getAll(): array
     {
         $query = $this->pdoConnection
-            ->query("SELECT * FROM {$this->table} ORDER BY id ASC", \PDO::FETCH_CLASS, Instance::class);
+            ->query("SELECT * FROM {$this->table} ORDER BY id ASC", \PDO::FETCH_CLASS, Album\Category::class);
         return $query->fetchAll();
     }
 }

@@ -1,9 +1,7 @@
 <?php
 namespace Controller;
 
-use Model\Album\Category;
-use Model\Album\Gallery;
-use Model\Album\Image;
+use Model\Album\Manager;
 
 class AlbumController extends AbstractController {
     public function index(): string
@@ -13,8 +11,8 @@ class AlbumController extends AbstractController {
             'categoryId' => !empty($_GET['categoryId']) ? intval($_GET['categoryId']) : 0
         ];
 
-        $categoriesManager = new Category\Manager();
-        $galleriesManager = new Gallery\Manager();
+        $categoriesManager = new Manager\Category();
+        $galleriesManager = new Manager\Gallery();
 
         return $this->twig->render('Album/index.html.twig', [
             'GET' => $data,
@@ -25,8 +23,8 @@ class AlbumController extends AbstractController {
 
     public function gallery(int $id): string
     {
-        $galleryManager = new Gallery\Manager();
-        $imageController = new Image\Manager();
+        $galleryManager = new Manager\Gallery();
+        $imageController = new Manager\Image();
 
         return $this->twig->render('Album/gallery.html.twig', [
             'gallery' => $galleryManager->getOne($id),

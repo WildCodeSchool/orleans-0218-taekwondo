@@ -1,9 +1,10 @@
 <?php
-namespace Model\Album\Image;
+namespace Model\Album\Manager;
 
 use Model\AbstractManager;
+use Model\Album;
 
-class Manager extends AbstractManager {
+class Image extends AbstractManager {
     const TABLE = 'gallery_image';
 
     public function __construct()
@@ -21,6 +22,6 @@ class Manager extends AbstractManager {
         $query = $this->pdoConnection->prepare("SELECT * FROM {$this->table} WHERE gallery_id = :galleryId");
         $query->bindValue('galleryId', $galleryId);
         $query->execute();
-        return $query->fetchAll(\PDO::FETCH_CLASS, Instance::class);
+        return $query->fetchAll(\PDO::FETCH_CLASS, Album\Image::class);
     }
 }

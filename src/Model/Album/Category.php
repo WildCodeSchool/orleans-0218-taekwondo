@@ -1,7 +1,7 @@
 <?php
-namespace Model\Album\Category;
+namespace Model\Album;
 
-class Instance {
+class Category {
     private $id;
     private $name;
 

@@ -1,9 +1,10 @@
 <?php
-namespace Model\Album\Gallery;
+namespace Model\Album\Manager;
 
 use Model\AbstractManager;
+use Model\Album;
 
-class Manager extends AbstractManager {
+class Gallery extends AbstractManager {
     const TABLE = 'gallery';
 
     public function __construct()
@@ -25,7 +26,7 @@ class Manager extends AbstractManager {
         $finalClause = count($where) > 0 ? ' WHERE ' . implode(' AND ', $where) : '';
 
         $query = $this->pdoConnection
-            ->query("SELECT * FROM {$this->table}{$finalClause} ORDER BY id ASC", \PDO::FETCH_CLASS, Instance::class);
+            ->query("SELECT * FROM {$this->table}{$finalClause} ORDER BY id ASC", \PDO::FETCH_CLASS, Album\Gallery::class);
         return $query->fetchAll();
     }
 
@@ -39,7 +40,7 @@ class Manager extends AbstractManager {
         $query = $this->pdoConnection->prepare("SELECT * FROM {$this->table} WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
-        $query->setFetchMode(\PDO::FETCH_CLASS, Instance::class);
+        $query->setFetchMode(\PDO::FETCH_CLASS, Album\Gallery::class);
         return $query->fetch();
     }
 }
