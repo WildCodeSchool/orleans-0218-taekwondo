@@ -1,23 +1,34 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
+<!-- Filters -->
 <section class="container">
-    <!-- Filters -->
     <div class="row">
-        <form action="" method="POST" class="form-inline" role="form">
+        <!-- Form -->
+        <form action="" method="GET" class="form-inline" role="form" name="searchForm">
+            <!-- Category ID -->
             <div class="col-sm-6">
-                <select name="categoryId" class="form-control fullwidth">
+                <select name="categoryId" class="form-control fullwidth" onchange="searchForm.submit()">
                     <option value="">-- Sélectionner une catégorie --</option>
+                    {% for category in categories %}
+                    {% if category.id == GET.categoryId %}
+                    <option value="{{ category.id }}" selected>{{ category.name }}</option>
+                    {% else %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endif %}
+                    {% endfor %}
                 </select>
             </div>
 
+            <!-- Gallery name -->
             <div class="col-sm-6">
-                <input type="text" name="galleryId" id="input" class="form-control fullwidth" placeholder="Rechercher une galerie">
+                <input type="text" name="search" id="input" class="form-control fullwidth" value="{{ GET.search }}" placeholder="Rechercher une galerie">
             </div>
         </form>
     </div>
 </section>
+
+<!-- Elements -->
 <section class="container">
-    <!-- Elements -->
     <div class="row">
         {% for gallery in galleries %}
             <div class="col-xs-12 col-sm-3 col-md-2">
