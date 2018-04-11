@@ -3,6 +3,7 @@ namespace Controller;
 
 use Model\Album\Category;
 use Model\Album\Gallery;
+use Model\Album\Image;
 
 class AlbumController extends AbstractController {
     public function index(): string
@@ -19,6 +20,17 @@ class AlbumController extends AbstractController {
             'GET' => $data,
             'galleries' => $galleriesManager->getAll($data['categoryId'], $data['search']),
             'categories' => $categoriesManager->getAll()
+        ]);
+    }
+
+    public function gallery(int $id): string
+    {
+        $galleryManager = new Gallery\Manager();
+        $imageController = new Image\Manager();
+
+        return $this->twig->render('Album/gallery.html.twig', [
+            'gallery' => $galleryManager->getOne($id),
+            'images' => $imageController->getByGalleryId($id)
         ]);
     }
 }
