@@ -1,7 +1,9 @@
 /* ##### GLOBAL ##### */
-html { background-color: #FCFAE1; }
+html { background-color: ghostwhite; }
 a { color: #0047A0; }
-body { background-color: transparent; }
+body {
+    background-color: transparent;
+    font-family: 'Raleway', sans-serif;}
 
 /* ##### HELPERS ##### */
 .text-overflow { white-space: nowrap; }
@@ -61,27 +63,67 @@ body { background-color: transparent; }
     background-image: url("../images/trigrams/earth.png");
     background-repeat: no-repeat;
     background-size: contain;
-    opacity: 0.3;
+    opacity: 0.1;
 }
 
 
 /** ##### HORAIRES ##### */
+
+.table {
+    text-align: center;
+}
+
+.day-week {
+    background-color: #CD2E3A;
+    color: white;
+    font-size: 13px;
+}
+
+.text-lesson{
+    font-weight: bold;
+
+}
+
+.strong {
+    text-decoration: underline;
+}
+
+
 .img-table {
     background-image: url('../images/table/taekwondo_table.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    border-collapse: separate;
+    empty-cells: hide;
+    width: 75%;
+    margin: auto;
+    text-align: center;
+
 }
 
+.lesson{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 13px;
+}
+
+
+.hours {
+    background-color: #0047A0;
+    color: white;
+    font-size: 13px;
+}
 
 /** ##### HOME MAP ##### */
 #home-map { height: 400px; }
 
 /* ##### PRESENTATION CLUB ##### */
 .member-club {
-    border: 10px solid ghostwhite;
+    border: 10px solid white;
     position: relative;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 .presentation {
@@ -99,8 +141,8 @@ body { background-color: transparent; }
     background-image: url("../images/trigrams/water.png");
     background-repeat: no-repeat;
     background-size: contain;
-    opacity: 0.3;
-    color: #FCFAE1;
+    opacity: 0.1;
+
 
 }
 
@@ -121,5 +163,6 @@ body { background-color: transparent; }
     background-image: url("../images/trigrams/sky.png");
     background-repeat: no-repeat;
     background-size: contain;
-    opacity: 0.3;
+    opacity: 0.1;
+
 }
