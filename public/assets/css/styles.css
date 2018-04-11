@@ -5,6 +5,8 @@ body { background-color: transparent; }
 
 /* ##### HELPERS ##### */
 .text-overflow { white-space: nowrap; }
+.row { margin-bottom: 20px; }
+.fullwidth { width: 100% !important; }
 
 /* ##### NAVBAR ##### */
 .navbar.navbar-custom {
