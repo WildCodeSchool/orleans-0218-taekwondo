@@ -69,12 +69,20 @@ body {
 
 /** ##### HORAIRES ##### */
 
-.table {
-    text-align: center;
+.table-responsive {
+
+}
+
+/*.thead-bordered {
+    border: none;
+}*/
+
+.thead-color {
+    background-color: #CD2E3A;
 }
 
 .day-week {
-    background-color: #CD2E3A;
+
     color: white;
     font-size: 13px;
 }
@@ -84,9 +92,9 @@ body {
 
 }
 
-.strong {
+/*.strong {
     text-decoration: underline;
-}
+}*/
 
 
 .img-table {
