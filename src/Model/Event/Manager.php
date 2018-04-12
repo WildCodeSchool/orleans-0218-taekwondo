@@ -18,7 +18,6 @@ class Manager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-
     public function selectAllEventAsc(): array
     {
         return $this->pdoConnection
@@ -33,4 +32,3 @@ class Manager extends AbstractManager
             ->fetchAll();
     }
 }
-
