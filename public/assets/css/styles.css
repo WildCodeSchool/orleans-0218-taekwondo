@@ -69,32 +69,19 @@ body {
 
 /** ##### HORAIRES ##### */
 
-.table-responsive {
 
-}
 
-/*.thead-bordered {
-    border: none;
-}*/
-
-.thead-color {
-    background-color: #CD2E3A;
-}
+.thead-color {background-color: #CD2E3A;}
 
 .day-week {
-
     color: white;
     font-size: 13px;
 }
 
-.text-lesson{
+.text-lesson {
     font-weight: bold;
-
 }
 
-/*.strong {
-    text-decoration: underline;
-}*/
 
 
 .img-table {
@@ -106,10 +93,9 @@ body {
     width: 75%;
     margin: auto;
     text-align: center;
-
 }
 
-.lesson{
+.lesson {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     font-size: 13px;
@@ -172,5 +158,4 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0.1;
-
 }
