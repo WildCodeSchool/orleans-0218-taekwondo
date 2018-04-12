@@ -11,9 +11,9 @@
                     <option value="">-- Sélectionner une catégorie --</option>
                     {% for category in categories %}
                         {% if category.id == GET.categoryId %}
-                        <option value="{{ category.id }}" selected>{{ category.name }}</option>
+                            <option value="{{ category.id }}" selected>{{ category.name }}</option>
                         {% else %}
-                        <option value="{{ category.id }}">{{ category.name }}</option>
+                            <option value="{{ category.id }}">{{ category.name }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
