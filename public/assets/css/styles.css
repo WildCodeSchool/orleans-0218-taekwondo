@@ -65,3 +65,32 @@ body { background-color: transparent; }
     left: 100%;
     top: 20px;
 }
+
+/* ##### GALLERY ##### */
+.gallery {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.gallery .gallery-item {
+    display: block;
+    margin: 0px 15px 15px 0px;
+    width: 150px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    opacity: 0.75;
+    transition: all 0.25s ease;
+}
+
+.gallery .gallery-item:hover { opacity: 1; }
+
+.gallery .gallery-item:after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+}
+
+.gallery .gallery-item:last-of-type { margin-right: 0px; }

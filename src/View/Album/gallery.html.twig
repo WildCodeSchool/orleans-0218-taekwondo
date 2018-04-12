@@ -9,11 +9,10 @@
         </div>
         <div class="col-md-9">
             <!-- Images -->
-            <div class="row">
+            <div class="gallery">
                 {% for image in images %}
-                <div class="col-xs-6 col-sm-3 col-md-2">
-                    <img class="fullwidth" src="{{ image.url }}" alt="Image"/>
-                </div>
+                <a class="gallery-item" href="{{ image.url }}" data-featherlight="image" style="background-image: url({{ image.url }})" data-toggle="tooltip" title="Cliquez pour aggrandir">
+                </a>
                 {% endfor %}
             </div>
         </div>
