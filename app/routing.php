@@ -13,4 +13,8 @@ $routes = [
     'Home' => [
         ['index', '/', 'GET'],
     ],
+    'Album' => [
+        ['index', '/galleries', 'GET'],
+        ['gallery', '/gallery/{id:\d+}', 'GET']
+    ]
 ];

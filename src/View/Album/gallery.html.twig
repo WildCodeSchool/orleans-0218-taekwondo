@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<section class="container">
+    <div class="row">
+        <!-- Gallery informations -->
+        <div class="col-md-3">
+            <h2>{{ gallery.title }}</h2>
+            <p>{{ gallery.description }}</p>
+        </div>
+        <div class="col-md-9">
+            <!-- Images -->
+            <div class="gallery">
+                {% for image in images %}
+                <a class="gallery-item" href="{{ image.url }}" data-featherlight="image" style="background-image: url({{ image.url }})" data-toggle="tooltip" title="Cliquez pour aggrandir">
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/plugins/featherlight-1.7.13/featherlight.min.css"/>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="/assets/plugins/featherlight-1.7.13/featherlight.min.js"></script>
+{% endblock %}
