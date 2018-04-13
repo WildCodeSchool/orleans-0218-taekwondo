@@ -1,26 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sapuraizu
- * Date: 28/03/18
- * Time: 11:01
- */
-
 namespace Controller;
+use Model\Event;
 
 class HomeController extends AbstractController
 {
     public function index(): string
     {
-        $event = [
-            'title' => 'Titre exemple',
-            'date' => time(),
-            'description' => 'Description des activités de l\'event',
-            'image' => 'assets/images/flyers.jpg'
-        ];
+        $eventManager = new Event\Manager();
+        var_dump($eventManager->selectAllEventAsc());
 
         return $this->twig->render('Home/index.html.twig', [
-            'events' => [ $event, $event, $event ],
+            'events' => $eventManager->selectAllEventAsc(),
             'map_access_token' => MAP_ACCESS_TOKEN,
             'training_rooms' => [
                 [
