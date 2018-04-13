@@ -3,8 +3,8 @@
     "description": "Simple from scratch PHP MVC",
     "authors": [
         {
-            "name": "Aurelien",
-            "email": "barbier.aurelien@wildcodeschool.fr"
+            "name": "Clement",
+            "email": "clement.paquin@gmail.com"
         }
     ],
     "minimum-stability": "stable",
