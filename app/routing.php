@@ -14,7 +14,7 @@ $routes = [
         ['index', '/', 'GET'],
     ],
     'Event' => [
-        ['index', '/event' , 'GET'],
+        ['index', '/events' , 'GET'],
     ],
     'Album' => [
         ['index', '/galleries', 'GET'],

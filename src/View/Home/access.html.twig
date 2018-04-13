@@ -1,4 +1,4 @@
-<section class="access">
+<section class="trigram trigram-earth">
     <div class="container container-access">
         <h2>Horaires et plan d'accès</h2>
         <div class="row">
@@ -86,28 +86,20 @@
                 </div>
             </div>
 
-            <!-- Map -->
             <div class="col-md-5">
-                <div class="row">
-                    <div class="col-md-12">
-                    <div id="home-map" data-json="{{ training_rooms | json_encode() }}" data-access-token="{{ map_access_token }}"></div>
-                    </div>
-                </div>
-
+                <!-- Map -->
+                <div id="home-map" data-json="{{ training_rooms | json_encode() }}" data-access-token="{{ map_access_token }}"></div>
+                <hr/>
 
                 <!-- Adresse -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                {% for room in training_rooms %}
-                                    <p>
-                                        <b>{{ room.name }}</b><br/>
-                                        <a href="#">{{ room.address }}</a>
-                                    </p>
-                                {% endfor %}
-                            </div>
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% for room in training_rooms %}
+                            <p>
+                                <b>{{ room.name }}</b><br/>
+                                <a href="#">{{ room.address }}</a>
+                            </p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@ body {
 
 /* ##### HELPERS ##### */
 .text-overflow { white-space: nowrap; }
-.row { margin-bottom: 20px; }
+.row { margin-top: 20px; }
 .fullwidth { width: 100% !important; }
 
 /* ##### MATERIAL BOX SHADOW (https://codepen.io/sdthornton/pen/wBZdXq) ##### */
@@ -70,25 +70,6 @@ body {
         justify-content: space-between;
     }
 }
-/** ##### Access ##### */
-.access {
-    position: relative;
-}
-
-.access:after {
-    position: absolute;
-    content: '';
-    width: 300px;
-    height: 300px;
-    top: 0;
-    right: 0;
-    background-position: right;
-    background-image: url("../images/trigrams/earth.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0.1;
-}
-
 
 /** ##### HORAIRES ##### */
 .thead-color {background-color: #CD2E3A;}
@@ -137,41 +118,39 @@ body {
     border-radius: 5px;
 }
 
-.presentation {
-    position: relative;
-}
+/* ##### TRIGRAMS ##### */
+@media (min-width: 768px) {
+    .trigram { position: relative; }
+    .trigram:after {
+        position: absolute;
+        content: '';
+        width: 300px;
+        height: 300px;
+        top: 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        opacity: 0.1;
+    }
 
-.presentation:after {
-    position: absolute;
-    content: '';
-    width: 300px;
-    height: 300px;
-    top: 0;
-    right: 0;
-    background-position: right;
-    background-image: url("../images/trigrams/water.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0.1;
-}
+    .trigram.trigram-water:after {
+        right: 0;
+        background-image: url("../images/trigrams/water.png");
+    }
 
-/** ##### EVENTS ##### */
-.events {
-    position: relative;
-}
+    .trigram.trigram-sky:after {
+        left: 0;
+        background-image: url("../images/trigrams/sky.png");
+    }
 
-.events:after {
-    position: absolute;
-    content: '';
-    width: 300px;
-    height: 300px;
-    top: 0;
-    left: 0;
-    background-position: left;
-    background-image: url("../images/trigrams/sky.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0.1;
+    .trigram.trigram-earth:after {
+        right: 0;
+        background-image: url("../images/trigrams/earth.png");
+    }
+
+    .trigram.trigram-fire:after {
+        left: 0;
+        background-image: url("../images/trigrams/fire.png");
+    }
 }
 
 /* ##### GALLERY ##### */
