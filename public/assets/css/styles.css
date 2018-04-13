@@ -1,10 +1,27 @@
 /* ##### GLOBAL ##### */
-html { background-color: #E8E8E8; }
+html { background-color: ghostwhite; }
 a { color: #0047A0; }
-body { background-color: transparent; }
+body {
+    background-color: transparent;
+    font-family: 'Raleway', sans-serif;
+    padding-top: 50px;
+}
 
 /* ##### HELPERS ##### */
 .text-overflow { white-space: nowrap; }
+.row { margin-top: 20px; }
+.fullwidth { width: 100% !important; }
+
+/* ##### MATERIAL BOX SHADOW (https://codepen.io/sdthornton/pen/wBZdXq) ##### */
+.mbs-1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.mbs-1:hover { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+.mbs-2 { box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); }
+.mbs-3 { box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); }
+.mbs-4 { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+.mbs-5 { box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); }
 
 /* ##### NAVBAR ##### */
 .navbar.navbar-custom {
@@ -24,7 +41,15 @@ body { background-color: transparent; }
     color: gray;
     font-size: 12px;
 }
+@media (max-width: 768px) {
+    .navbar.navbar-custom .navbar-brand {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: calc(100% - 70px);
+    }
+}
 @media (min-width: 768px) {
+    body { padding-top: 81px; }
     .navbar-custom { padding: 15px 0px; }
     .navbar-custom li a {
         border: 1px solid transparent;
@@ -46,20 +71,169 @@ body { background-color: transparent; }
     }
 }
 
+/** ##### HORAIRES ##### */
+.thead-color {background-color: #CD2E3A;}
+
+.day-week {
+    color: white;
+    font-size: 13px;
+}
+
+.text-lesson {
+    font-weight: bold;
+}
+
+.img-table {
+    background-image: url('../images/table/taekwondo_table.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-collapse: separate;
+    empty-cells: hide;
+    width: 75%;
+    margin: auto;
+    text-align: center;
+}
+
+.lesson {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 13px;
+}
+
+.hours {
+    background-color: #0047A0;
+    color: white;
+    font-size: 13px;
+}
+
 /** ##### HOME MAP ##### */
 #home-map { height: 400px; }
 
 /* ##### PRESENTATION CLUB ##### */
-.img-border-member-club {
-    border: 10px solid ghostwhite;
+.member-club {
+    border: 10px solid white;
     position: relative;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-radius: 5px;
 }
 
-.trigram-water {
-    width: 60px;
+/* ##### TRIGRAMS ##### */
+@media (min-width: 768px) {
+    .trigram { position: relative; }
+    .trigram:after {
+        position: absolute;
+        content: '';
+        width: 300px;
+        height: 300px;
+        top: 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        opacity: 0.1;
+    }
+
+    .trigram.trigram-water:after {
+        right: 0;
+        background-image: url("../images/trigrams/water.png");
+    }
+
+    .trigram.trigram-sky:after {
+        left: 0;
+        background-image: url("../images/trigrams/sky.png");
+    }
+
+    .trigram.trigram-earth:after {
+        right: 0;
+        background-image: url("../images/trigrams/earth.png");
+    }
+
+    .trigram.trigram-fire:after {
+        left: 0;
+        background-image: url("../images/trigrams/fire.png");
+    }
+}
+
+/* ##### GALLERY ##### */
+.gallery {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.gallery .gallery-item {
+    display: block;
+    margin: 0px 15px 15px 0px;
+    width: 150px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    opacity: 0.75;
+    transition: all 0.25s ease;
+}
+
+.gallery .gallery-item:hover { opacity: 1; }
+
+.gallery .gallery-item:after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+}
+
+.gallery .gallery-item:last-of-type { margin-right: 0px; }
+
+/** ##### HOME BANNER ##### */
+.home-banner {
+    height: 60vh;
+    background-position: center;
+    background-image: url('../images/banners/stage.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    z-index: -2;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.home-banner:before {
     position: absolute;
-    left: 100%;
-    top: 20px;
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    left: 0;
+    top: 0;
+}
+
+.banner-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.banner-content h1 {
+    margin: auto;
+    text-transform: uppercase;
+}
+
+.banner-footer {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.banner-icons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.banner-icon { width: 75px; }
+.banner-icon img { width: 100%; }
+
+@media (min-width: 768px) {
+    .banner-icon { width: 100px; }
 }

@@ -1,58 +1,108 @@
-<div class="container">
-    <h2>Horaires et plan d'accès</h2>
-    <div class="row">
-        <div class="col-md-6">
-            <!-- Horaires -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Lundi</th>
-                                <th>Mardi</th>
-                                <th>Mercredi</th>
-                                <th>Jeudi</th>
-                                <th>Vendredi</th>
-                                <th>Samedi</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% set debug_schedules = ['09h30 à 10h15', '10h15 à 11h30', '11h30 à 12h45', '18h à 19h15', '19h15 à 20h15', '20h15 à 21h30'] %}
-                            {% for schedule in debug_schedules %}
-                                <tr>
-                                    <th class="text-overflow">{{schedule}}</th>
-                                    <td></td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
+<section class="trigram trigram-earth">
+    <div class="container container-access">
+        <h2>Horaires et plan d'accès</h2>
+        <div class="row">
+            <div class="col-md-7">
+                <!-- Horaires -->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="day-week">
+                                <tr class="text-center">
+                                    <th {#class="thead-bordered"#}></th>
+                                    <th class="thead-color text-center">Lundi</th>
+                                    <th class="thead-color text-center">Mardi</th>
+                                    <th class="thead-color text-center">Mercredi</th>
+                                    <th class="thead-color text-center">Jeudi</th>
+                                    <th class="thead-color text-center">Vendredi</th>
+                                    <th class="thead-color text-center">Samedi</th>
                                 </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody class="img-table">
+                                    <tr>
+                                        <th class="text-overflow hours">09h30 à 10h15</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="lesson"><p class="text-lesson"><span class="strong">BABY TAEKWONDO</span><br/> Dojo La Vannoise</p></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-overflow hours">10h15 à 11h30</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="lesson"><p class="text-lesson"><span class="strong">ENFANT</span><br/> Dojo La Vannoise</p></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-overflow hours">11h30 à 12h45</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="lesson"><p class="text-lesson"><span class="strong">JEUNES ADULTES</span><br/> Dojo La Vannoise</p></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-overflow hours">18h00 à 19h15</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="lesson"><p class="text-lesson"><span class="strong">ENFANT</span><br/> Salle Marcel Garcin</p></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-overflow hours">19h15 à 20h15</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="lesson"><p class="text-lesson"><span class="strong">JEUNES ADULTES</span><br/> Salle Marcel Garcin</p></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-overflow hours">20h00 à 21h30</th>
+                                        <td></td>
+                                        <td class="lesson"><p class="text-lesson"><span class="strong">JEUNES ADULTES</span><br/> Dojo La Vannoise</p></td>
+                                        <td></td>
+                                        <td class="lesson"><p class="text-lesson"><span class="strong">JEUNES ADULTES</span><br/> Dojo La Vannoise</p></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Adresse -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    {% for room in training_rooms %}
-                        <p>
-                            <b>{{ room.name }}</b><br/>
-                            <a href="#">{{ room.address }}</a>
-                        </p>
-                    {% endfor %}
+            <div class="col-md-5">
+                <!-- Map -->
+                <div id="home-map" data-json="{{ training_rooms | json_encode() }}" data-access-token="{{ map_access_token }}"></div>
+                <hr/>
+
+                <!-- Adresse -->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% for room in training_rooms %}
+                            <p>
+                                <b>{{ room.name }}</b><br/>
+                                <a href="#">{{ room.address }}</a>
+                            </p>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Map -->
-        <div class="col-md-6">
-            <div id="home-map" data-json="{{ training_rooms | json_encode() }}" data-access-token="{{ map_access_token }}"></div>
-        </div>
     </div>
-</div>
+</section>
