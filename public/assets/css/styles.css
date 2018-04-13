@@ -1,10 +1,24 @@
 /* ##### GLOBAL ##### */
 html { background-color: #E8E8E8; }
 a { color: #0047A0; }
-body { background-color: transparent; }
+body {
+    background-color: transparent;
+    padding-top: 50px;
+}
 
 /* ##### HELPERS ##### */
 .text-overflow { white-space: nowrap; }
+
+/* ##### MATERIAL BOX SHADOW (https://codepen.io/sdthornton/pen/wBZdXq) ##### */
+.mbs-1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.mbs-1:hover { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+.mbs-2 { box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); }
+.mbs-3 { box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); }
+.mbs-4 { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+.mbs-5 { box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); }
 
 /* ##### NAVBAR ##### */
 .navbar.navbar-custom {
@@ -24,7 +38,15 @@ body { background-color: transparent; }
     color: gray;
     font-size: 12px;
 }
+@media (max-width: 768px) {
+    .navbar.navbar-custom .navbar-brand {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: calc(100% - 70px);
+    }
+}
 @media (min-width: 768px) {
+    body { padding-top: 81px; }
     .navbar-custom { padding: 15px 0px; }
     .navbar-custom li a {
         border: 1px solid transparent;
