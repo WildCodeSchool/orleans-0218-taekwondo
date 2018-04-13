@@ -1,8 +1,9 @@
 /* ##### GLOBAL ##### */
-html { background-color: #E8E8E8; }
+html { background-color: ghostwhite; }
 a { color: #0047A0; }
 body {
     background-color: transparent;
+    font-family: 'Raleway', sans-serif;
     padding-top: 50px;
 }
 
@@ -69,23 +70,108 @@ body {
         justify-content: space-between;
     }
 }
+/** ##### Access ##### */
+.access {
+    position: relative;
+}
+
+.access:after {
+    position: absolute;
+    content: '';
+    width: 300px;
+    height: 300px;
+    top: 0;
+    right: 0;
+    background-position: right;
+    background-image: url("../images/trigrams/earth.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.1;
+}
+
+
+/** ##### HORAIRES ##### */
+.thead-color {background-color: #CD2E3A;}
+
+.day-week {
+    color: white;
+    font-size: 13px;
+}
+
+.text-lesson {
+    font-weight: bold;
+}
+
+.img-table {
+    background-image: url('../images/table/taekwondo_table.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-collapse: separate;
+    empty-cells: hide;
+    width: 75%;
+    margin: auto;
+    text-align: center;
+}
+
+.lesson {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 13px;
+}
+
+.hours {
+    background-color: #0047A0;
+    color: white;
+    font-size: 13px;
+}
 
 /** ##### HOME MAP ##### */
 #home-map { height: 400px; }
 
 /* ##### PRESENTATION CLUB ##### */
-.img-border-member-club {
-    border: 10px solid ghostwhite;
+.member-club {
+    border: 10px solid white;
     position: relative;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-radius: 5px;
 }
 
-.trigram-water {
-    width: 60px;
+.presentation {
+    position: relative;
+}
+
+.presentation:after {
     position: absolute;
-    left: 100%;
-    top: 20px;
+    content: '';
+    width: 300px;
+    height: 300px;
+    top: 0;
+    right: 0;
+    background-position: right;
+    background-image: url("../images/trigrams/water.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.1;
+}
+
+/** ##### EVENTS ##### */
+.events {
+    position: relative;
+}
+
+.events:after {
+    position: absolute;
+    content: '';
+    width: 300px;
+    height: 300px;
+    top: 0;
+    left: 0;
+    background-position: left;
+    background-image: url("../images/trigrams/sky.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.1;
 }
 
 /* ##### GALLERY ##### */
