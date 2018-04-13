@@ -18,15 +18,17 @@ class Manager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function test()
-    {
-        return 'pouet';
-    }
-
     public function selectAllEventAsc(): array
     {
         return $this->pdoConnection
             ->query("SELECT * FROM $this->table ORDER BY date_event ASC LIMIT 3" , \PDO::FETCH_CLASS, Event::class)
+            ->fetchAll();
+    }
+
+    public function selectAllEvent(): array
+    {
+        return $this->pdoConnection
+            ->query("SELECT * FROM $this->table ORDER BY date_event ASC" , \PDO::FETCH_CLASS, Event::class)
             ->fetchAll();
     }
 }
