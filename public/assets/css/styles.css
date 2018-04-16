@@ -153,6 +153,41 @@ body {
     }
 }
 
+/* ##### GALLERY SELECT ##### */
+.gallery-select {
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+    padding: 0px;
+    display: flex;
+    align-items: end;
+    z-index: 0;
+}
+
+.gallery-select .gallery-background {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    filter: grayscale(75%);
+}
+
+.gallery-select .caption {
+    background-color: white;
+    padding: 15px;
+    opacity: 0.8;
+    width: 100%;
+    z-index: 1;
+}
+
+.gallery-select:not(:hover) .caption p { display: none; }
+
 /* ##### GALLERY ##### */
 .gallery {
     display: flex;

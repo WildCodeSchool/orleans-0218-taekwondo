@@ -11,4 +11,10 @@ class Gallery {
     public function getCategoryId(): int { return $this->category_id; }
     public function getTitle(): string { return $this->title; }
     public function getDescription(): string { return $this->description; }
+
+    public function getImages(): array
+    {
+        $manager = new Manager\Image();
+        return $manager->getByGalleryId($this->getId());
+    }
 }

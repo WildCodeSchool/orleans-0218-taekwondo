@@ -14,7 +14,7 @@ class Category extends AbstractManager {
 
     /**
      * Return the list of categories
-     * @return Instance[]
+     * @return Album\Category[]
      */
     public function getAll(): array
     {

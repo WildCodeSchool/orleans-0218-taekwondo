@@ -31,8 +31,9 @@
 <section class="container">
     <div class="row">
         {% for gallery in galleries %}
-            <div class="col-xs-12 col-sm-3">
-                <div class="thumbnail">
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div class="thumbnail gallery-select">
+                    <div class="gallery-background" style="background-image: url('{{ gallery.images[0].url }}')"></div>
                     <div class="caption">
                         <h4>{{ gallery.title }}</h4>
                         <p>{{ gallery.description }}</p>
