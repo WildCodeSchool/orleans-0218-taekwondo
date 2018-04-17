@@ -62,7 +62,10 @@ body {
         font-weight: bold;
     }
     .navbar-custom .navbar-brand { margin-top: 1px; }
-    .navbar-custom .collapse { overflow: auto !important; }
+    .navbar-custom .collapse {
+        overflow: auto !important;
+        flex: 1;
+    }
     .navbar-custom .nav { display: flex; }
     .navbar.navbar-custom > div {
         display: flex;
