@@ -19,7 +19,7 @@ class Image extends AbstractManager {
      */
     public function getByGalleryId(int $galleryId): array
     {
-        $query = $this->pdoConnection->prepare("SELECT * FROM {$this->table} WHERE gallery_id = :galleryId ORDER BY id DESC");
+        $query = $this->pdoConnection->prepare("SELECT * FROM $this->table WHERE gallery_id = :galleryId ORDER BY id DESC");
         $query->bindValue('galleryId', $galleryId);
         $query->execute();
         return $query->fetchAll(\PDO::FETCH_CLASS, Album\Image::class);
