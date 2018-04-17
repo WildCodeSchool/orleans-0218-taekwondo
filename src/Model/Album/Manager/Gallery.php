@@ -16,7 +16,7 @@ class Gallery extends AbstractManager {
      * Return the list of galleries
      * @param $categoryId int
      * @param $searchGallery string
-     * @return Instance[]
+     * @return Album\Gallery[]
      */
     public function getAll(int $categoryId, string $searchGallery): array
     {
@@ -33,7 +33,7 @@ class Gallery extends AbstractManager {
     /**
      * Return the requested gallery
      * @param int $id
-     * @return Instance|bool
+     * @return Album\Gallery|bool
      */
     public function getOne(int $id)
     {
