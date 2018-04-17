@@ -23,7 +23,6 @@ abstract class AbstractManager
 
     /**
      *  Initializes Manager Abstract class.
-     *
      * @param string $table Table name of current model
      */
     public function __construct(string $table)
@@ -36,7 +35,6 @@ abstract class AbstractManager
 
     /**
      * Get all row from database.
-     *
      * @return array
      */
     public function selectAll(): array
@@ -46,9 +44,7 @@ abstract class AbstractManager
 
     /**
      * Get one row from database by ID.
-     *
      * @param  int $id
-     *
      * @return array
      */
     public function selectOneById(int $id)
@@ -64,7 +60,6 @@ abstract class AbstractManager
 
     /**
      * DELETE on row in dataase by ID
-     *
      * @param int $id
      */
     public function delete(int $id)
@@ -74,13 +69,28 @@ abstract class AbstractManager
 
 
     /**
-     * INSERT one row in dataase
-     *
-     * @param Array $data
+     * INSERT one row in database
+     * @param array $data
+     * @return bool
      */
     public function insert(array $data)
     {
-        //TODO : Implements SQL INSERT request
+        $keys = $values = $replaces = [];
+        foreach ($data AS $key => $value) {
+            $keys[] = $key;
+            $replaces[] = ":$key";
+            $values[] = $value;
+        }
+
+        $intoKeys = implode(',', $keys);
+        $intoReplaces = implode(',', $replaces);
+
+        $req = $this->pdoConnection->prepare("INSERT INTO $this->table ($intoKeys) VALUES ($intoReplaces)");
+        foreach ($replaces AS $key => $replacement) {
+            $req->bindValue($replacement, $values[$key]);
+        }
+
+        return $req->execute();
     }
 
 
