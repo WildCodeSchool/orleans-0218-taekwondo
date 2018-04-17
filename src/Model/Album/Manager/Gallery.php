@@ -22,7 +22,9 @@ class Gallery extends AbstractManager {
     {
         $where = [];
         if ($categoryId > 0) $where[] = 'category_id = ' . $categoryId;
-        if (!empty($searchGallery)) $where[] = "title LIKE '%{$searchGallery}%'";
+        if (!empty($searchGallery)) {
+            $where[] = "title LIKE '%$searchGallery%' OR description LIKE '%$searchGallery%'";
+        }
         $finalClause = count($where) > 0 ? ' WHERE ' . implode(' AND ', $where) : '';
 
         $query = $this->pdoConnection
@@ -37,7 +39,7 @@ class Gallery extends AbstractManager {
      */
     public function getOne(int $id)
     {
-        $query = $this->pdoConnection->prepare("SELECT * FROM {$this->table} WHERE id = :id");
+        $query = $this->pdoConnection->prepare("SELECT * FROM $this->table WHERE id = :id");
         $query->bindValue('id', $id);
         $query->execute();
         $query->setFetchMode(\PDO::FETCH_CLASS, Album\Gallery::class);
