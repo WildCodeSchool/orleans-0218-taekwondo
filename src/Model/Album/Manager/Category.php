@@ -23,6 +23,11 @@ class Category extends AbstractManager {
         return $query->fetchAll();
     }
 
+    /**
+     * Create a new category
+     * @param string $name
+     * @return bool
+     */
     public function create(string $name): bool
     {
         return $this->insert([

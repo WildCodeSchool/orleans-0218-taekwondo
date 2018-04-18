@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 
+use Model\Album\Category;
 use Model\Album\Manager;
 use Model\Session\Alerts;
 
@@ -58,11 +59,23 @@ class AlbumController extends AbstractController {
      */
     public function adminCategoriesIndex(): string
     {
+        // Retrieve alerts
         $alertsManager = new Alerts\Manager();
         $alerts = $alertsManager->getAlerts();
         $alertsManager->clean();
+
+        // Check if we want to edit a category
+        $categoriesManager = new Manager\Category();
+        $editId = !empty($_GET['editId']) ? (int)$_GET['editId'] : 0;
+        $category = null;
+        if ($editId > 0 && $categoriesManager->existsById($editId))
+            $category = $categoriesManager->selectOneById($editId);
+
+        // Twig render
         return $this->twig->render('Album/Admin/Category/index.html.twig', [
-            'alerts' => $alerts
+            'alerts' => $alerts,
+            'categories' => $categoriesManager->getAll(),
+            'selection' => $category
         ]);
     }
 
@@ -73,11 +86,9 @@ class AlbumController extends AbstractController {
     public function adminCategoryCreate(): string
     {
         // 'Verifications'
-        if (empty($_POST)) exit();
-
+        if (empty($_POST) || empty($_POST['name'])) header('Location: /admin/albums/categories');
         $name = trim(strip_tags($_POST['name']));
-
-        if (empty($name)) exit();
+        if (empty($name)) header('Location: /admin/albums/categories');
 
         // Try to create the category
         $categoryManager = new Manager\Category();
@@ -94,7 +105,37 @@ class AlbumController extends AbstractController {
         $alertsManager->addAlert($alert);
 
         // Redirection
-        header("Location: /admin/albums/categories");
+        header('Location: /admin/albums/categories');
+        exit();
+    }
+
+    /**
+     * (Admin)[Form] Delete a category
+     * @return string
+     */
+    public function adminCategoryDelete(): string
+    {
+        // 'Verifications'
+        if (empty($_POST) || empty($_POST['categoryId'])) header('Location: /admin/albums/categories');
+        $id = (int)$_POST['categoryId'];
+        if ($id === 0) header('Location: /admin/albums/categories');
+
+        // Try to delete the category
+        $categoriesManager = new Manager\Category();
+        $state = $categoriesManager->delete($id);
+
+        // Create a new alert
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) $alert->setMessage('Catégorie supprimée.');
+        else $alert->setMessage('Impossible de supprimer la catégorie.');
+
+        // Push the alert to the global list
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        // Redirection
+        header('Location: /admin/albums/categories');
         exit();
     }
 }
