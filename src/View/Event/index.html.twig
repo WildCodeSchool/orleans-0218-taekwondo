@@ -2,19 +2,28 @@
 
 {% block content %}
     <section class="container">
-        <h2>Évènements</h2>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Évènements</h2>
+            </div>
+        </div>
 
         <!-- Form -->
-        <form action="" method="GET" class="form-inline" role="form" name="eventList">
-            <!-- Category ID -->
-            <select name="filterId" class="form-control fullwidth" onchange="eventList.submit()">
-                <option value="1" {% if filter == 1 %}selected{% endif %}>-- Sélectionner une catégorie --</option>
-                <option value="2" {% if filter == 2 %}selected{% endif %}>Liste des évémenements à venir</option>
-                <option value="3" {% if filter == 3 %}selected{% endif %}>Liste des évémenements passés</option>
-            </select>
-        </form>
+        <div class="row">
+            <div class="col-md-12">
+                <form action="" method="GET" class="form-inline" role="form" name="eventList">
+                    <!-- Category ID -->
+                    <select name="filterId" class="form-control fullwidth" onchange="eventList.submit()">
+                        <option value="1" {% if filter == 1 %}selected{% endif %}>-- Sélectionner une catégorie --</option>
+                        <option value="2" {% if filter == 2 %}selected{% endif %}>Liste des évémenements à venir</option>
+                        <option value="3" {% if filter == 3 %}selected{% endif %}>Liste des évémenements passés</option>
+                    </select>
+                </form>
+            </div>
+        </div>
 
-
+        <!-- Thumbnail -->
         <div class="row text-center">
             {% for event in events %}
                 <div class="col-sm-6 col-md-6">
@@ -29,7 +38,6 @@
                 </div>
             {% endfor %}
         </div>
-
 
     </section>
 {% endblock %}
