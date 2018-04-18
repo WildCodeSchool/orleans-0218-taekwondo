@@ -71,7 +71,6 @@ class AlbumController extends AbstractController {
         if ($editId > 0 && $categoriesManager->existsById($editId))
             $category = $categoriesManager->selectOneById($editId);
 
-
         // Twig render
         return $this->twig->render('Album/Admin/Category/index.html.twig', [
             'alerts' => $alerts,
@@ -87,9 +86,9 @@ class AlbumController extends AbstractController {
     public function adminCategoryCreate(): string
     {
         // 'Verifications'
-        if (empty($_POST) || empty($_POST['name'])) exit();
+        if (empty($_POST) || empty($_POST['name'])) header('Location: /admin/albums/categories');
         $name = trim(strip_tags($_POST['name']));
-        if (empty($name)) exit();
+        if (empty($name)) header('Location: /admin/albums/categories');
 
         // Try to create the category
         $categoryManager = new Manager\Category();
@@ -117,9 +116,9 @@ class AlbumController extends AbstractController {
     public function adminCategoryDelete(): string
     {
         // 'Verifications'
-        if (empty($_POST) || empty($_POST['categoryId'])) exit();
+        if (empty($_POST) || empty($_POST['categoryId'])) header('Location: /admin/albums/categories');
         $id = (int)$_POST['categoryId'];
-        if ($id === 0) exit();
+        if ($id === 0) header('Location: /admin/albums/categories');
 
         // Try to delete the category
         $categoriesManager = new Manager\Category();
