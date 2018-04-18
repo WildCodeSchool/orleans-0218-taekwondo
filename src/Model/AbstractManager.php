@@ -59,12 +59,15 @@ abstract class AbstractManager
     }
 
     /**
-     * DELETE on row in dataase by ID
+     * DELETE on row in database by ID
      * @param int $id
+     * @return bool
      */
-    public function delete(int $id)
+    public function delete(int $id): bool
     {
-        //TODO : Implements SQL DELETE request
+        $req = $this->pdoConnection->prepare("DELETE FROM $this->table WHERE id = :id");
+        $req->bindValue('id', $id);
+        return $req->execute();
     }
 
 
@@ -73,7 +76,7 @@ abstract class AbstractManager
      * @param array $data
      * @return bool
      */
-    public function insert(array $data)
+    public function insert(array $data): bool
     {
         $keys = $values = $replaces = [];
         foreach ($data AS $key => $value) {
@@ -101,5 +104,18 @@ abstract class AbstractManager
     public function update(int $id, array $data)
     {
         //TODO : Implements SQL UPDATE request
+    }
+
+    /**
+     * Check if a given category id exists in database
+     * @param int $id
+     * @return bool
+     */
+    public function existsById(int $id): bool
+    {
+        $req = $this->pdoConnection->prepare("SELECT COUNT(*) AS nbr FROM $this->table WHERE id = :id");
+        $req->bindValue('id', $id);
+        $state = $req->execute();
+        return $state ? $req->fetch(\PDO::FETCH_ASSOC)['nbr'] > 0 : false;
     }
 }
