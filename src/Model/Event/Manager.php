@@ -34,9 +34,9 @@ class Manager extends AbstractManager
         $selector = '';
 
         if ($filter == 2) {
-            $selector = 'WHERE date_event > DATE(NOW()) ORDER BY date_event ASC';
+            $selector = 'WHERE date_event >= DATE(NOW()) ORDER BY date_event ASC';
         } elseif ($filter == 3) {
-            $selector = 'WHERE date_event < DATE(NOW()) ORDER BY date_event ASC';
+            $selector = 'WHERE date_event <= DATE(NOW()) ORDER BY date_event ASC';
         }
 
         return $this->pdoConnection
