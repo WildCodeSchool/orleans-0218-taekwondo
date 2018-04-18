@@ -2,7 +2,7 @@
 namespace Controller;
 
 use Model\Album\Manager;
-use Model\Ajax;
+use Model\Form;
 
 class AlbumController extends AbstractController {
 
@@ -58,7 +58,12 @@ class AlbumController extends AbstractController {
      */
     public function adminCategoriesIndex(): string
     {
-        return $this->twig->render('Album/Admin/Category/index.html.twig');
+        $form = (new Form\Response())->fromSession();
+        if ($form !== null) $form->clearSession();
+
+        return $this->twig->render('Album/Admin/Category/index.html.twig', [
+            'lastFormResult' => $form
+        ]);
     }
 
     /**
@@ -67,21 +72,22 @@ class AlbumController extends AbstractController {
      */
     public function adminCategoryCreate(): string
     {
-        header('Content-Type: application/json');
-        $response = new Ajax\Response();
+        if (empty($_POST)) exit();
 
-        $data = [
-            'name' => !empty($_POST['name']) ? trim(strip_tags($_POST['name'])) : null
-        ];
+        $name = trim(strip_tags($_POST['name']));
 
-        if ($data['name'] !== null) {
-            $categoryManager = new Manager\Category();
-            $query = $categoryManager->create($data['name']);
-            $response->setState($query);
-            if ($response->isSuccess()) $response->setMessage('Catégorie créée.');
-            else $response->setMessage('Impossible de créer la catégorie.');
-        } else $response->setMessage('Veuillez saisir un nom valide.');
+        if (empty($name)) exit();
 
-        return $response->getJSON();
+        $categoryManager = new Manager\Category();
+        $query = $categoryManager->create($name);
+
+        $response = new Form\Response();
+        $response->setState($query);
+        if ($response->getState()) $response->setMessage('Catégorie ajoutée.');
+        else $response->setMessage('Impossible d\'ajouter la catégorie.');
+        $response->updateSession();
+
+        header("Location: /admin/albums/categories");
+        exit();
     }
 }
