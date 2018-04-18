@@ -21,7 +21,7 @@ class Manager extends AbstractManager
     public function selectAllEventAsc(): array
     {
         return $this->pdoConnection
-            ->query("SELECT * FROM $this->table ORDER BY date_event ASC LIMIT 3" , \PDO::FETCH_CLASS, Event::class)
+            ->query("SELECT * FROM $this->table WHERE date_event > DATE(NOW()) ORDER BY date_event ASC LIMIT 3" , \PDO::FETCH_CLASS, Event::class)
             ->fetchAll();
     }
 
@@ -29,6 +29,22 @@ class Manager extends AbstractManager
     {
         return $this->pdoConnection
             ->query("SELECT * FROM $this->table ORDER BY date_event ASC" , \PDO::FETCH_CLASS, Event::class)
+            ->fetchAll();
+
+
+    }
+
+    public function selectEventSelectorFutur(): array
+    {
+        return $this->pdoConnection
+            ->query("SELECT * FROM $this->table WHERE date_event > DATE(NOW()) ORDER BY date_event ASC" , \PDO::FETCH_CLASS, Event::class)
+            ->fetchAll();
+    }
+
+    public function selectEventSelectorPast(): array
+    {
+        return $this->pdoConnection
+            ->query("SELECT * FROM $this->table WHERE date_event < DATE(NOW()) ORDER BY date_event ASC" , \PDO::FETCH_CLASS, Event::class)
             ->fetchAll();
     }
 }
