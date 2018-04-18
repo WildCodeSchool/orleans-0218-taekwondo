@@ -21,7 +21,8 @@ $routes = [
         ['gallery', '/gallery/{id:\d+}', 'GET'],
         ['adminCategoriesIndex', '/admin/albums/categories', 'GET'],
         ['adminCategoryCreate', '/admin/albums/category/create', 'POST'],
-        ['adminCategoryDelete', '/admin/albums/category/delete', 'POST']
+        ['adminCategoryDelete', '/admin/albums/category/delete', 'POST'],
+        ['adminCategoryUpdate', '/admin/albums/category/update', 'POST']
     ],
     'Admin' => [
         ['index', '/admin', 'GET']
