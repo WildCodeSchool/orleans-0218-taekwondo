@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <section class="container">
+        <h2>Les ceintures noires à l'honneur</h2>
+        <div class="row text-center">
+            {% for blackBelt in blackBelts %}
+                <div class="col-sm-3 col-md-3">
+                    <div class="thumbnail">
+                        <img src="{{ blackBelt.picture }}" alt="photo de la personne ayant reçu la ceinture noire">
+                        <div class="caption">
+                            <h3>{{ blackBelt.person }}</h3>
+                            <p>{{ blackBelt.dateBelt | date('d/m/Y H:i') }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <h2>Les ceintures noires</h2>
+        <div class="row text-center">
+            {% for blackBelt in blackBelts %}
+                <div class="col-sm-3 col-md-3">
+                    <div class="thumbnail">
+                        <img src="{{ blackBelt.picture }}" alt="photo de la personne ayant reçu la ceinture noire">
+                        <div class="caption">
+                            <h3>{{ blackBelt.person }}</h3>
+                            <p>{{ blackBelt.dateBelt | date('d/m/Y H:i') }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </section>
+{% endblock %}
