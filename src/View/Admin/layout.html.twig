@@ -14,4 +14,7 @@
 
 {% block javascript %}
     <script type="text/javascript" src="/assets/plugins/toastr/toastr.min.js"></script>
+    {% if lastFormResult != null %}
+        <script>toastr.{{ lastFormResult.alertType }}('{{ lastFormResult.message }}')</script>
+    {% endif %}
 {% endblock %}
