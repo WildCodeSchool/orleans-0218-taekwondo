@@ -58,7 +58,7 @@ class AlbumController extends AbstractController {
      */
     public function adminCategoriesIndex(): string
     {
-        $form = (new Form\Response())->fromSession();
+        $form = (new Form\Alert())->fromSession();
         if ($form !== null) $form->clearSession();
 
         return $this->twig->render('Album/Admin/Category/index.html.twig', [
@@ -79,10 +79,10 @@ class AlbumController extends AbstractController {
         if (empty($name)) exit();
 
         $categoryManager = new Manager\Category();
-        $query = $categoryManager->create($name);
+        $state = $categoryManager->create($name);
 
-        $response = new Form\Response();
-        $response->setState($query);
+        $response = new Form\Alert();
+        $response->setState($state);
         if ($response->getState()) $response->setMessage('Catégorie ajoutée.');
         else $response->setMessage('Impossible d\'ajouter la catégorie.');
         $response->updateSession();

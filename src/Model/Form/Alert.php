@@ -1,7 +1,7 @@
 <?php
 namespace Model\Form;
 
-class Response {
+class Alert {
     const SESSION_KEY = 'LastFormResult';
 
     /** @var bool */
@@ -36,9 +36,9 @@ class Response {
     /**
      * Define the response state
      * @param bool $state
-     * @return Response
+     * @return Alert
      */
-    public function setState(bool $state): Response
+    public function setState(bool $state): Alert
     {
         $this->state = $state;
         return $this;
@@ -47,9 +47,9 @@ class Response {
     /**
      * Define the response message
      * @param string $message
-     * @return Response
+     * @return Alert
      */
-    public function setMessage(string $message): Response
+    public function setMessage(string $message): Alert
     {
         $this->message = $message;
         return $this;
@@ -57,7 +57,7 @@ class Response {
 
     /**
      * Retrieve the $_SESSION form last result
-     * @return Response|null
+     * @return Alert|null
      */
     public function fromSession()
     {
@@ -67,9 +67,9 @@ class Response {
 
     /**
      * Define $_SESSION form last result
-     * @return Response
+     * @return Alert
      */
-    public function updateSession(): Response
+    public function updateSession(): Alert
     {
         $_SESSION[self::SESSION_KEY] = serialize($this);
         return $this;
@@ -77,9 +77,9 @@ class Response {
 
     /**
      * Clean $_SESSION form last result
-     * @return Response
+     * @return Alert
      */
-    public function clearSession(): Response
+    public function clearSession(): Alert
     {
         if (isset($_SESSION[self::SESSION_KEY]))
             unset($_SESSION[self::SESSION_KEY]);
