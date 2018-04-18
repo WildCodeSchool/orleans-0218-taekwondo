@@ -2,15 +2,22 @@
 
 {% block content %}
     <section class="container">
+        <div class="row">
+            <div class="col-md-6">
         <h2>Les ceintures noires à l'honneur</h2>
+            </div>
+            <div class="col-md-6">
+            <img src="assets/images/blackbelt/BLACKBELT.png">
+            </div>
+        </div>
         <div class="row text-center">
-            {% for blackBelt in blackBelts %}
-                <div class="col-sm-3 col-md-3">
+            {% for blackBelt in blackBeltsHonor %}
+                <div class="col-sm-4 col-md-4">
                     <div class="thumbnail">
                         <img src="{{ blackBelt.picture }}" alt="photo de la personne ayant reçu la ceinture noire">
                         <div class="caption">
-                            <h3>{{ blackBelt.person }}</h3>
-                            <p>{{ blackBelt.dateBelt | date('d/m/Y H:i') }}</p>
+                            <h3>{{ blackBelt.fullName }}</h3>
+                            <p>{{ blackBelt.DateBlackBelt | date('d/m/Y') }}</p>
                         </div>
                     </div>
                 </div>
@@ -23,8 +30,8 @@
                     <div class="thumbnail">
                         <img src="{{ blackBelt.picture }}" alt="photo de la personne ayant reçu la ceinture noire">
                         <div class="caption">
-                            <h3>{{ blackBelt.person }}</h3>
-                            <p>{{ blackBelt.dateBelt | date('d/m/Y H:i') }}</p>
+                            <h3>{{ blackBelt.fullName }}</h3>
+                            <p>{{ blackBelt.DateBlackBelt | date('d/m/Y') }}</p>
                         </div>
                     </div>
                 </div>

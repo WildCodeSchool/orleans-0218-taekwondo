@@ -22,5 +22,9 @@ $routes = [
     ],
     'Admin' => [
         ['index', '/admin', 'GET']
+    ],
+    'BlackBelt' => [
+        ['index', '/blackBelt', 'GET']
     ]
+
 ];
