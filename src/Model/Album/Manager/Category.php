@@ -19,7 +19,14 @@ class Category extends AbstractManager {
     public function getAll(): array
     {
         $query = $this->pdoConnection
-            ->query("SELECT * FROM {$this->table} ORDER BY id ASC", \PDO::FETCH_CLASS, Album\Category::class);
+            ->query("SELECT * FROM $this->table ORDER BY id ASC", \PDO::FETCH_CLASS, Album\Category::class);
         return $query->fetchAll();
+    }
+
+    public function create(string $name): bool
+    {
+        return $this->insert([
+            'name' => $name
+        ]);
     }
 }
