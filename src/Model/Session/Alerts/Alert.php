@@ -14,13 +14,13 @@ class Alert {
     }
 
     /**
-     * Return the response state
+     * Return the alert state
      * @return bool
      */
     public function getState(): bool { return $this->state; }
 
     /**
-     * Return the response message
+     * Return the alert message
      * @return string
      */
     public function getMessage(): string { return $this->message; }
@@ -32,7 +32,7 @@ class Alert {
     public function getAlertType(): string { return $this->state ? 'success' : 'error'; }
 
     /**
-     * Define the response state
+     * Define the alert state
      * @param bool $state
      * @return Alert
      */
@@ -43,7 +43,7 @@ class Alert {
     }
 
     /**
-     * Define the response message
+     * Define the alert message
      * @param string $message
      * @return Alert
      */
