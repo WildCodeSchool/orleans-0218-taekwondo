@@ -1,9 +1,7 @@
 <?php
-namespace Model\Form;
+namespace Model\Session\Alerts;
 
 class Alert {
-    const SESSION_KEY = 'LastFormResult';
-
     /** @var bool */
     private $state;
     /** @var string */
@@ -52,37 +50,6 @@ class Alert {
     public function setMessage(string $message): Alert
     {
         $this->message = $message;
-        return $this;
-    }
-
-    /**
-     * Retrieve the $_SESSION form last result
-     * @return Alert|null
-     */
-    public function fromSession()
-    {
-        $element = $_SESSION[self::SESSION_KEY] ?? null;
-        return $element !== null ? unserialize($element) : $element;
-    }
-
-    /**
-     * Define $_SESSION form last result
-     * @return Alert
-     */
-    public function updateSession(): Alert
-    {
-        $_SESSION[self::SESSION_KEY] = serialize($this);
-        return $this;
-    }
-
-    /**
-     * Clean $_SESSION form last result
-     * @return Alert
-     */
-    public function clearSession(): Alert
-    {
-        if (isset($_SESSION[self::SESSION_KEY]))
-            unset($_SESSION[self::SESSION_KEY]);
         return $this;
     }
 }

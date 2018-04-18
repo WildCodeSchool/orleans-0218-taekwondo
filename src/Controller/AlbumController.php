@@ -2,7 +2,7 @@
 namespace Controller;
 
 use Model\Album\Manager;
-use Model\Form;
+use Model\Session\Alerts;
 
 class AlbumController extends AbstractController {
 
@@ -58,11 +58,11 @@ class AlbumController extends AbstractController {
      */
     public function adminCategoriesIndex(): string
     {
-        $form = (new Form\Alert())->fromSession();
-        if ($form !== null) $form->clearSession();
-
+        $alertsManager = new Alerts\Manager();
+        $alerts = $alertsManager->getAlerts();
+        $alertsManager->clean();
         return $this->twig->render('Album/Admin/Category/index.html.twig', [
-            'lastFormResult' => $form
+            'alerts' => $alerts
         ]);
     }
 
@@ -72,21 +72,28 @@ class AlbumController extends AbstractController {
      */
     public function adminCategoryCreate(): string
     {
+        // 'Verifications'
         if (empty($_POST)) exit();
 
         $name = trim(strip_tags($_POST['name']));
 
         if (empty($name)) exit();
 
+        // Try to create the category
         $categoryManager = new Manager\Category();
         $state = $categoryManager->create($name);
 
-        $response = new Form\Alert();
-        $response->setState($state);
-        if ($response->getState()) $response->setMessage('Catégorie ajoutée.');
-        else $response->setMessage('Impossible d\'ajouter la catégorie.');
-        $response->updateSession();
+        // Create a new alert
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) $alert->setMessage('Catégorie ajoutée.');
+        else $alert->setMessage('Impossible d\'ajouter la catégorie.');
 
+        // Push the alert to the global list
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        // Redirection
         header("Location: /admin/albums/categories");
         exit();
     }
