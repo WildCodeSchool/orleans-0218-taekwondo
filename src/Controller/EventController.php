@@ -13,13 +13,14 @@ class EventController extends AbstractController
 {
     public function index(): string
     {
+        $filter = isset($_GET['filterId']) ? (int)$_GET['filterId'] : 0;
         $eventManager = new Event\Manager();
 
         return $this->twig->render('Event/index.html.twig', [
-            'events' => $eventManager->selectAllEvent()
+            'events' => $eventManager->selectEventSelector($filter),
+            'filter' => $filter,
         ]);
     }
-
 
 
 }
