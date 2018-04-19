@@ -1,7 +1,6 @@
 <?php
 namespace Controller;
 
-use Model\Album\Category;
 use Model\Album\Manager;
 use Model\Session\Alerts;
 
@@ -109,6 +108,10 @@ class AlbumController extends AbstractController {
         exit();
     }
 
+    /**
+     * (Admin)[Form] Update a category
+     * @return string
+     */
     public function adminCategoryUpdate(): string
     {
         // 'Verifications'
@@ -168,6 +171,73 @@ class AlbumController extends AbstractController {
 
         // Redirection
         header('Location: /admin/albums/categories');
+        exit();
+    }
+
+    /**
+     * (Admin) Return the CRUD view of Galleries
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function adminGalleriesIndex(): string
+    {
+        // Retrieve alerts
+        $alertsManager = new Alerts\Manager();
+        $alerts = $alertsManager->getAlerts();
+        $alertsManager->clean();
+
+        // Managers
+        $categoriesManager = new Manager\Category();
+
+        return $this->twig->render('Album/Admin/Gallery/index.html.twig', [
+            'alerts' => $alerts,
+            'categories' => $categoriesManager->getAll()
+        ]);
+    }
+
+    /**
+     * (Admin)[Form] Create a new gallery
+     * @return string
+     */
+    public function adminGalleryCreate(): string
+    {
+        // 'Verifications'
+        if (empty($_POST) || empty($_POST['categoryId']) || empty($_POST['title']) || empty($_POST['description']))
+            header('Location: /admin/albums/galleries');
+
+        $categoryId = (int)$_POST['categoryId'];
+        $title = trim(strip_tags($_POST['title']));
+        $description = trim(strip_tags($_POST['description']));
+
+        if (empty($title) || empty($description) || $categoryId <= 0)
+            header('Location: /admin/albums/galleries');
+
+        // Check if the gallery exists
+        $categoriesManager = new Manager\Category();
+        if (!$categoriesManager->existsById($categoryId)) header('Location: /admin/albums/galleries');
+
+        // Try to create the gallery
+        $galleriesManager = new Manager\Gallery();
+        $state = $galleriesManager->insert([
+            'title' => $title,
+            'description' => $description,
+            'category_id' => $categoryId
+        ]);
+
+        // Create a new alert
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) $alert->setMessage('Galerie crée.');
+        else $alert->setMessage('Impossible de créer la galerie.');
+
+        // Push the alert to the global list
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        // Redirection
+        header('Location: /admin/albums/galleries');
         exit();
     }
 }
