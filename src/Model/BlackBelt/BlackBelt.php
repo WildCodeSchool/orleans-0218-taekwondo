@@ -19,7 +19,7 @@ class BlackBelt
     private $number_dan;
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId(): int
     {
@@ -27,7 +27,7 @@ class BlackBelt
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getFirstName(): string
     {
@@ -35,7 +35,7 @@ class BlackBelt
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getLastName(): string
     {
@@ -43,7 +43,7 @@ class BlackBelt
     }
 
     /**
-     * @return mixed
+     * @return string
      */
 
     public function getDateDanBlackBelt(): string
@@ -52,15 +52,15 @@ class BlackBelt
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getPicture()
+    public function getPicture(): string
     {
         return $this->picture;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getNumberDan(): int
     {

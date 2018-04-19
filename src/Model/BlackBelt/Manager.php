@@ -29,6 +29,10 @@ class Manager extends AbstractManager
             ->fetchAll();
     }
 
+    /**
+     * Return an array of dan
+     * @return array
+     */
     public function getSortByDan(): array
     {
         $elements= $this->selectAllBlackBelt();

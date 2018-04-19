@@ -294,6 +294,14 @@ body {
     }
 }
 
-.blackBelt img {
+.person img {
     height:250px;
+}
+
+.blackBelt .person h3 {
+    color: #0047A0;
+}
+
+.blackBelt h3 {
+    color: #CD2E3A;
 }

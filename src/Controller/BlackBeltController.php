@@ -20,7 +20,6 @@ class BlackBeltController extends AbstractController
         return $this->twig->render('BlackBelt/index.html.twig', [
             'dans' => $blackBeltManager->getSortByDan()
         ]);
-
-
     }
 }
+
