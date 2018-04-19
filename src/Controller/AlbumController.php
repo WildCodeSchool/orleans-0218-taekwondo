@@ -109,6 +109,37 @@ class AlbumController extends AbstractController {
         exit();
     }
 
+    public function adminCategoryUpdate(): string
+    {
+        // 'Verifications'
+        if (empty($_POST) || empty($_POST['id']) || empty($_POST['name']))
+            header('Location: /admin/albums/categories');
+        $id = (int)$_POST['id'];
+        $name = trim(strip_tags($_POST['name']));
+        if (empty($name) || $id <= 0) header('Location: /admin/albums/categories');
+
+        // Try to update the category
+        $categoriesManager = new Manager\Category();
+        if (!$categoriesManager->existsById($id)) header('Location: /admin/albums/categories');
+        $state = $categoriesManager->update($id, [
+            'name' => $name
+        ]);
+
+        // Create a new alert
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) $alert->setMessage('Catégorie modifiée');
+        else $alert->setMessage('Impossible de modifier la catégorie.');
+
+        // Push the alert to the global list
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        // Redirection
+        header('Location: /admin/albums/categories');
+        exit();
+    }
+
     /**
      * (Admin)[Form] Delete a category
      * @return string
@@ -122,6 +153,7 @@ class AlbumController extends AbstractController {
 
         // Try to delete the category
         $categoriesManager = new Manager\Category();
+        if (!$categoriesManager->existsById($id)) header('Location: /admin/albums/categories');
         $state = $categoriesManager->delete($id);
 
         // Create a new alert

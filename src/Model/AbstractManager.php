@@ -98,12 +98,22 @@ abstract class AbstractManager
 
 
     /**
-     * @param int   $id   Id of the row to update
-     * @param array $data $data to update
+     * Update a given row in database
+     * @param int $id
+     * @param array $data
+     * @return bool
      */
-    public function update(int $id, array $data)
+    public function update(int $id, array $data): bool
     {
-        //TODO : Implements SQL UPDATE request
+        $update = [];
+        foreach ($data AS $key => $value) $update[] = "$key = :$key";
+        $update  = implode(',', $update);
+
+        $req = $this->pdoConnection->prepare("UPDATE $this->table SET $update WHERE id = :id");
+        $req->bindValue('id', $id);
+        foreach ($data AS $key => $value) $req->bindValue($key, $value);
+
+        return $req->execute();
     }
 
     /**
