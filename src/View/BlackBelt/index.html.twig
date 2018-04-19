@@ -3,7 +3,7 @@
 {% block content %}
     <section class="black-belt">
         <div class="container">
-            <div class="row">
+            <!--<div class="row">
                 <div class="col">
                     <h2>Les ceintures noires à l'honneur</h2>
                 </div>
@@ -14,31 +14,42 @@
                         <div class="thumbnail">
                             <img src="{{ blackBelt.picture }}" alt="photo de la personne ayant reçu la ceinture noire">
                             <div class="caption">
-                                <h3>{{ blackBelt.fullName }}</h3>
-                                <p>{{ blackBelt.DateBlackBelt | date('d/m/Y') }}</p>
+                                <h3>{{ blackBelt.firstName }}</h3>
+                                <h3>{{ blackBelt.lastName }}</h3>
+                                <p>{{ blackBelt.numberDan }}° Dan</p>
+                                <p>{{ blackBelt.dateDanBlackBelt }}</p>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
-            </div>
+            </div>-->
+
+
             <div class="row">
                 <div class="col">
                     <h2>Les ceintures noires</h2>
                 </div>
             </div>
-            <div class="row text-center">
-                {% for blackBelt in blackBelts %}
-                    <div class="col-sm-3 col-md-3">
-                        <div class="thumbnail">
-                            <img src="{{ blackBelt.picture }}" alt="photo de la personne ayant reçu la ceinture noire">
-                            <div class="caption">
-                                <h3>{{ blackBelt.fullName }}</h3>
-                                <p>{{ blackBelt.DateBlackBelt | date('d/m/Y') }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+
+            {% for dan, blackBelts in dans %}
+                <div class="row text-center">
+                    <h3>{{ dan }}° Dan</h3>
+                </div>
+                <div class="row text-center">
+                    {%  for blackBelt in blackBelts %}
+                           <div class="col-sm-3 col-md-3">
+                                <div class="thumbnail blackBelt">
+                                    <img src="{{ blackBelt.picture }}" alt="photo de la personne ayant reçu la ceinture noire">
+                                    <div class="caption">
+                                        <h3>{{ blackBelt.firstName }}</h3>
+                                        <h3>{{ blackBelt.lastName }}</h3>
+                                        <p>{{ blackBelt.dateDanBlackBelt }}</p>
+                                    </div>
+                                </div>
+                           </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
         </div>
     </section>
 {% endblock %}

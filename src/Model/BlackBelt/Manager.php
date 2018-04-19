@@ -18,10 +18,33 @@ class Manager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    /**
+     * Return an array of black belts
+     * @return BlackBelt[]
+     */
     public function selectAllBlackBelt(): array
     {
         return $this->pdoConnection
-            ->query("SELECT * FROM $this->table ORDER BY date_black_belt DESC" , \PDO::FETCH_CLASS, BlackBelt::class)
+            ->query("SELECT * FROM $this->table ORDER BY number_dan DESC, last_name ASC" , \PDO::FETCH_CLASS, BlackBelt::class)
             ->fetchAll();
     }
+
+    public function getSortByDan(): array
+    {
+        $elements= $this->selectAllBlackBelt();
+
+        $sortByDans= [];
+
+        foreach ($elements as $element) {
+            if (!isset($sortByDans[$element->getNumberDan()])) {
+                $sortByDans[$element->getNumberDan()] = [];
+            }
+
+            $sortByDans[$element->getNumberDan()][] = $element;
+        }
+
+        return $sortByDans;
+    }
+
 }
+

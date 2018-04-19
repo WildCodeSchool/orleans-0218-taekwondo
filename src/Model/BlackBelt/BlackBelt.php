@@ -14,8 +14,9 @@ class BlackBelt
     private $id;
     private $first_name;
     private $last_name;
-    private $date_black_belt;
+    private $date_dan_black_belt;
     private $picture;
+    private $number_dan;
 
     /**
      * @return mixed
@@ -30,7 +31,7 @@ class BlackBelt
      */
     public function getFirstName(): string
     {
-        return $this->first_name;
+        return ucfirst($this->first_name);
     }
 
     /**
@@ -38,16 +39,16 @@ class BlackBelt
      */
     public function getLastName(): string
     {
-        return $this->last_name;
+        return strtoupper($this->last_name);
     }
 
     /**
      * @return mixed
      */
 
-    public function getDateBlackBelt(): string
+    public function getDateDanBlackBelt(): string
     {
-        return $this->date_black_belt;
+        return $this->date_dan_black_belt;
     }
 
     /**
@@ -58,10 +59,12 @@ class BlackBelt
         return $this->picture;
     }
 
-    public function getFullName(): string
+    /**
+     * @return mixed
+     */
+    public function getNumberDan(): int
     {
-        $person = ucfirst($this->first_name) . ' ' . strtoupper($this->last_name);
-        return $person;
+        return $this->number_dan;
     }
 
 }
