@@ -6,7 +6,7 @@
         <!-- Form -->
         <form action="" method="GET" class="form-inline" role="form" name="searchForm">
             <!-- Category ID -->
-            <div class="col-sm-6">
+            <div class="form-group col-sm-6">
                 <select name="categoryId" class="form-control fullwidth" onchange="searchForm.submit()">
                     <option value="">-- Sélectionner une catégorie --</option>
                     {% for category in categories %}
@@ -20,7 +20,7 @@
             </div>
 
             <!-- Gallery name -->
-            <div class="col-sm-6">
+            <div class="form-group col-sm-6">
                 <input type="text" name="search" id="input" class="form-control fullwidth" value="{{ GET.search }}" placeholder="Rechercher une galerie">
             </div>
         </form>
