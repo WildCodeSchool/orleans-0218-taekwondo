@@ -30,7 +30,7 @@ $routes = [
         ['index', '/admin', 'GET']
     ],
     'BlackBelt' => [
-        ['index', '/blackBelt', 'GET']
+        ['index', '/black-belts', 'GET']
     ]
 
 ];
