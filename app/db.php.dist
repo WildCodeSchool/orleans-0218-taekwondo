@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * This file define BD access infos.
  *

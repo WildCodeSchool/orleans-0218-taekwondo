@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Liste</h3>
+    </div>
+    <div class="panel-body">
+        <p>
+            (Cliquez sur une catégorie pour pouvoir la modifier ou la supprimer)<br/>
+            {% if selection != null %}
+                <b>Vous avez sélectionné: <u>{{ selection.name }}</u></b>
+            {% endif %}
+        </p>
+        <div class="btn-group">
+            {% for category in categories %}
+                <a class="btn btn-default {{ selection.id == category.id ? 'btn-primary' : '' }}" href="?editId={{ category.id }}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

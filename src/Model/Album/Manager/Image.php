@@ -15,11 +15,11 @@ class Image extends AbstractManager {
     /**
      * Return images of the requested gallery
      * @param int $galleryId
-     * @return Instance[]
+     * @return Album\Image[]
      */
     public function getByGalleryId(int $galleryId): array
     {
-        $query = $this->pdoConnection->prepare("SELECT * FROM {$this->table} WHERE gallery_id = :galleryId");
+        $query = $this->pdoConnection->prepare("SELECT * FROM $this->table WHERE gallery_id = :galleryId ORDER BY id DESC");
         $query->bindValue('galleryId', $galleryId);
         $query->execute();
         return $query->fetchAll(\PDO::FETCH_CLASS, Album\Image::class);

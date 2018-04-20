@@ -11,6 +11,7 @@ body {
 .text-overflow { white-space: nowrap; }
 .row { margin-top: 20px; }
 .fullwidth { width: 100% !important; }
+.m-t-0 { margin-top: 0; }
 
 /* ##### MATERIAL BOX SHADOW (https://codepen.io/sdthornton/pen/wBZdXq) ##### */
 .mbs-1 {
@@ -62,7 +63,9 @@ body {
         font-weight: bold;
     }
     .navbar-custom .navbar-brand { margin-top: 1px; }
-    .navbar-custom .collapse { overflow: auto !important; }
+    .navbar-custom .collapse {
+        flex: 1;
+    }
     .navbar-custom .nav { display: flex; }
     .navbar.navbar-custom > div {
         display: flex;
@@ -153,6 +156,41 @@ body {
     }
 }
 
+/* ##### GALLERY SELECT ##### */
+.gallery-select {
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+    padding: 0px;
+    display: flex;
+    align-items: end;
+    z-index: 0;
+}
+
+.gallery-select .gallery-background {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    filter: grayscale(75%);
+}
+
+.gallery-select .caption {
+    background-color: white;
+    padding: 15px;
+    opacity: 0.8;
+    width: 100%;
+    z-index: 1;
+}
+
+.gallery-select:not(:hover) .caption p { display: none; }
+
 /* ##### GALLERY ##### */
 .gallery {
     display: flex;
@@ -236,4 +274,34 @@ body {
 
 @media (min-width: 768px) {
     .banner-icon { width: 100px; }
+}
+
+/* ##### BLACK BELT ##### */
+
+@media (min-width: 768px) {
+    .black-belt:before {
+        background-image: url("../images/blackbelt/blackbelt.png");
+        position: fixed;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        background-attachment: fixed;
+        opacity: 0.1;
+        top: 0;
+    }
+}
+
+.person img {
+    height:250px;
+}
+
+.blackBelt .person h3 {
+    color: #0047A0;
+}
+
+.blackBelt h3 {
+    color: #CD2E3A;
 }
