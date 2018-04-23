@@ -75,6 +75,13 @@ body {
 }
 
 /** ##### HORAIRES ##### */
+
+@media (max-width: 768px) {
+    .table {
+        display: none;
+    }
+}
+
 .thead-color {background-color: #CD2E3A;}
 
 .day-week {
@@ -87,7 +94,7 @@ body {
 }
 
 .img-table {
-    background-image: url('../images/table/taekwondo_table.jpg');
+    background-image: url('../images/table/taekwondo-table.png');
     background-size: cover;
     background-repeat: no-repeat;
     border-collapse: separate;
@@ -95,11 +102,10 @@ body {
     width: 75%;
     margin: auto;
     text-align: center;
-    opacity:0.5;
 }
 
 .lesson {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
     font-size: 13px;
 }
@@ -109,6 +115,28 @@ body {
     color: white;
     font-size: 13px;
 }
+
+@media (min-width: 768px) {
+    .horaires {
+        display: none;
+    }
+}
+
+.horaires h3 {
+    color: #CD2E3A;
+}
+.horaires h3 span {
+    color: #0047A0;
+}
+
+.horaires .or {
+    color: #CD2E3A;
+}
+
+.horaires li {
+    list-style-type: none;
+}
+
 
 /** ##### HOME MAP ##### */
 #home-map { height: 400px; }
