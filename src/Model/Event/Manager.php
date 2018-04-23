@@ -45,4 +45,12 @@ class Manager extends AbstractManager
 
     }
 
+    public function getAll(): array
+    {
+        return $this->pdoConnection
+            ->query("SELECT * 
+                                FROM $this->table 
+                                ORDER BY date_event ASC" , \PDO::FETCH_CLASS, Event::class)
+            ->fetchAll();
+    }
 }
