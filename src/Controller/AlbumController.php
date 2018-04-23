@@ -110,23 +110,23 @@ class AlbumController extends AbstractController {
 
     /**
      * (Admin)[Form] Update a category
+     * @param int $id
      * @return string
      */
-    public function adminCategoryUpdate(): string
+    public function adminCategoryUpdate(int $id): string
     {
         // 'Verifications'
-        if (empty($_POST) || empty($_POST['id']) || empty($_POST['name']))
+        if (empty($_POST) || empty($_POST['name']))
             header('Location: /admin/albums/categories');
-        $id = (int)$_POST['id'];
-        $name = trim(strip_tags($_POST['name']));
-        if (empty($name) || $id <= 0) header('Location: /admin/albums/categories');
+        $data = [
+            'name' => trim(strip_tags($_POST['name']))
+        ];
+        if (empty($data['name']) || $id <= 0) header('Location: /admin/albums/categories');
 
         // Try to update the category
         $categoriesManager = new Manager\Category();
         if (!$categoriesManager->existsById($id)) header('Location: /admin/albums/categories');
-        $state = $categoriesManager->update($id, [
-            'name' => $name
-        ]);
+        $state = $categoriesManager->update($id, $data);
 
         // Create a new alert
         $alert = new Alerts\Alert();
@@ -145,14 +145,13 @@ class AlbumController extends AbstractController {
 
     /**
      * (Admin)[Form] Delete a category
+     * @param int $id
      * @return string
      */
-    public function adminCategoryDelete(): string
+    public function adminCategoryDelete(int $id): string
     {
         // 'Verifications'
-        if (empty($_POST) || empty($_POST['categoryId'])) header('Location: /admin/albums/categories');
-        $id = (int)$_POST['categoryId'];
-        if ($id === 0) header('Location: /admin/albums/categories');
+        if ($id <= 0) header('Location: /admin/albums/categories');
 
         // Try to delete the category
         $categoriesManager = new Manager\Category();
