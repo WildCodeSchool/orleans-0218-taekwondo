@@ -280,14 +280,21 @@ body {
 
 
 .person img {
-    height:150px;
+ height: 200px;
 }
 
-.blackBelt .person h5 {
+.blackBelt .person h4 {
     color: #0047A0;
 }
 
 .blackBelt h3 {
     color: #CD2E3A;
 }
+
+.thumbnail {
+    background-color: transparent;
+    border: none;
+}
+
+
 
