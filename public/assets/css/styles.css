@@ -278,30 +278,16 @@ body {
 
 /* ##### BLACK BELT ##### */
 
-@media (min-width: 768px) {
-    .black-belt:before {
-        background-image: url("../images/blackbelt/blackbelt.png");
-        position: fixed;
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        background-attachment: fixed;
-        opacity: 0.1;
-        top: 0;
-    }
-}
 
 .person img {
-    height:250px;
+    height:150px;
 }
 
-.blackBelt .person h3 {
+.blackBelt .person h5 {
     color: #0047A0;
 }
 
 .blackBelt h3 {
     color: #CD2E3A;
 }
+
