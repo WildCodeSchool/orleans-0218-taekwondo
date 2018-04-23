@@ -326,3 +326,28 @@ footer .name_club{
 footer .central{
     margin-top: 0px;
 }
+
+footer{
+    background-color: rgb(221, 221, 231);
+}
+
+footer .form-horizontal{
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+
+footer .send{
+    position: relative;
+    margin-top: 20px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+
+}
+
+footer .button{
+    text-align: right;
+
+}
+
