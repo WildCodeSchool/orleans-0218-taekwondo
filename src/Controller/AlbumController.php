@@ -251,7 +251,7 @@ class AlbumController extends AbstractController {
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function adminGalleryEditIndex(int $id): string
+    public function adminGalleryUpdateIndex(int $id): string
     {
         $galleriesManager = new Manager\Gallery();
         if (!$galleriesManager->existsById($id)) return '';
@@ -261,7 +261,7 @@ class AlbumController extends AbstractController {
         $alerts = $alertsManager->getAlerts();
         $alertsManager->clean();
 
-        return $this->twig->render('Album/Admin/Gallery/Edit/index.html.twig', [
+        return $this->twig->render('Album/Admin/Gallery/Update/index.html.twig', [
             'gallery' => $galleriesManager->getOne($id),
             'categories' => $categoriesManager->getAll(),
             'alerts' => $alerts
@@ -273,7 +273,7 @@ class AlbumController extends AbstractController {
      * @param int $id
      * @return string
      */
-    public function adminGalleryEdit(int $id): string
+    public function adminGalleryUpdate(int $id): string
     {
         $galleriesManager = new Manager\Gallery();
         if (!$galleriesManager->existsById($id)) return '';
@@ -297,7 +297,7 @@ class AlbumController extends AbstractController {
         $alertsManager = new Alerts\Manager();
         $alertsManager->addAlert($alert);
 
-        header("Location: /admin/albums/gallery/$id/edit");
+        header("Location: /admin/albums/gallery/$id/update");
         exit();
     }
 }
