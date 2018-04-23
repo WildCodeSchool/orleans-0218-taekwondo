@@ -102,7 +102,6 @@ body {
     width: 75%;
     margin: auto;
     text-align: center;
-
 }
 
 .lesson {
@@ -309,13 +308,21 @@ body {
 /* ##### BLACK BELT ##### */
 
 .person img {
-    height:250px;
+ height: 200px;
 }
 
-.blackBelt .person h3 {
+.blackBelt .person h4 {
     color: #0047A0;
 }
 
 .blackBelt h3 {
     color: #CD2E3A;
 }
+
+.thumbnail {
+    background-color: transparent;
+    border: none;
+}
+
+
+

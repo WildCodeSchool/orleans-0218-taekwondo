@@ -22,5 +22,13 @@ class EventController extends AbstractController
         ]);
     }
 
+    public function adminIndex(): string
+    {
+        $eventManager = new Event\Manager();
+        return $this->twig->render('Event/Admin/index.html.twig', [
+            'eventsAdmin' => $eventManager->getAll(),
+        ]);
+    }
+
 
 }

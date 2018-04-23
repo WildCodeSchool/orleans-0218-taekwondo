@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: wcs_taekwondo
 -- ------------------------------------------------------
--- Server version	5.7.21-0ubuntu0.17.10.1
+-- Server version	5.7.21-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,21 +16,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `black_belt`
+-- Table structure for table `event`
 --
 
-DROP TABLE IF EXISTS `black_belt`;
+DROP TABLE IF EXISTS `event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `black_belt` (
-  `idblack_belt` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) NOT NULL,
-  `last_name` varchar(45) NOT NULL,
-  `date_dan_black_belt` int(11) NOT NULL,
-  `picture` varchar(45) NOT NULL,
-  `number_dan` int(11) NOT NULL,
-  PRIMARY KEY (`idblack_belt`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+CREATE TABLE `event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_event` int(11) NOT NULL,
+  `title` varchar(45) NOT NULL,
+  `description` text NOT NULL,
+  `picture` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -42,4 +41,4 @@ CREATE TABLE `black_belt` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-20  9:17:20
+-- Dump completed on 2018-04-23 15:50:50
