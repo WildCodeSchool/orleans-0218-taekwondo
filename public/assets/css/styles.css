@@ -75,6 +75,12 @@ body {
 }
 
 /** ##### HORAIRES ##### */
+@media (max-width: 768px) {
+    .table {
+        display: none;
+    }
+}
+
 .thead-color {background-color: #CD2E3A;}
 
 .day-week {
@@ -87,7 +93,7 @@ body {
 }
 
 .img-table {
-    background-image: url('../images/table/taekwondo_table.jpg');
+    background-image: url('../images/table/taekwondo.png');
     background-size: cover;
     background-repeat: no-repeat;
     border-collapse: separate;
@@ -95,10 +101,11 @@ body {
     width: 75%;
     margin: auto;
     text-align: center;
+
 }
 
 .lesson {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
     font-size: 13px;
 }
@@ -108,6 +115,13 @@ body {
     color: white;
     font-size: 13px;
 }
+
+@media (min-width: 768px) {
+    .horaires {
+        display: none;
+    }
+}
+
 
 /** ##### HOME MAP ##### */
 #home-map { height: 400px; }
@@ -277,22 +291,6 @@ body {
 }
 
 /* ##### BLACK BELT ##### */
-
-@media (min-width: 768px) {
-    .black-belt:before {
-        background-image: url("../images/blackbelt/blackbelt.png");
-        position: fixed;
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        background-attachment: fixed;
-        opacity: 0.1;
-        top: 0;
-    }
-}
 
 .person img {
     height:250px;
