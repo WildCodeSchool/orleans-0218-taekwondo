@@ -31,7 +31,6 @@ class BlackBelt
      */
     public function getFirstName(): string
     {
-        mb_internal_encoding( "UTF-8" );
         return mb_strtoupper(mb_substr( $this->first_name, 0, 1 )).mb_substr($this->first_name, 1 );
     }
 
