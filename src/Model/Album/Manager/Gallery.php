@@ -18,7 +18,7 @@ class Gallery extends AbstractManager {
      * @param $searchGallery string
      * @return Album\Gallery[]
      */
-    public function getAll(int $categoryId, string $searchGallery): array
+    public function getAll(int $categoryId = 0, string $searchGallery = null): array
     {
         $where = [];
         if ($categoryId > 0) $where[] = 'category_id = ' . $categoryId;

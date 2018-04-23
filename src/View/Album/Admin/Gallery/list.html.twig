@@ -1,0 +1,8 @@
+<ul class="list-group">
+    {% for gallery in galleries %}
+        <a href="gallery/{{ gallery.id }}/edit" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ gallery.title }}</h4>
+            <p class="list-group-item-text">{{ gallery.description }}</p>
+        </a>
+    {% endfor %}
+</ul>

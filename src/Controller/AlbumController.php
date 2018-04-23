@@ -190,10 +190,12 @@ class AlbumController extends AbstractController {
 
         // Managers
         $categoriesManager = new Manager\Category();
+        $galleriesManager = new Manager\Gallery();
 
         return $this->twig->render('Album/Admin/Gallery/index.html.twig', [
             'alerts' => $alerts,
-            'categories' => $categoriesManager->getAll()
+            'categories' => $categoriesManager->getAll(),
+            'galleries' => $galleriesManager->getAll()
         ]);
     }
 
@@ -238,6 +240,64 @@ class AlbumController extends AbstractController {
 
         // Redirection
         header('Location: /admin/albums/galleries');
+        exit();
+    }
+
+    /**
+     * (Admin) Return the EDIT view of a gallery
+     * @param int $id
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function adminGalleryEditIndex(int $id): string
+    {
+        $galleriesManager = new Manager\Gallery();
+        if (!$galleriesManager->existsById($id)) return '';
+        $categoriesManager = new Manager\Category();
+
+        $alertsManager = new Alerts\Manager();
+        $alerts = $alertsManager->getAlerts();
+        $alertsManager->clean();
+
+        return $this->twig->render('Album/Admin/Gallery/Edit/index.html.twig', [
+            'gallery' => $galleriesManager->getOne($id),
+            'categories' => $categoriesManager->getAll(),
+            'alerts' => $alerts
+        ]);
+    }
+
+    /**
+     * (Admin)[Form] Edit a gallery
+     * @param int $id
+     * @return string
+     */
+    public function adminGalleryEdit(int $id): string
+    {
+        $galleriesManager = new Manager\Gallery();
+        if (!$galleriesManager->existsById($id)) return '';
+
+        $data = [
+            'title' => trim(strip_tags($_POST['title'])),
+            'description' => trim(strip_tags($_POST['description'])),
+            'category_id' => (int)$_POST['categoryId']
+        ];
+
+        $categoriesManager = new Manager\Category();
+        if (!$categoriesManager->existsById($data['category_id'])) return '';
+
+        $state = $galleriesManager->update($id, $data);
+
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) $alert->setMessage('La galerie a été mise à jour.');
+        else $alert->setMessage('Impossible de mettre à jour la galerie.');
+
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        header("Location: /admin/albums/gallery/$id/edit");
         exit();
     }
 }
