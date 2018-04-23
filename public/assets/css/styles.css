@@ -305,3 +305,24 @@ body {
 .blackBelt h3 {
     color: #CD2E3A;
 }
+
+/* ##### FOOTER ##### */
+
+footer .adress{
+    line-height: .5em;
+    margin-top: 10px;
+}
+
+footer ul{
+    list-style-type: none;
+}
+
+footer .name_club{
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+footer .central{
+    margin-top: 0px;
+}
