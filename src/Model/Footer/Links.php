@@ -12,11 +12,9 @@ namespace Model\Footer;
 class Links
 {
     private $id;
-    private $kind_of_link;
     private $web_address;
     private $open_in_other_window;
     private $link_title;
-    private $level_of_importance;
     private $text_of_link;
 
     private $size;
@@ -46,13 +44,6 @@ class Links
         return $this->text_of_link;
     }
 
-    /**
-     * @return string
-     */
-    public function getKindOfLink()
-    {
-        return $this->kind_of_link;
-    }
 
     /**
      * @return string
@@ -78,13 +69,6 @@ class Links
         return $this->link_title;
     }
 
-    /**
-     * @return int
-     */
-    public function getLevelOfImportance()
-    {
-        return $this->level_of_importance;
-    }
-
+    
 
 }
