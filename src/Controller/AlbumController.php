@@ -299,4 +299,28 @@ class AlbumController extends AbstractController {
         header("Location: /admin/albums/gallery/$id/update");
         exit();
     }
+
+    /**
+     * (Admin)[Form] Delete a gallery
+     * @param int $id
+     * @return string
+     */
+    public function adminGalleryDelete(int $id): string
+    {
+        $galleriesManager = new Manager\Gallery();
+        if (!$galleriesManager->existsById($id)) return '';
+
+        $state = $galleriesManager->delete($id);
+
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) $alert->setMessage('La galerie a été supprimée.');
+        else $alert->setMessage('Impossible de supprimer la galerie');
+
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        header('Location: /admin/albums/galleries');
+        exit();
+    }
 }

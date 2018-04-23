@@ -10,32 +10,8 @@
         <h5><a href="/admin/albums/galleries">Retour sur la page précédente</a></h5>
         <div class="row">
             <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Modification</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form action="" method="POST">
-                            <div class="form-group">
-                                <label>Titre</label>
-                                <input name="title" class="form-control" placeholder="Saisissez un nouveau titre..." value="{{ gallery.title }}" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea name="description" class="form-control" rows="3" placeholder="Saisissez une nouvelle description..." required>{{ gallery.description }}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Catégorie</label>
-                                <select name="categoryId" class="form-control">
-                                    {% for category in categories %}
-                                        <option value="{{ category.id }}" {% if category.id == gallery.categoryId %}selected{% endif %}>{{ category.name }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-default btn-block">Valider</button>
-                        </form>
-                    </div>
-                </div>
+                {% include 'Album/Admin/Gallery/Update/update.html.twig' %}
+                {% include 'Album/Admin/Gallery/Update/delete.html.twig' %}
             </div>
         </div>
     </section>
