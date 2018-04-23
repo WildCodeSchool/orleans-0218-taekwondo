@@ -3,6 +3,7 @@ namespace Controller;
 
 use Model\Album\Manager;
 use Model\Session\Alerts;
+use Model\Files;
 
 class AlbumController extends AbstractController {
 
@@ -255,6 +256,7 @@ class AlbumController extends AbstractController {
         $galleriesManager = new Manager\Gallery();
         if (!$galleriesManager->existsById($id)) return '';
         $categoriesManager = new Manager\Category();
+        $imagesManager = new Manager\Image();
 
         $alertsManager = new Alerts\Manager();
         $alerts = $alertsManager->getAlerts();
@@ -262,6 +264,7 @@ class AlbumController extends AbstractController {
 
         return $this->twig->render('Album/Admin/Gallery/Update/index.html.twig', [
             'gallery' => $galleriesManager->getOne($id),
+            'images' => $imagesManager->getByGalleryId($id),
             'categories' => $categoriesManager->getAll(),
             'alerts' => $alerts
         ]);
@@ -308,7 +311,7 @@ class AlbumController extends AbstractController {
     public function adminGalleryDelete(int $id): string
     {
         $galleriesManager = new Manager\Gallery();
-        if (!$galleriesManager->existsById($id)) return '';
+        if (!$galleriesManager->existsById($id)) header('Location: /admin/albums/galleries');
 
         $state = $galleriesManager->delete($id);
 
@@ -321,6 +324,67 @@ class AlbumController extends AbstractController {
         $alertsManager->addAlert($alert);
 
         header('Location: /admin/albums/galleries');
+        exit();
+    }
+
+    /**
+     * (Admin)[Form] Upload multiple images
+     * @param int $id
+     * @return string
+     */
+    public function adminGalleryImagesUpload(int $id): string
+    {
+        // 'Verifications'
+        $galleriesManager = new Manager\Gallery();
+        if (empty($_FILES)) header("Location: /admin/albums/gallery/$id/update");
+        if (!$galleriesManager->existsById($id)) header("Location: /admin/albums/gallery/$id/update");
+
+        // Create the upload folder
+        if (!file_exists(BASE_ROOT . '/' . UPLOADS_PATH))
+            mkdir(BASE_ROOT . '/' . UPLOADS_PATH);
+
+        // Initiate the alerts manager & handle files from $_FILES
+        $alertsManager = new Alerts\Manager();
+        $imagesManager = new Manager\Image();
+        $filesHandler = new Files\Handler($_FILES['files']);
+
+        // Check every files contained by $_FILES
+        foreach ($filesHandler->getFiles() AS $file) {
+            // 'Verifications'
+            $isValidFile = $file->isValidFile(ALLOWED_TYPES);
+            $isValidSize = $file->isValidSize(MAX_UPLOAD_SIZE);
+
+            // Alerts if verifications have failed
+            if (!$isValidFile || !$isValidSize) {
+                if (!$isValidFile)
+                    $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file type'));
+                if (!$isValidSize)
+                    $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
+                continue;
+            }
+
+            // Upload
+            $uploadPath = UPLOADS_PATH . '/image-' . uniqid() . '.' . $file->getType();
+            $uploadSuccess = $file->upload(BASE_ROOT . '/' . $uploadPath);
+            if (!$uploadSuccess) {
+                $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image {$file->getName()}."));
+                continue;
+            }
+
+            // Insert in database and final file alert
+            $state = $imagesManager->insert([
+                'gallery_id' => $id,
+                'url' => $uploadPath
+            ]);
+
+            $alert = (new Alerts\Alert())->setState($state);
+            if ($alert->getState()) $alert->setMessage("Image '{$file->getName()}' upload.");
+            else $alert->setMessage("Impossible d'upload l'image '{$file->getName()}'");
+            $alertsManager->addAlert($alert);
+        }
+
+        // End of file
+        header("Location: /admin/albums/gallery/$id/update");
         exit();
     }
 }

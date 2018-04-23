@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Liste des images</h3>
+    </div>
+    <div class="panel-body">
+        {% for image in images %}
+            <a href="{{ image.url }}" target="_blank">{{ image.url }}</a>
+        {% endfor %}
+    </div>
+</div>
