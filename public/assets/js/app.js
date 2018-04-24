@@ -11,13 +11,19 @@ $(document).ready(() => {
 })
 
 /** ##### FORM CONFIRMATION ##### */
-$(document).on('submit', 'form[confirm]', function(e){
+$(document).on('submit', 'form[confirm]', async function(e){
     if (this.hasAttribute('confirmed')) {
         this.removeAttribute('confirmed');
         return;
     }
     e.preventDefault();
     const content = $(this).attr('confirm') || "Confirmez-vous l'envoi de ce formulaire ?";
-    if (confirm(content))
+    const approbation = await swal({
+        title: content,
+        icon: 'warning',
+        buttons: ['Annuler', 'Confirmer'],
+        dangerMode: true
+    })
+    if (approbation)
         $(this).attr('confirmed', true).submit();
 })

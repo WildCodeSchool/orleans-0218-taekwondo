@@ -75,6 +75,13 @@ body {
 }
 
 /** ##### HORAIRES ##### */
+
+@media (max-width: 768px) {
+    .table {
+        display: none;
+    }
+}
+
 .thead-color {background-color: #CD2E3A;}
 
 .day-week {
@@ -87,7 +94,7 @@ body {
 }
 
 .img-table {
-    background-image: url('../images/table/taekwondo_table.jpg');
+    background-image: url('../images/table/taekwondo-table.png');
     background-size: cover;
     background-repeat: no-repeat;
     border-collapse: separate;
@@ -98,7 +105,7 @@ body {
 }
 
 .lesson {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
     font-size: 13px;
 }
@@ -108,6 +115,28 @@ body {
     color: white;
     font-size: 13px;
 }
+
+@media (min-width: 768px) {
+    .horaires {
+        display: none;
+    }
+}
+
+.horaires h3 {
+    color: #CD2E3A;
+}
+.horaires h3 span {
+    color: #0047A0;
+}
+
+.horaires .or {
+    color: #CD2E3A;
+}
+
+.horaires li {
+    list-style-type: none;
+}
+
 
 /** ##### HOME MAP ##### */
 #home-map { height: 400px; }
@@ -278,27 +307,11 @@ body {
 
 /* ##### BLACK BELT ##### */
 
-@media (min-width: 768px) {
-    .black-belt:before {
-        background-image: url("../images/blackbelt/blackbelt.png");
-        position: fixed;
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        background-attachment: fixed;
-        opacity: 0.1;
-        top: 0;
-    }
-}
-
 .person img {
-    height:250px;
+ height: 200px;
 }
 
-.blackBelt .person h3 {
+.blackBelt .person h4 {
     color: #0047A0;
 }
 
@@ -327,4 +340,31 @@ body {
 
 .color-btn {
     background-color: #0047A0;
+}
+
+.thumbnail {
+    background-color: transparent;
+    border: none;
+}
+
+/* ##### FOOTER ##### */
+
+footer .adress{
+    line-height: .5em;
+    margin-top: 10px;
+}
+
+footer ul{
+    list-style-type: none;
+}
+
+footer .name_club{
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+footer .central{
+    margin-top: 0px;
+
 }
