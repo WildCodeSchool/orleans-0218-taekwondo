@@ -29,5 +29,9 @@ class File {
     public function isValidFile(array $allowedTypes): bool { return in_array($this->getType(), $allowedTypes); }
     public function isValidSize(int $maxSize): bool { return $this->getSize() <= $maxSize; }
 
-    public function upload(string $path): bool { return move_uploaded_file($this->getTmpName(), $path); }
+    public function upload(string $path, string $fileName): bool {
+        if (!file_exists($path))
+            mkdir($path, 0755, true);
+        return move_uploaded_file($this->getTmpName(), $path . '/' . $fileName);
+    }
 }
