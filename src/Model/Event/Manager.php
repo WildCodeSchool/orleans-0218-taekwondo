@@ -28,7 +28,6 @@ class Manager extends AbstractManager
             ->fetchAll();
     }
 
-
   public function selectEventSelector(int $filter): array
     {
         $selector = '';
@@ -42,7 +41,6 @@ class Manager extends AbstractManager
         return $this->pdoConnection
             ->query("SELECT * FROM $this->table $selector" , \PDO::FETCH_CLASS, Event::class)
             ->fetchAll();
-
     }
 
     public function getAll(): array
@@ -50,7 +48,7 @@ class Manager extends AbstractManager
         return $this->pdoConnection
             ->query("SELECT * 
                                 FROM $this->table 
-                                ORDER BY date_event ASC" , \PDO::FETCH_CLASS, Event::class)
+                                ORDER BY date_event DESC" , \PDO::FETCH_CLASS, Event::class)
             ->fetchAll();
     }
 }

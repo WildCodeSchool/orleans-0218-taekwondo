@@ -15,7 +15,8 @@ $routes = [
     ],
     'Event' => [
         ['index', '/events' , 'GET'],
-        ['adminIndex','/admin/event','GET']
+        ['adminIndex','/admin/events','GET'],
+        ['adminEventDelete','/admin/event/{id:\d+}/delete','POST'],
     ],
     'Album' => [
         ['index', '/galleries', 'GET'],
