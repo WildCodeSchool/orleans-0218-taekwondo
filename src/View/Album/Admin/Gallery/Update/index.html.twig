@@ -1,0 +1,20 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Albums - Galerie - Edit
+{% endblock %}
+
+{% block content %}
+    <section class="container">
+        <h1>Albums - Galerie - Edit</h1>
+        <h5><a href="/admin/albums/galleries">Retour sur la page précédente</a></h5>
+        <div class="row">
+            <div class="col-md-4">
+                {% include 'Album/Admin/Gallery/Update/update.html.twig' %}
+                {% include 'Album/Admin/Gallery/Update/delete.html.twig' %}
+            </div>
+            <div class="col-md-4">{% include 'Album/Admin/Gallery/Update/upload.html.twig' %}</div>
+            <div class="col-md-4">{% include 'Album/Admin/Gallery/Update/images.html.twig' %}</div>
+        </div>
+    </section>
+{% endblock %}

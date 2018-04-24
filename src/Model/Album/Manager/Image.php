@@ -24,4 +24,13 @@ class Image extends AbstractManager {
         $query->execute();
         return $query->fetchAll(\PDO::FETCH_CLASS, Album\Image::class);
     }
+
+    public function getOneById(int $id): Album\Image
+    {
+        $req = $this->pdoConnection->prepare("SELECT * FROM $this->table WHERE id = :id");
+        $req->setFetchMode(\PDO::FETCH_CLASS, Album\Image::class);
+        $req->bindValue('id', $id, \PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetch();
+    }
 }
