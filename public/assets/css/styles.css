@@ -319,16 +319,33 @@ body {
     color: #CD2E3A;
 }
 
+/* ##### PRESENTATION TAEKWONDO ##### */
+
+.img-taekwondo {
+    height: 50px;
+}
+
+.description-taekwondo {
+    margin-top: 20px;
+}
+
+.signification {
+    padding-top: 50px;
+    padding-left: 100px;
+}
+
+.align {
+    margin-top: 20px;
+}
+
+.color-btn {
+    background-color: #0047A0;
+}
+
 .thumbnail {
     background-color: transparent;
     border: none;
 }
-
-
-
-
-
-
 
 /* ##### FOOTER ##### */
 
@@ -349,4 +366,5 @@ footer .name_club{
 
 footer .central{
     margin-top: 0px;
+
 }

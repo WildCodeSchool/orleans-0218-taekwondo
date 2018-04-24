@@ -38,6 +38,9 @@ $routes = [
     ],
     'BlackBelt' => [
         ['index', '/black-belts', 'GET']
+    ],
+    'Presentation' => [
+        ['index', '/presentation', 'GET']
     ]
 
 ];
