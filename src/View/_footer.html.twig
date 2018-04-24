@@ -1,0 +1,74 @@
+<footer>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sd-6 col-xs-12">
+
+                <ul>
+
+                    {% for link in links %}
+
+                        {% if  loop.index <= (loop.length /2) %}
+                        <li><a href="{{ link.webAddress }}" target="_blank" title="{{ link.linkTitle }}" >{{ link.textOfLink }}</a></li>
+                        {% endif %}
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="col-lg-5 col-md-5 col-sd-6col-xs-12 milieu">
+
+                <div class="row central">
+
+                    <ul>
+
+                        <div class="col-lg-4 col-md-4 col-sd-12 col-sd-12">
+                            <img src="assets/images/logo_taekwondo_club_olivet.jpg" height="100"/>
+                        </div>
+
+                        <div class="col-lg-8 col-md-8 col-sd-12">
+                            <div class="adress">
+                                <p class="name_club">Club Keumgang Taekwondo</p>
+                                <p>138 Allée François Villon</p>
+                                <p>45160 Olivet</p>
+                            </div>
+                            <div class="phone">
+                                <p>06.24.43.35.21</p>
+                            </div>
+                        </div>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-lg-4 col-md-4 col-sd-12 col-xs-12">
+
+                <ul>
+
+                    {% for link in links %}
+
+                        {% if  loop.index > (loop.length /2) %}
+                            <li><a href="{{ link.webAddress }}" target="_blank" title="{{ link.linkTitle }}" >{{ link.textOfLink }}</a></li>
+                        {% endif %}
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
