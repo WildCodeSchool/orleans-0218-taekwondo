@@ -31,8 +31,9 @@ class BlackBelt
      */
     public function getFirstName(): string
     {
-        return ucfirst($this->first_name);
+        return mb_strtoupper(mb_substr( $this->first_name, 0, 1 )).mb_substr($this->first_name, 1 );
     }
+
 
     /**
      * @return string

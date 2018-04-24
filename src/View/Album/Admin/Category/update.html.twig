@@ -3,12 +3,11 @@
         <h3 class="panel-title">Mise à jour</h3>
     </div>
     <div class="panel-body">
-        <form action="category/update" method="POST">
+        <form action="category/{{ selection.id }}/update" method="POST">
             <div class="form-group">
                 <label>Nom</label>
                 <input class="form-control" name="name" placeholder="Saisissez un nouveau nom..." value="{{ selection.name }}" required/>
             </div>
-            <input type="hidden" name="id" value="{{ selection.id }}" required/>
             <button type="submit" class="btn btn-primary btn-block">Mettre à jour</button>
         </form>
     </div>

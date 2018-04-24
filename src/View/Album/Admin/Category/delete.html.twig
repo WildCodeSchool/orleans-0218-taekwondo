@@ -3,8 +3,7 @@
         <h3 class="panel-title">Suppression</h3>
     </div>
     <div class="panel-body">
-        <form action="category/delete" method="POST">
-            <input type="hidden" name="categoryId" value="{{ selection.id ?? '' }}" required/>
+        <form action="category/{{ selection.id}}/delete" method="POST" confirm="Supprimer la catégorie '{{ selection.name }}' ?">
             <button type="submit" class="btn btn-danger btn-block">Supprimer définitivement</button>
         </form>
     </div>
