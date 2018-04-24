@@ -6,7 +6,7 @@
                     <img src="{{ image.url }}" alt="Image"/>
                 </a>
                 <div class="caption">
-                    <form action="/admin/albums/gallery/{{ gallery.id }}/image/{{ image.id }}/delete" method="POST">
+                    <form action="/admin/albums/gallery/{{ gallery.id }}/image/{{ image.id }}/delete" method="POST" confirm="Confirmez-vous la suppression de l'image ?">
                         <button type="submit" class="btn btn-danger btn-block">Supprimer</button>
                     </form>
                 </div>
