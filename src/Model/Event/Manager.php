@@ -18,6 +18,9 @@ class Manager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    /** Select events for the front-page (3max)
+     * @return array
+     */
     public function selectAllEventAsc(): array
     {
         return $this->pdoConnection
@@ -28,8 +31,12 @@ class Manager extends AbstractManager
             ->fetchAll();
     }
 
-
-  public function selectEventSelector(int $filter): array
+    /**
+     * Select past / future events thanks to a selector
+     * @param int $filter
+     * @return array
+     */
+    public function selectEventSelector(int $filter): array
     {
         $selector = '';
 
@@ -42,15 +49,18 @@ class Manager extends AbstractManager
         return $this->pdoConnection
             ->query("SELECT * FROM $this->table $selector" , \PDO::FETCH_CLASS, Event::class)
             ->fetchAll();
-
     }
 
+    /**
+     * Select all events order by date
+     * @return array
+     */
     public function getAll(): array
     {
         return $this->pdoConnection
             ->query("SELECT * 
                                 FROM $this->table 
-                                ORDER BY date_event ASC" , \PDO::FETCH_CLASS, Event::class)
+                                ORDER BY date_event DESC" , \PDO::FETCH_CLASS, Event::class)
             ->fetchAll();
     }
 }

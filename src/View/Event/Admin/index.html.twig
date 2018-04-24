@@ -1,3 +1,5 @@
+
+
 {% extends 'Admin/layout.html.twig' %}
 
 {% block content %}
@@ -24,8 +26,16 @@
                                         {% for event in eventsAdmin %}
                                             <tr>
                                                 <td class="col-md-8">{{ event.title }} </br> {{ event.dateEvent | date('d/m/Y H:i') }}</td>
-                                                <td class="col-md-2"><button class="btn btn-warning">Modifier</button></td>
-                                                <td class="col-md-2"><button class="btn btn-danger">Supprimer</button></td>
+                                                <td class="col-md-2">
+                                                    <form action="event/{{ event.id }}/update" method="POST" confirm="Modifier l'événement '{{ event.title }}' ?">
+                                                        <button type="submit" class="btn btn-warning btn-block">Modifier </button>
+                                                    </form>
+                                                </td>
+                                                <td class="col-md-2">
+                                                    <form action="event/{{ event.id }}/delete" method="POST" confirm="Supprimer l'événement '{{ event.title }}' ?">
+                                                        <button type="submit" class="btn btn-danger btn-block">Supprimer </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         {% endfor %}
                                     </div>
