@@ -30,7 +30,7 @@ class HomeController extends AbstractController
                     'infos' => 'Desservie par les lignes de bus 13 et 11.'
                 ]
             ],
-            'links' => (new Footer\Manager())->getAll(),
+            'links' => (new Footer\LinkManager())->getAll(),
         ]);
     }
 }

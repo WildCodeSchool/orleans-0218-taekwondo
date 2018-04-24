@@ -9,7 +9,7 @@
 namespace Model\Footer;
 use Model\AbstractManager;
 
-class Manager extends AbstractManager
+class LinkManager extends AbstractManager
 {
     const TABLE = 'links';
 

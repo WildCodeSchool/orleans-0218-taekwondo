@@ -8,7 +8,10 @@
 
 namespace Model\Footer;
 
-
+/**
+ * Class Links
+ * @package Model\Footer
+ */
 class Links
 {
     private $id;
