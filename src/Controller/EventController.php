@@ -13,6 +13,7 @@ use Model\Session\Alerts;
 class EventController extends AbstractController
 {
     /**
+     * (client) show specific events thanks to a selector
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -30,6 +31,7 @@ class EventController extends AbstractController
     }
 
     /**
+     * (admin) Show all the events
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
