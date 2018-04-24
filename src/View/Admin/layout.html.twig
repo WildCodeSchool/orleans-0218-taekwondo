@@ -14,6 +14,7 @@
 
 {% block javascript %}
     <script type="text/javascript" src="/assets/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/sweetalert/sweetalert.min.js"></script>
     {% if (alerts|length) > 0 %}
         <script>
             {% for alert in alerts %}
