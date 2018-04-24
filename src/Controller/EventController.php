@@ -80,4 +80,41 @@ class EventController extends AbstractController
         header('Location: /admin/events');
         exit();
     }
+
+    /**Create a new event
+     * @return string
+     */
+    public function adminEventCreate(): string
+    {
+        // 'Verifications'
+        if (empty($_POST) || empty($_POST['title']) || empty($_POST['date_event']) || empty($_POST['description'])) header('Location: /admin/events');
+
+        $title = trim(strip_tags($_POST['title']));
+        $dateEvent = (string)$_POST['date_event'];
+        $description = trim(strip_tags($_POST['description']));
+
+        var_dump($_POST);
+
+        // Try to create the event
+        $galleriesManager = new Event\Manager();
+        $state = $galleriesManager->insert([
+            'title' => $title,
+            'date_event' => $dateEvent,
+            'description' => $description,
+        ]);
+
+        // Create a new alert
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) $alert->setMessage('Evénement ajouté.');
+        else $alert->setMessage('Impossible d\'ajouter l\'événement.');
+
+        // Push the alert to the global list
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        // Redirection
+        header('Location: /admin/events');
+        exit();
+    }
 }

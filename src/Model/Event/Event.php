@@ -28,7 +28,7 @@ class Event
     /**
      * @return int
      */
-    public function getDateEvent(): int
+    public function getDateEvent()
     {
         return $this->date_event;
     }
