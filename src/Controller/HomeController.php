@@ -33,4 +33,23 @@ class HomeController extends AbstractController
             'links' => (new Footer\LinkManager())->getAll(),
         ]);
     }
+
+    /**
+     * @return string
+     */
+    public function contactCreate(): string
+    {
+
+
+        $message = [
+            'message' => [
+                'courriel' => !isset($_POST['courriel']),
+                'message' => !isset($_POST['message'])
+            ]
+        ];
+
+        return $message;
+
+    }
+
 }
