@@ -14,13 +14,19 @@
                             <thead>
                             <tr>
                                 <th>Prénom NOM / Numéro de Dan / Date d'obtention</th>
+                                <th>Supprimer</th>
                             </tr>
                             </thead>
                             <tbody>
                                 <div class="row">
-                                    {% for dan, blackBelt in blackBeltsAdmin %}
+                                    {% for dan, blackBelt in blackBelts %}
                                         <tr>
-                                            <td class="col-md-8">{{ blackBelt.firstName }} {{ blackBelt.lastName }} : {{ dan }} ° Dan obtenu le {{ blackBelt.dateDanBlackBelt }}</td>
+                                            <td class="col-md-8">{{ blackBelt.firstName }} {{ blackBelt.lastName }} : {{ dan }} ° Dan obtenu le {{ blackBelt.dateDan }}</td>
+                                            <td class="col-md-2">
+                                                <form action="black-belt/{{ blackBelt.id }}/delete" method="POST" confirm="Supprimer la ceinture noire '{{ blackBelt.firstName }} {{ blackBelt.lastName }}' ?">
+                                                    <button type="submit" class="btn btn-danger btn-block">Supprimer </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     {% endfor %}
                                 </div>

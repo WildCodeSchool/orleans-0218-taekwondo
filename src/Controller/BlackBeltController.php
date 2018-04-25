@@ -9,6 +9,7 @@
 namespace Controller;
 use Model\AbstractManager;
 use Model\BlackBelt;
+use Model\Session\Alerts;
 
 
 
@@ -37,11 +38,46 @@ class BlackBeltController extends AbstractController
      */
     public function adminIndex(): string
     {
-        $blackBeltManager = new BlackBelt\Manager();
+        // Retrieve alerts
+        $alertsManager = new Alerts\Manager();
+        $alerts = $alertsManager->getAlerts();
+        $alertsManager->clean();
 
+        $blackBeltManager = new BlackBelt\Manager();
         return $this->twig->render('BlackBelt/Admin/index.html.twig', [
-            'blackBeltsAdmin' => $blackBeltManager->getAll(),
+            'blackBelts' => $blackBeltManager->getAll(),
+            'alerts' => $alerts
         ]);
+    }
+
+
+    /**
+     * @param int $id
+     * @return string
+     */
+    public function adminBlackBeltDelete(int $id): string
+    {
+        // Verifications
+        if ($id <= 0) header('Location: /admin/black-belts');
+
+        // Try to delete the event
+        $blackBeltManager = new BlackBelt\Manager();
+        if (!$blackBeltManager->existsById($id)) header('Location: /admin/black-belts');
+        $state = $blackBeltManager->delete($id);
+
+        // Create a new alert
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) $alert->setMessage('La ceinture noire a été supprimée.');
+        else $alert->setMessage('Impossible de supprimer la ceinture noire');
+
+        // Push the alert to the global list
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        // Redirection
+        header('Location: /admin/black-belts');
+        exit();
     }
 }
 

@@ -56,9 +56,7 @@ class Manager extends AbstractManager
     public function getAll(): array
     {
         return $this->pdoConnection
-            ->query("SELECT * 
-                                FROM $this->table 
-                                ORDER BY last_name ASC" , \PDO::FETCH_CLASS, BlackBelt::class)
+            ->query("SELECT * FROM $this->table ORDER BY last_name ASC" , \PDO::FETCH_CLASS, BlackBelt::class)
             ->fetchAll();
     }
 
