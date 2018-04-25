@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 use Model\Event;
+use Model\Footer;
 
 class HomeController extends AbstractController
 {
@@ -28,7 +29,8 @@ class HomeController extends AbstractController
                     'lng' => 1.9567255236147503,
                     'infos' => 'Desservie par les lignes de bus 13 et 11.'
                 ]
-            ]
+            ],
+            'links' => (new Footer\LinkManager())->getAll(),
         ]);
     }
 }

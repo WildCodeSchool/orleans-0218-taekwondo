@@ -1,10 +1,16 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Liste des images</h3>
-    </div>
-    <div class="panel-body">
-        {% for image in images %}
-            <a href="{{ image.url }}" target="_blank">{{ image.url }}</a>
-        {% endfor %}
-    </div>
+<div class="row m-t-0">
+    {% for image in images %}
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <a href="{{ image.url }}" target="_blank">
+                    <img src="{{ image.url }}" alt="Image"/>
+                </a>
+                <div class="caption">
+                    <form action="/admin/albums/gallery/{{ gallery.id }}/image/{{ image.id }}/delete" method="POST" confirm="Confirmez-vous la suppression de l'image ?">
+                        <button type="submit" class="btn btn-danger btn-block">Supprimer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 </div>

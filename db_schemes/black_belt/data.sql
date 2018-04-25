@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: wcs_taekwondo
 -- ------------------------------------------------------
--- Server version	5.7.21-0ubuntu0.17.10.1
+-- Server version	5.7.21-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,30 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `black_belt`
---
-
-DROP TABLE IF EXISTS `black_belt`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `black_belt` (
-  `idblack_belt` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) NOT NULL,
-  `last_name` varchar(45) NOT NULL,
-  `date_dan_black_belt` int(11) NOT NULL,
-  `picture` varchar(45) NOT NULL,
-  `number_dan` int(11) NOT NULL,
-  PRIMARY KEY (`idblack_belt`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `black_belt`
 --
 
 LOCK TABLES `black_belt` WRITE;
 /*!40000 ALTER TABLE `black_belt` DISABLE KEYS */;
-INSERT INTO `black_belt` VALUES (1,'Alix','chaselas',2015,'assets/images/blackbelt/placeholder_man.png',4),(2,'nicolas','monbertrand',2012,'assets/images/blackbelt/placeholder_man.png',3),(3,'nathalie','milano',2010,'assets/images/blackbelt/placeholder_woman.png',2),(4,'nicolas ','vincent',2018,'assets/images/blackbelt/placeholder_man.png',1),(13,'guillaume','dubois',2010,'assets/images/blackbelt/placeholder_man.png',2),(14,'fabien','gayet',2013,'assets/images/blackbelt/placeholder_man.png',2),(15,'stephane','tolno',2014,'assets/images/blackbelt/placeholder_man.png',2),(16,'wilfried','poudroux',2001,'assets/images/blackbelt/placeholder_man.png',1),(17,'benedict','hughet du lorin',2001,'assets/images/blackbelt/placeholder_woman.png',1),(18,'lucie','ruello',2007,'assets/images/blackbelt/placeholder_woman.png',1),(19,'emilie','payet',2005,'assets/images/blackbelt/placeholder_woman.png',1),(20,'audry','hughet du lorin',2001,'assets/images/blackbelt/placeholder_woman.png',3),(21,'christophe','michau',2010,'assets/images/blackbelt/placeholder_man.png',2),(22,'tchoua','ya',2004,'assets/images/blackbelt/placeholder_man.png',1),(23,'rodolphe','robert',2005,'assets/images/blackbelt/placeholder_man.png',1),(24,'wesley','braillon',2007,'assets/images/blackbelt/placeholder_man.png',1),(25,'julie','payet',2007,'assets/images/blackbelt/placeholder_woman.png',1),(26,'fabien','roger',2010,'assets/images/blackbelt/placeholder_man.png',1),(27,'sophorn','som',2010,'assets/images/blackbelt/placeholder_man.png',1),(28,'alexandre','hermant',2013,'assets/images/blackbelt/placeholder_man.png',1),(29,'hughes','boussamba',2013,'assets/images/blackbelt/placeholder_man.png',1),(30,'cecilia','tolno',2016,'assets/images/blackbelt/placeholder_woman.png',1),(31,'florent','karsenty',2016,'assets/images/blackbelt/placeholder_man.png',1);
+INSERT INTO `black_belt` VALUES (1,'Alix','chaselas',2015,'assets/images/blackbelt/placeholder_man.png',4),(2,'nicolas','monbertrand',2012,'assets/images/blackbelt/placeholder_man.png',3),(3,'nathalie','milano',2010,'assets/images/blackbelt/placeholder_woman.png',2),(13,'guillaume','dubois',2010,'assets/images/blackbelt/placeholder_man.png',2),(14,'fabien','gayet',2013,'assets/images/blackbelt/placeholder_man.png',2),(15,'stéphane','tolno',2014,'assets/images/blackbelt/placeholder_man.png',2),(16,'wilfried','poudroux',2001,'assets/images/blackbelt/placeholder_man.png',1),(17,'bénédicte','hughet du lorin',2001,'assets/images/blackbelt/placeholder_woman.png',1),(18,'lucie','ruello',2007,'assets/images/blackbelt/placeholder_woman.png',1),(19,'émilie','payet',2005,'assets/images/blackbelt/placeholder_woman.png',1),(20,'audry','hughet du lorin',2001,'assets/images/blackbelt/placeholder_man.png',3),(21,'christophe','michau',2010,'assets/images/blackbelt/placeholder_man.png',2),(22,'tchoua','ya',2004,'assets/images/blackbelt/placeholder_man.png',1),(23,'rodolphe','robert',2005,'assets/images/blackbelt/placeholder_man.png',1),(24,'wesley','braillon',2007,'assets/images/blackbelt/placeholder_man.png',1),(25,'julie','payet',2007,'assets/images/blackbelt/placeholder_woman.png',1),(26,'fabien','roger',2010,'assets/images/blackbelt/placeholder_man.png',1),(27,'sophorn','som',2010,'assets/images/blackbelt/placeholder_man.png',1),(28,'alexandre','hermant',2013,'assets/images/blackbelt/placeholder_man.png',1),(29,'hughes','boussamba',2013,'assets/images/blackbelt/placeholder_man.png',1),(30,'cécilia','tolno',2016,'assets/images/blackbelt/placeholder_woman.png',1),(31,'florent','karsenty',2016,'assets/images/blackbelt/placeholder_man.png',1);
 /*!40000 ALTER TABLE `black_belt` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-20  9:18:10
+-- Dump completed on 2018-04-23 15:51:18

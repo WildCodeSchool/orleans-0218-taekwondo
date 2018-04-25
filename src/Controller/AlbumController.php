@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 
+use Model\Album\Image;
 use Model\Album\Manager;
 use Model\Session\Alerts;
 use Model\Files;
@@ -364,8 +365,10 @@ class AlbumController extends AbstractController {
             }
 
             // Upload
-            $uploadPath = UPLOADS_PATH . '/image-' . uniqid() . '.' . $file->getType();
-            $uploadSuccess = $file->upload(BASE_ROOT . '/' . $uploadPath);
+            $uploadPath = '/' . UPLOADS_PATH . '/gallery-' . $id;
+            $uploadFileName = uniqid() . '.' . $file->getType();
+            $uploadFullPath = $uploadPath . '/' . $uploadFileName;
+            $uploadSuccess = $file->upload(BASE_ROOT . $uploadPath, $uploadFileName);
             if (!$uploadSuccess) {
                 $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image {$file->getName()}."));
                 continue;
@@ -374,7 +377,7 @@ class AlbumController extends AbstractController {
             // Insert in database and final file alert
             $state = $imagesManager->insert([
                 'gallery_id' => $id,
-                'url' => $uploadPath
+                'url' => $uploadFullPath
             ]);
 
             $alert = (new Alerts\Alert())->setState($state);
@@ -385,6 +388,40 @@ class AlbumController extends AbstractController {
 
         // End of file
         header("Location: /admin/albums/gallery/$id/update");
+        exit();
+    }
+
+    /**
+     * (Admin)[Form] Delete an image
+     * @param int $galleryId
+     * @param int $id
+     * @return string
+     */
+    public function adminGalleryImageDelete(int $galleryId, int $id): string
+    {
+        // 'Verifications'
+        $imagesManager = new Manager\Image();
+        if (!$imagesManager->existsById($id)) header("Location: /admin/albums/gallery/$galleryId/update");
+
+        // Try to delete the file and db entry
+        /** @var Image $image */
+        $image = $imagesManager->getOneById($id);
+        $filePath = BASE_ROOT . $image->getUrl();
+        if (file_exists($filePath)) unlink($filePath);
+        $state = $imagesManager->delete($id);
+
+        // Alert response
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) $alert->setMessage("L'image a été supprimée.");
+        else $alert->setMessage('Impossible de supprimer cette image.');
+
+        // Add alert to the stack
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        // End of script
+        header("Location: /admin/albums/gallery/$galleryId/update");
         exit();
     }
 }
