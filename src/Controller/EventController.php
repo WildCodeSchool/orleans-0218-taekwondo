@@ -88,8 +88,6 @@ class EventController extends AbstractController
      */
     public function adminEventCreate(): string
     {
-        var_dump($_FILES);
-        var_dump($_POST);
         // 'Verifications'
         if (empty($_POST) || empty($_POST['title']) || empty($_POST['date_event']) || empty($_POST['description']))
             header('Location: /admin/events');
