@@ -102,8 +102,8 @@ class EventController extends AbstractController
         ];
 
         // Create the upload folder
-        if (!file_exists(BASE_ROOT . '/' . UPLOADS_PATH))
-            mkdir(BASE_ROOT . '/' . UPLOADS_PATH);
+        if (!file_exists(BASE_ROOT . '/' . UPLOADS_PATH_EVENTS))
+            mkdir(BASE_ROOT . '/' . UPLOADS_PATH_EVENTS);
 
 
         // Initiate the alerts manager & handle files from $_FILES
@@ -148,8 +148,8 @@ class EventController extends AbstractController
         $alertsManager = new Alerts\Manager();
         $alertsManager->addAlert($alert);
 
-        /*// Redirection
-        header('Location: /admin/events');*/
+        // Redirection
+        header('Location: /admin/events');
         exit();
 
     }
