@@ -365,8 +365,10 @@ class AlbumController extends AbstractController {
             }
 
             // Upload
-            $uploadPath = '/' . UPLOADS_PATH . '/image-' . uniqid() . '.' . $file->getType();
-            $uploadSuccess = $file->upload(BASE_ROOT . $uploadPath);
+            $uploadPath = '/' . UPLOADS_PATH . '/gallery-' . $id;
+            $uploadFileName = uniqid() . '.' . $file->getType();
+            $uploadFullPath = $uploadPath . '/' . $uploadFileName;
+            $uploadSuccess = $file->upload(BASE_ROOT . $uploadPath, $uploadFileName);
             if (!$uploadSuccess) {
                 $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image {$file->getName()}."));
                 continue;
@@ -375,7 +377,7 @@ class AlbumController extends AbstractController {
             // Insert in database and final file alert
             $state = $imagesManager->insert([
                 'gallery_id' => $id,
-                'url' => $uploadPath
+                'url' => $uploadFullPath
             ]);
 
             $alert = (new Alerts\Alert())->setState($state);
