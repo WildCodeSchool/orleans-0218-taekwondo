@@ -88,7 +88,8 @@ class EventController extends AbstractController
      */
     public function adminEventCreate(): string
     {
-
+        var_dump($_FILES);
+        var_dump($_POST);
         // 'Verifications'
         if (empty($_POST) || empty($_POST['title']) || empty($_POST['date_event']) || empty($_POST['description']))
             header('Location: /admin/events');
@@ -100,7 +101,7 @@ class EventController extends AbstractController
             'picture' => null
         ];
 
-        if ((!empty($_FILES['upload'])) && isset($_FILES['upload']['title'])) {
+        if ((!empty($_FILES['upload'])) && (!empty($_FILES['upload']['name']))) {
             // Create the upload folder
             if (!file_exists(BASE_ROOT . '/' . UPLOADS_PATH_EVENTS))
                 mkdir(BASE_ROOT . '/' . UPLOADS_PATH_EVENTS);
@@ -126,7 +127,8 @@ class EventController extends AbstractController
             }
 
             // Upload
-            $data['picture'] = UPLOADS_PATH . '/events/' . uniqid() . '.' . $file->getType();
+            $data['picture'] = '/' . UPLOADS_PATH . '/events/' . uniqid() . '.' . $file->getType();
+            var_dump($data['picture']);
             $uploadSuccess = $file->upload(BASE_ROOT . '/' . $data['picture']);
             if (!$uploadSuccess) {
                 $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image {$file->getName()}."));
@@ -149,8 +151,28 @@ class EventController extends AbstractController
         $alertsManager = new Alerts\Manager();
         $alertsManager->addAlert($alert);
 
+
         // Redirection
         header('Location: /admin/events');
         exit();
+    }
+
+    public function adminEventUpdateIndex(int $id): string
+    {
+        $eventManager = new Event\Manager();
+        if (!$eventManager->existsById($id)) return '';
+
+        $alertsManager = new Alerts\Manager();
+        $alerts = $alertsManager->getAlerts();
+        $alertsManager->clean();
+
+        return $this->twig->render('Event/Admin/Update/index.html.twig', [
+            'event' => $eventManager->selectOneById($id),
+            'alerts' => $alerts
+        ]);
+    }
+    public function adminEventUpdate()
+    {
+
     }
 }
