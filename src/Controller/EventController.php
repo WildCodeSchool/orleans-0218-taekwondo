@@ -154,23 +154,4 @@ class EventController extends AbstractController
         header('Location: /admin/events');
         exit();
     }
-
-    public function adminEventUpdateIndex(int $id): string
-    {
-        $eventManager = new Event\Manager();
-        if (!$eventManager->existsById($id)) return '';
-
-        $alertsManager = new Alerts\Manager();
-        $alerts = $alertsManager->getAlerts();
-        $alertsManager->clean();
-
-        return $this->twig->render('Event/Admin/Update/index.html.twig', [
-            'event' => $eventManager->selectOneById($id),
-            'alerts' => $alerts
-        ]);
-    }
-    public function adminEventUpdate()
-    {
-
-    }
 }
