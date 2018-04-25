@@ -9,6 +9,7 @@
 namespace Controller;
 use Model\Event;
 use Model\Session\Alerts;
+use Model\Files;
 
 class EventController extends AbstractController
 {
@@ -81,27 +82,61 @@ class EventController extends AbstractController
         exit();
     }
 
-    /**Create a new event
+    /**
+     * Create a new event
      * @return string
      */
     public function adminEventCreate(): string
     {
-        // 'Verifications'
-        if (empty($_POST) || empty($_POST['title']) || empty($_POST['date_event']) || empty($_POST['description'])) header('Location: /admin/events');
-
-        $title = trim(strip_tags($_POST['title']));
-        $dateEvent = (string)$_POST['date_event'];
-        $description = trim(strip_tags($_POST['description']));
-
+        var_dump($_FILES);
         var_dump($_POST);
+        // 'Verifications'
+        if (empty($_POST) || empty($_POST['title']) || empty($_POST['date_event']) || empty($_POST['description']))
+            header('Location: /admin/events');
+
+        $data = [
+            'title' => trim(strip_tags($_POST['title'])),
+            'date_event' => $_POST['date_event'],
+            'description' => trim(strip_tags($_POST['description'])),
+            'picture' => null
+        ];
+
+        // Create the upload folder
+        if (!file_exists(BASE_ROOT . '/' . UPLOADS_PATH))
+            mkdir(BASE_ROOT . '/' . UPLOADS_PATH);
+
+
+        // Initiate the alerts manager & handle files from $_FILES
+        $alertsManager = new Alerts\Manager();
+        $filesHandler = new Files\Handler($_FILES['upload']);
+        $file = $filesHandler->getFiles()[0];
+
+        // 'Verifications'
+        $isValidFile = $file->isValidFile(ALLOWED_TYPES);
+        $isValidSize = $file->isValidSize(MAX_UPLOAD_SIZE);
+
+        // Alerts if verifications have failed
+        if (!$isValidFile || !$isValidSize) {
+            if (!$isValidFile)
+                $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file type'));
+            if (!$isValidSize)
+                $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
+            header('Location: /admin/events');
+            exit();
+        }
+
+        // Upload
+        $data['picture'] = UPLOADS_PATH . '/events/' . uniqid() . '.' . $file->getType();
+        $uploadSuccess = $file->upload(BASE_ROOT . '/' . $data['picture']);
+        if (!$uploadSuccess) {
+            $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image {$file->getName()}."));
+            header('Location: /admin/events');
+            exit();
+        }
 
         // Try to create the event
-        $galleriesManager = new Event\Manager();
-        $state = $galleriesManager->insert([
-            'title' => $title,
-            'date_event' => $dateEvent,
-            'description' => $description,
-        ]);
+        $eventManager = new Event\Manager();
+        $state = $eventManager->insert($data);
 
         // Create a new alert
         $alert = new Alerts\Alert();
@@ -113,8 +148,9 @@ class EventController extends AbstractController
         $alertsManager = new Alerts\Manager();
         $alertsManager->addAlert($alert);
 
-        // Redirection
-        header('Location: /admin/events');
+        /*// Redirection
+        header('Location: /admin/events');*/
         exit();
+
     }
 }

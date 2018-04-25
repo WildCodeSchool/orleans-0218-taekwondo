@@ -5,7 +5,7 @@
     </div>
     <div class="panel-body">
         <!-- Formulaire de création -->
-        <form action="event/create" method="POST" role="form">
+        <form action="event/create" method="POST" role="form" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="">Nom de l'événement</label>
                 <input type="text" class="form-control" placeholder="Nom du nouvel événement" name="title" required/>
@@ -21,6 +21,7 @@
             <div class="form-group">
                 <label for="">Flyers</label>
                 <input type="file"  placeholder="Flyers de l'événement ( facultatif )" name="upload" id="upload"/>
+                <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Créer</button>
