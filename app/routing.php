@@ -41,6 +41,9 @@ $routes = [
     ],
     'Presentation' => [
         ['index', '/presentation', 'GET']
+    ],
+    'Contact' => [
+        ['message', '/', 'POST']
     ]
 
 ];
