@@ -11,6 +11,7 @@ use Model\Event;
 use Model\Session\Alerts;
 use Model\Files;
 
+
 class EventController extends AbstractController
 {
     /**

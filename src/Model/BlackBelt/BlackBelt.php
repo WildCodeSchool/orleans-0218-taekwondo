@@ -44,10 +44,10 @@ class BlackBelt
     }
 
     /**
-     * @return string
+     * @return int
      */
 
-    public function getDateDan(): string
+    public function getDateDan(): int
     {
         return $this->date_dan;
     }
