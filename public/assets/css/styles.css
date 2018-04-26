@@ -306,6 +306,21 @@ body {
     .banner-icon { width: 100px; }
 }
 
+.color-red {
+    color: #CD2E3A;
+}
+
+.color-bleu {
+    color: #0047A0;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+
+
+
 /* ##### BLACK BELT ##### */
 
 .person img {

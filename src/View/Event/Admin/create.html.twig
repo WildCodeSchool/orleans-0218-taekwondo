@@ -7,20 +7,20 @@
         <!-- Formulaire de création -->
         <form action="event/create" method="POST" role="form" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="">Nom de l'événement</label>
+                <label for="">Nom de l'événement :</label>
                 <input type="text" class="form-control" placeholder="Nom du nouvel événement" name="title" required/>
             </div>
             <div class="form-group">
-                <label for="">Date de l'événement</label>
+                <label for="">Date de l'événement :</label>
                 <input type="date" class="form-control" placeholder="Date du nouvel événement" name="date_event" required/>
             </div>
             <div class="form-group">
-                <label for="">Description de l'événement</label>
-                <input type="text" class="form-control" placeholder="Descrition de l'événement" name="description" required/>
+                <label for="">Description de l'événement :</label>
+                <input type="text" class="form-control" placeholder="Description de l'événement" name="description" required/>
             </div>
             <div class="form-group">
-                <label for="">Flyers</label>
-                <input type="file"  placeholder="Flyers de l'événement ( facultatif )" name="upload" id="upload"/>
+                <label for="">Flyers :</label>
+                <input type="file" name="upload" id="upload"/>
                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
             </div>
 

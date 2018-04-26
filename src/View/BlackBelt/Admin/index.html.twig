@@ -4,6 +4,7 @@
     <section class="container">
         <h1>Ceintures noires - Listing</h1>
         <div class="row">
+            <div class="col-md-4">{% include 'BlackBelt/Admin/create.html.twig' %}</div>
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -21,7 +22,7 @@
                                 <div class="row">
                                     {% for dan, blackBelt in blackBelts %}
                                         <tr>
-                                            <td class="col-md-8">{{ blackBelt.firstName }} {{ blackBelt.lastName }} : {{ dan }} ° Dan obtenu le {{ blackBelt.dateDan }}</td>
+                                            <td class="col-md-8">{{ blackBelt.firstName }} {{ blackBelt.lastName }} : {{ blackBelt.numberDan }} ° Dan obtenu le {{ blackBelt.dateDan }}</td>
                                             <td class="col-md-2">
                                                 <form action="black-belt/{{ blackBelt.id }}/delete" method="POST" confirm="Supprimer la ceinture noire '{{ blackBelt.firstName }} {{ blackBelt.lastName }}' ?">
                                                     <button type="submit" class="btn btn-danger btn-block">Supprimer </button>
