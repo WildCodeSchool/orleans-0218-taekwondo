@@ -209,7 +209,6 @@ class EventController extends AbstractController
                 header('Location: /admin/events');
                 exit();
             }
-            var_dump($eventManager->selectOneById($id));
             $data['picture'] .= $pictureName;
         } else {
             unset($data['picture']);
