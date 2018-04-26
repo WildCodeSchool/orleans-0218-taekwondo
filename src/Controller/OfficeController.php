@@ -12,7 +12,7 @@ use Model\Office;
 class OfficeController extends AbstractController
 {
     /**
-     * Display the Office's staff
+     * Display the office's staff
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime

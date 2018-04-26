@@ -3,13 +3,15 @@
 <section>
     <div class="container container-events">
         <h2>Présentation du "Bureau Technique"</h2>
-        <div class="row text-center flex-parent">
+        <div class="row text-center">
             {% for staff in offices %}
-                <div class="col-sm-6 col-md-4 flex-child">
-                    <div class="thumbnail fullheight">
-                        <img src="{{ staff.picture }}" alt="flyers de l'événement">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail themeWF">
+                        <div class="size covered">
+                            <img class="img-responsive covered" src="{{ staff.picture }}" alt="flyers de l'événement">
+                        </div>
                         <div class="caption">
-                            <p>{{ staff.firstName }}</p>
+                            <p>{{ staff.firstName }} {{ staff.LastName }}</p>
                             <p>{{ staff.task }}</p>
                         </div>
                     </div>
