@@ -90,6 +90,7 @@ class BlackBeltController extends AbstractController
         // 'Verifications'
         if (empty($_POST) || empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['number_dan']) || empty($_POST['date_dan'])) {
             header('Location: /admin/black-belts');
+            exit();
         }
 
 
