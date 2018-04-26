@@ -35,20 +35,53 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @return string
+     * @return void
      */
-    public function contactCreate(): string
+    public function contactCreate(): void
     {
 
+        // Page de provenance de la requête du formulaire
+        $origin = $_SERVER['HTTP_REFERER'];
 
-        $message = [
-            'message' => [
-                'courriel' => !isset($_POST['courriel']),
-                'message' => !isset($_POST['message'])
-            ]
-        ];
 
-        return $message;
+        // Si le formulaire est INcomplet
+        if (empty($_POST['courriel']) || empty($_POST['message'])) {
+
+            header("Location: $origin");
+
+
+            // Quand le formulaire est complet
+        } else{
+
+            // Utilisation de la librairie SwiftMailer pour la gestion des courriels
+            // Fonctionnement en 4 étapes
+
+            // 1) Create the Transport
+            $transport = (new Swift_SmtpTransport(APP_MAIL_HOST, APP_MAIL_PORT, APP_MAIL_SECURITY))
+                ->setUsername(APP_MAIL_NAME)
+                ->setPassword(APP_MAIL_PWD);
+
+
+            // 2) Create the Mailer using your created Transport
+            $courrier = new Swift_Mailer($transport);
+
+
+            // 3) Create a message
+            $contact = (new Swift_Message('Taekwondo Olivet'))
+                ->setTo(['sebstn.hkzt@laposte.net' => 'PO'])
+                ->setBody(trim(strip_tags($_POST['message'])))
+                ->setFrom([trim(strip_tags($_POST['courriel'])) => 'Visiteur du site'])
+                ->setSubject('Taekwondo Olivet');
+
+
+            // 4) Send the message
+            $result = $courrier->send($contact);
+
+
+            unset($_POST);
+            header("Location: $origin");
+        }
+
 
     }
 
