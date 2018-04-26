@@ -89,8 +89,9 @@ class EventController extends AbstractController
     public function adminEventCreate(): string
     {
         // 'Verifications'
-        if (empty($_POST) || empty($_POST['title']) || empty($_POST['date_event']) || empty($_POST['description']))
+        if (empty($_POST) || empty($_POST['title']) || empty($_POST['date_event']) || empty($_POST['description'])) {
             header('Location: /admin/events');
+        }
 
         $data = [
             'title' => trim(strip_tags($_POST['title'])),
@@ -112,12 +113,14 @@ class EventController extends AbstractController
 
             // Alerts if verifications have failed
             if (!$isValidFile || !$isValidSize) {
-                if (!$isValidFile)
+                if (!$isValidFile) {
                     $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file type'));
-                if (!$isValidSize)
+                }
+                if (!$isValidSize) {
                     $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
-                header('Location: /admin/events');
-                exit();
+                    header('Location: /admin/events');
+                    exit();
+                }
             }
 
             // Upload
@@ -155,7 +158,9 @@ class EventController extends AbstractController
     public function adminEventUpdateIndex(int $id): string
     {
         $eventManager = new Event\Manager();
-        if (!$eventManager->existsById($id)) return '';
+        if (!$eventManager->existsById($id)) {
+            return '';
+        }
 
         $alertsManager = new Alerts\Manager();
         $alerts = $alertsManager->getAlerts();
@@ -170,7 +175,9 @@ class EventController extends AbstractController
     public function adminEventUpdate(int $id)
     {
         $eventManager = new Event\Manager();
-        if (!$eventManager->existsById($id)) return '';
+        if (!$eventManager->existsById($id)) {
+            return '';
+        }
 
         $data = [
             'title' => trim(strip_tags($_POST['title'])),
@@ -192,12 +199,14 @@ class EventController extends AbstractController
 
             // Alerts if verifications have failed
             if (!$isValidFile || !$isValidSize) {
-                if (!$isValidFile)
+                if (!$isValidFile) {
                     $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file type'));
-                if (!$isValidSize)
+                }
+                if (!$isValidSize) {
                     $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
-                header('Location: /admin/events');
-                exit();
+                    header('Location: /admin/events');
+                    exit();
+                }
             }
 
             // Upload
@@ -219,8 +228,11 @@ class EventController extends AbstractController
 
         $alert = new Alerts\Alert();
         $alert->setState($state);
-        if ($alert->getState()) $alert->setMessage('L\événement a été mise à jour.');
-        else $alert->setMessage('Impossible de mettre à jour l\'événement.');
+        if ($alert->getState()) {
+            $alert->setMessage('L\événement a été mise à jour.');
+        } else {
+            $alert->setMessage('Impossible de mettre à jour l\'événement.');
+        }
 
         $alertsManager = new Alerts\Manager();
         $alertsManager->addAlert($alert);
