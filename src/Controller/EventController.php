@@ -214,7 +214,7 @@ class EventController extends AbstractController
             $pictureName = uniqid() . '.' . $file->getType();
             $uploadSuccess = $file->upload(BASE_ROOT . $data['picture'], $pictureName);
             if (!$uploadSuccess) {
-                $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image {$file->getName()}."));
+                $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image " . $file->getName() . "."));
                 header('Location: /admin/events');
                 exit();
             }
