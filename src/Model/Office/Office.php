@@ -20,7 +20,7 @@ class Office
     /**
      * @return mixed
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -28,7 +28,7 @@ class Office
     /**
      * @return mixed
      */
-    public function getFirstName()
+    public function getFirstName(): string
     {
         return $this->first_name;
     }
@@ -36,7 +36,7 @@ class Office
     /**
      * @return mixed
      */
-    public function getLastName()
+    public function getLastName(): string
     {
         return $this->last_name;
     }
@@ -44,7 +44,7 @@ class Office
     /**
      * @return mixed
      */
-    public function getTask()
+    public function getTask(): string
     {
         return $this->task;
     }
@@ -52,7 +52,7 @@ class Office
     /**
      * @return mixed
      */
-    public function getPicture()
+    public function getPicture(): string
     {
         return $this->picture;
     }
