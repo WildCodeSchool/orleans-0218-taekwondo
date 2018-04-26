@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<section>
+    <div class="container container-events">
+        <h2>Présentation du "Bureau Technique"</h2>
+        <div class="row text-center flex-parent">
+            {% for staff in offices %}
+                <div class="col-sm-6 col-md-4 flex-child">
+                    <div class="thumbnail fullheight">
+                        <img src="{{ staff.picture }}" alt="flyers de l'événement">
+                        <div class="caption">
+                            <p>{{ staff.firstName }}</p>
+                            <p>{{ staff.task }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+

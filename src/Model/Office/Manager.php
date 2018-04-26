@@ -7,8 +7,6 @@
  */
 
 namespace Model\Office;
-
-
 use Model\AbstractManager;
 
 class Manager extends AbstractManager
@@ -20,4 +18,13 @@ class Manager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    /** Select for the front-page (3max)
+     * @return array
+     */
+    public function selectAllStaff(): array
+    {
+        return $this->pdoConnection
+            ->query("SELECT * FROM $this->table" , \PDO::FETCH_CLASS, Office::class)
+            ->fetchAll();
+    }
 }

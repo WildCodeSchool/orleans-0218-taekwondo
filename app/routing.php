@@ -20,7 +20,7 @@ $routes = [
         ['adminEventCreate', '/admin/event/create', 'POST'],
     ],
     'Office' => [
-        ['index', '/office', 'GET'],
+        ['index', '/offices', 'GET'],
     ],
     'Album' => [
         ['index', '/galleries', 'GET'],

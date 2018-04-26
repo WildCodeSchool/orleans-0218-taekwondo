@@ -11,13 +11,21 @@ use Model\Office;
 
 class OfficeController extends AbstractController
 {
+    /**
+     * Display the Office's staff
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function index(): string
     {
         $officeManager = new Office\Manager();
 
         return $this->twig->render('Office/index.html.twig', [
-            'office' => $officeManager->selectAll(),
+            'offices' => $officeManager->selectAllStaff(),
         ]);
+
     }
 
 }
