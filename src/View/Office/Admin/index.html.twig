@@ -19,7 +19,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Nom - Prénom</th>
+                                        <th>Nom - Prénom - Fonction</th>
                                         <th>Modifier</th>
                                         <th>Supprimer</th>
                                     </tr>
@@ -28,7 +28,7 @@
                                     <div class="row">
                                         {% for office in officesAdmin %}
                                             <tr>
-                                                <td class="col-md-8">{{ office.lastName }} - {{ office.firstName }} :</td>
+                                                <td class="col-md-8">{{ office.lastName }} - {{ office.firstName }} - {{ office.Task }}</td>
                                                 <td class="col-md-2"></td>
                                                 <td class="col-md-2"></td>
                                             </tr>
