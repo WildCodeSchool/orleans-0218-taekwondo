@@ -409,10 +409,6 @@ footer .send{
     flex: 1;
 }
 
-.covered{
-    object-fit: cover;
-}
-
 .size{
     max-height: 280px;
     overflow: hidden;
