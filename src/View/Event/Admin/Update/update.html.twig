@@ -5,19 +5,19 @@
     <div class="panel-body">
         <form action="update/update" method="POST" role="form" enctype="multipart/form-data" confirm="Modifier l'événement '{{ event.title }}' ?">
             <div class="form-group">
-                <label>Titre :</label>
-                <input name="title" class="form-control" placeholder="Saisissez un nouveau titre" value="{{ event.title }}" required/>
+                <label for="title">Titre :</label>
+                <input name="title" id="title" class="form-control" placeholder="Saisissez un nouveau titre" value="{{ event.title }}" required/>
             </div>
             <div class="form-group">
-                <label>Date :</label>
-                <input type="date" name="date_event" class="form-control" rows="3" placeholder="Saisissez une nouvelle date" value="{{ event.dateEvent | date('Y-m-d') }}" required>
+                <label for="date">Date :</label>
+                <input type="date" id="date" name="date_event" class="form-control" rows="3" placeholder="Saisissez une nouvelle date" value="{{ event.dateEvent | date('Y-m-d') }}" required>
             </div>
             <div class="form-group">
-                <label>Description :</label>
-                <textarea name="description" class="form-control" rows="3" placeholder="Saisissez une nouvelle description" required>{{ event.description }}</textarea>
+                <label for="description">Description :</label>
+                <textarea name="description" id="description" class="form-control" rows="3" placeholder="Saisissez une nouvelle description" required>{{ event.description }}</textarea>
             </div>
             <div class="form-group">
-                <label for="">Flyers de l'événement (facultatif) :</label>
+                <label>Flyers de l'événement (facultatif) :</label>
                 <img class="img-responsive" src="{{ event.picture }}">
 
                 <input type="file" name="upload" id="upload" value="{{ event.picture }}"/>
