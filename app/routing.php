@@ -19,6 +19,9 @@ $routes = [
         ['adminEventDelete', '/admin/event/{id:\d+}/delete', 'POST'],
         ['adminEventCreate', '/admin/event/create', 'POST'],
     ],
+    'Office' => [
+        ['index', '/office', 'GET'],
+    ],
     'Album' => [
         ['index', '/galleries', 'GET'],
         ['gallery', '/gallery/{id:\d+}', 'GET'],
