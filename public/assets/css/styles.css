@@ -335,14 +335,6 @@ h1 {
     color: #CD2E3A;
 }
 
-.flex-parent{
-    display: flex;
-}
-
-.flex-child{
-    flex: 1;
-}
-
 /* ##### PRESENTATION TAEKWONDO ##### */
 
 .img-taekwondo {
@@ -364,11 +356,6 @@ h1 {
 
 .color-btn {
     background-color: #0047A0;
-}
-
-.thumbnail {
-    background-color: transparent;
-    border: none;
 }
 
 /* ##### FOOTER ##### */
@@ -420,4 +407,19 @@ footer .send{
     background-color: #0047A0;
     margin-top: 20px;
     margin-right: 15px;
+}
+
+/* Size img */
+
+.flex-parent{
+    display: flex;
+}
+
+.flex-child{
+    flex: 1;
+}
+
+.size{
+    max-height: 280px;
+    overflow: hidden;
 }
