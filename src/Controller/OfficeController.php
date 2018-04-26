@@ -8,6 +8,8 @@
 
 namespace Controller;
 use Model\Office;
+use Model\Session\Alerts;
+use Model\Files;
 
 class OfficeController extends AbstractController
 {
@@ -26,6 +28,26 @@ class OfficeController extends AbstractController
             'offices' => $officeManager->selectAllStaff(),
         ]);
 
+    }
+
+    /**
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function adminIndex(): string
+    {
+        // Retrieve alerts
+        $alertsManager = new Alerts\Manager();
+        $alerts = $alertsManager->getAlerts();
+        $alertsManager->clean();
+
+        $officeManager = new Office\Manager();
+        return $this->twig->render('Office/Admin/index.html.twig', [
+            'officesAdmin' => $officeManager->selectAllStaff(),
+            'alerts' => $alerts
+        ]);
     }
 
 }
