@@ -30,7 +30,11 @@
                                             <tr>
                                                 <td class="col-md-8">{{ office.lastName }} - {{ office.firstName }} - {{ office.Task }}</td>
                                                 <td class="col-md-2"></td>
-                                                <td class="col-md-2"></td>
+                                                <td class="col-md-2">
+                                                    <form action="office/{{ office.id }}/delete" method="POST" confirm="Supprimer le bureau : '{{ office.task }}' ?">
+                                                        <button type="submit" class="btn btn-danger btn-block">Supprimer </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         {% endfor %}
                                     </div>

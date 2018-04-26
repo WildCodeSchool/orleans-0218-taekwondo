@@ -50,4 +50,34 @@ class OfficeController extends AbstractController
         ]);
     }
 
+    /**
+     * delete an office
+     * @param int $id
+     * @return string
+     */
+    public function adminOfficeDelete(int $id): string
+    {
+        // Verifications
+        if ($id <= 0) header('Location: /admin/offices');
+
+        // Try to delete the event
+        $officeManager = new Office\Manager();
+        if (!$officeManager->existsById($id)) header('Location: /admin/offices');
+        $state = $officeManager->delete($id);
+
+        // Create a new alert
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) $alert->setMessage('Le bureau a été supprimé.');
+        else $alert->setMessage('Impossible de supprimer le bureau');
+
+        // Push the alert to the global list
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        // Redirection
+        header('Location: /admin/offices');
+        exit();
+    }
+
 }
