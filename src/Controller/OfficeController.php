@@ -87,9 +87,9 @@ class OfficeController extends AbstractController
                 }
                 if (!$isValidSize) {
                     $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
-                    header('Location: /admin/offices');
-                    exit();
                 }
+                header('Location: /admin/offices');
+                exit();
             }
 
             // Upload
