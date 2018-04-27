@@ -59,6 +59,7 @@ class OfficeController extends AbstractController
         // 'Verifications'
         if (empty($_POST) || empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['task'])) {
             header('Location: /admin/offices');
+            exit;
         }
 
         $data = [
@@ -96,7 +97,7 @@ class OfficeController extends AbstractController
             $pictureName = uniqid() . '.' . $file->getType();
             $uploadSuccess = $file->upload(BASE_ROOT . $data['picture'], $pictureName);
             if (!$uploadSuccess) {
-                $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image {$file->getName()}."));
+                $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Impossible d\'upload l\'image ' . $file->getName()));
                 header('Location: /admin/offices');
                 exit();
             }
