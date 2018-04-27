@@ -441,3 +441,8 @@ footer .g-recaptcha{
     margin-left: 10%;
     margin-right: 10%;
 }
+
+.teacherStyle{
+    font-size: 1.5em;
+    font-weight: bold;
+}
