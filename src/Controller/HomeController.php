@@ -52,7 +52,7 @@ class HomeController extends AbstractController
         // Vérification reCaptcha
 
         // Ma clé privée
-        $secret = "6LfI1FUUAAAAAEgpW-sWlr1DvyAuC02m0KxfS3zi";
+        $secret = APP_CAPTCHA_SECRET_KEY;
         // Paramètre renvoyé par le recaptcha
         $response = $_POST['g-recaptcha-response'];
         // IP de l'utilisateur
@@ -94,11 +94,11 @@ class HomeController extends AbstractController
 
 
                 // 3) Create a message
-                $contact = (new Swift_Message('Taekwondo Olivet'))
-                    ->setTo(['sebstn.hkzt@laposte.net' => 'PO'])
+                $contact = (new Swift_Message)
+                    ->setTo([APP_MAIL_TO => 'PO'])
                     ->setBody(trim(strip_tags($_POST['message'])))
                     ->setFrom([trim(strip_tags($_POST['courriel'])) => 'Visiteur du site'])
-                    ->setSubject('Taekwondo Olivet');
+                    ->setSubject(APP_MAIL_SUBJECT);
 
 
                 // 4) Send the message
