@@ -23,9 +23,11 @@ class OfficeController extends AbstractController
     public function index(): string
     {
         $officeManager = new Office\Manager();
+        $teacherManager = new Office\Teacher\ManagerTeacher();
 
         return $this->twig->render('Office/index.html.twig', [
             'offices' => $officeManager->selectAllStaff(),
+            'profs' => $teacherManager->selectAllTeachers(),
         ]);
 
     }

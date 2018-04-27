@@ -423,3 +423,13 @@ footer .send{
     height: 280px;
     overflow: hidden;
 }
+
+.sizeLarge{
+    max-height: 550px;
+    overflow: hidden;
+}
+
+.marginCenter{
+    margin-left: 10%;
+    margin-right: 10%;
+}
