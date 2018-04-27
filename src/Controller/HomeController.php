@@ -70,6 +70,7 @@ class HomeController extends AbstractController
         if (empty($_POST['courriel']) || empty($_POST['message']) || ($decode['success'] == false)) {
 
             header("Location: $origin");
+            exit();
 
 
         // Quand le formulaire est complet
@@ -107,6 +108,7 @@ class HomeController extends AbstractController
 
                 unset($_POST);
                 header("Location: $origin");
+                exit();
             }
         }
 
