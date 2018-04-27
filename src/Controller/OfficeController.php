@@ -51,7 +51,7 @@ class OfficeController extends AbstractController
             'alerts' => $alerts
         ]);
     }
-    
+
     /**
      * Create an office
      * @return string
@@ -125,7 +125,7 @@ class OfficeController extends AbstractController
         header('Location: /admin/offices');
         exit();
     }
-  
+
     /**
      * delete an office
      * @param int $id
@@ -152,8 +152,7 @@ class OfficeController extends AbstractController
         $alert->setState($state);
         if ($alert->getState()) {
             $alert->setMessage('Le bureau a été supprimé.');
-        }
-        else $alert->setMessage('Impossible de supprimer le bureau');
+        } else $alert->setMessage('Impossible de supprimer le bureau');
 
         // Push the alert to the global list
         $alertsManager = new Alerts\Manager();
@@ -163,8 +162,8 @@ class OfficeController extends AbstractController
         header('Location: /admin/offices');
         exit();
     }
-      
-      /**
+
+    /**
      * Update an office
      * @param int $id
      * @return string
@@ -220,7 +219,7 @@ class OfficeController extends AbstractController
                     $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file type'));
                 }
                 if (!$isValidSize) {
-                    $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'))
+                    $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
                 }
                 header('Location: /admin/offices');
                 exit();
@@ -257,3 +256,4 @@ class OfficeController extends AbstractController
         header("Location: /admin/offices");
         exit();
     }
+}
