@@ -25,6 +25,7 @@ $routes = [
         ['index', '/offices', 'GET'],
         ['adminIndex', '/admin/offices', 'GET'],
         ['adminOfficeDelete', '/admin/office/{id:\d+}/delete', 'POST'],
+        ['adminOfficeCreate', '/admin/office/create', 'POST'],
     ],
     'Album' => [
         ['index', '/galleries', 'GET'],
