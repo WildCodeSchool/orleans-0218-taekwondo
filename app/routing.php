@@ -12,6 +12,8 @@
 $routes = [
     'Home' => [
         ['index', '/', 'GET'],
+        ['contactCreate', '/contact/create', 'POST'],
+
     ],
     'Event' => [
         ['index', '/events', 'GET'],

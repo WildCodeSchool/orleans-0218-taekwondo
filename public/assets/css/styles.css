@@ -383,6 +383,7 @@ footer .central{
 footer{
     background-color: rgb(221, 221, 231);
     margin-top: 30px;
+    padding-bottom: 30px;
 }
 
 footer .form-horizontal{
@@ -408,6 +409,13 @@ footer .send{
     margin-top: 20px;
     margin-right: 15px;
 }
+
+footer .g-recaptcha{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
 
 /* Size img */
 
