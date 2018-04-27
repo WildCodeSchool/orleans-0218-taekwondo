@@ -10,6 +10,7 @@
     <section class="container">
         <h1>Bureau Directeur - Listing</h1>
         <div class="row">
+            <div class="col-md-4">{% include 'Office/Admin/create.html.twig' %}</div>
                     <div class="col-md-8">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -34,7 +35,11 @@
                                                         <button type="submit" class="btn btn-warning btn-block">Modifier </button>
                                                     </form>
                                                 </td>
-                                                <td class="col-md-2"></td>
+                                                <td class="col-md-2">
+                                                    <form action="office/{{ office.id }}/delete" method="POST" confirm="Supprimer le bureau : '{{ office.task }}' ?">
+                                                        <button type="submit" class="btn btn-danger btn-block">Supprimer </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         {% endfor %}
                                     </div>
