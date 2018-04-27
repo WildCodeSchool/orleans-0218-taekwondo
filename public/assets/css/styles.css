@@ -398,3 +398,7 @@ footer .send{
     margin-right: 15px;
 }
 
+footer .g-recaptcha{
+    margin-top: 10px;
+    margin-left: 10px;
+}
