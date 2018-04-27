@@ -87,9 +87,9 @@ class OfficeController extends AbstractController
                 }
                 if (!$isValidSize) {
                     $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
-                    header('Location: /admin/offices');
-                    exit();
                 }
+                header('Location: /admin/offices');
+                exit();
             }
 
             // Upload
@@ -118,6 +118,44 @@ class OfficeController extends AbstractController
         $alertsManager = new Alerts\Manager();
         $alertsManager->addAlert($alert);
 
+
+        // Redirection
+        header('Location: /admin/offices');
+        exit();
+    }
+  
+    /**
+     * delete an office
+     * @param int $id
+     * @return string
+     */
+    public function adminOfficeDelete(int $id): string
+    {
+        // Verifications
+        if ($id <= 0) {
+            header('Location: /admin/offices');
+            exit;
+        }
+
+        // Try to delete the event
+        $officeManager = new Office\Manager();
+        if (!$officeManager->existsById($id)) {
+            header('Location: /admin/offices');
+            exit;
+        }
+        $state = $officeManager->delete($id);
+
+        // Create a new alert
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) {
+            $alert->setMessage('Le bureau a été supprimé.');
+        }
+        else $alert->setMessage('Impossible de supprimer le bureau');
+
+        // Push the alert to the global list
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
 
         // Redirection
         header('Location: /admin/offices');
