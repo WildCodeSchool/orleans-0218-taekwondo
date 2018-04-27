@@ -51,15 +51,15 @@ class HomeController extends AbstractController
 
         // Vérification reCaptcha
 
-        // Ma clé privée
-        $secret = APP_CAPTCHA_SECRET_KEY;
+        // Ma clé privée (définit comme constante) :
+        // APP_CAPTCHA_SECRET_KEY;
         // Paramètre renvoyé par le recaptcha
         $response = $_POST['g-recaptcha-response'];
         // IP de l'utilisateur
        $remoteip = $_SERVER['REMOTE_ADDR'];
 
         $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
-            . $secret
+            . APP_CAPTCHA_SECRET_KEY
             . "&response=" . $response
             . "&remoteip=" . $remoteip ;
 
