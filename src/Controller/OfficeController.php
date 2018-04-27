@@ -60,12 +60,14 @@ class OfficeController extends AbstractController
         // Verifications
         if ($id <= 0) {
             header('Location: /admin/offices');
+            exit;
         }
 
         // Try to delete the event
         $officeManager = new Office\Manager();
         if (!$officeManager->existsById($id)) {
             header('Location: /admin/offices');
+            exit;
         }
         $state = $officeManager->delete($id);
 
