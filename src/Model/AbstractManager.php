@@ -117,7 +117,7 @@ abstract class AbstractManager
     }
 
     /**
-     * Check if a given category id exists in database
+     * Check if a given id exists in database
      * @param int $id
      * @return bool
      */

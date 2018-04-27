@@ -22,16 +22,4 @@ class Category extends AbstractManager {
             ->query("SELECT * FROM $this->table ORDER BY id ASC", \PDO::FETCH_CLASS, Album\Category::class);
         return $query->fetchAll();
     }
-
-    /**
-     * Create a new category
-     * @param string $name
-     * @return bool
-     */
-    public function create(string $name): bool
-    {
-        return $this->insert([
-            'name' => $name
-        ]);
-    }
 }

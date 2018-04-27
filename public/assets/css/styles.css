@@ -11,6 +11,7 @@ body {
 .text-overflow { white-space: nowrap; }
 .row { margin-top: 20px; }
 .fullwidth { width: 100% !important; }
+.fullheight { height: 100%; }
 .m-t-0 { margin-top: 0; }
 
 /* ##### MATERIAL BOX SHADOW (https://codepen.io/sdthornton/pen/wBZdXq) ##### */
@@ -305,6 +306,21 @@ body {
     .banner-icon { width: 100px; }
 }
 
+.color-red {
+    color: #CD2E3A;
+}
+
+.color-bleu {
+    color: #0047A0;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+
+
+
 /* ##### BLACK BELT ##### */
 
 .person img {
@@ -340,11 +356,6 @@ body {
 
 .color-btn {
     background-color: #0047A0;
-}
-
-.thumbnail {
-    background-color: transparent;
-    border: none;
 }
 
 /* ##### FOOTER ##### */
@@ -403,4 +414,31 @@ footer .send{
 footer .g-recaptcha{
     margin-top: 10px;
     margin-left: 10px;
+}
+
+
+
+/* Size img */
+
+.flex-parent{
+    display: flex;
+}
+
+.flex-child{
+    flex: 1;
+}
+
+.size{
+    height: 280px;
+    overflow: hidden;
+}
+
+.sizeLarge{
+    max-height: 550px;
+    overflow: hidden;
+}
+
+.marginCenter{
+    margin-left: 10%;
+    margin-right: 10%;
 }

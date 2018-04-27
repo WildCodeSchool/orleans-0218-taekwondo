@@ -63,4 +63,6 @@ class Manager extends AbstractManager
                                 ORDER BY date_event DESC" , \PDO::FETCH_CLASS, Event::class)
             ->fetchAll();
     }
+
 }
+

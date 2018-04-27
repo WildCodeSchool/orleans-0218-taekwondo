@@ -1,0 +1,33 @@
+<!-- Créer une nouvelle catégorie -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Créer une ceinture noire</h3>
+    </div>
+    <div class="panel-body">
+        <!-- Formulaire de création -->
+        <form action="black-belt/create" method="POST" role="form" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label for="first_name">Prénom</label>
+                <input type="text" class="form-control" placeholder="Prénom" id="first_name" name="first_name" required/>
+                <label for="last_name">NOM</label>
+                <input type="text" class="form-control" placeholder="NOM" id="last_name" name="last_name" required/>
+            </div>
+            <div class="form-group">
+                <label for="date_dan">Année d'obtention</label>
+                <input type="int" class="form-control" placeholder="Année d'obtention" id="date_dan" name="date_dan" required/>
+            </div>
+            <div class="form-group">
+                <label for="number_dan">Numéro du Dan</label>
+                <input type="text" class="form-control" placeholder="Numéro du Dan" id="number_dan" name="number_dan" required/>
+            </div>
+            <div class="form-group">
+                <label for="upload">Photo</label>
+                <input type="file"  placeholder="Photo ( facultatif )" name="upload" id="upload"/>
+                <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Créer</button>
+        </form>
+    </div>
+</div>
