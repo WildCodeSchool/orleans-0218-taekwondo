@@ -22,7 +22,7 @@ define('APP_CONTROLLER_NAMESPACE', '\Controller\\');
 define('APP_CONTROLLER_SUFFIX', 'Controller');
 
 // Custom parameters
-define('MAP_ACCESS_TOKEN', 'pk.eyJ1IjoidGFla3dvbmRvb2xpdmV0IiwiYSI6ImNqZmt3bGxhYTA5czgyeG43NzE5d2tucTIifQ.BZ5b1i4ZN9PMGbJ-1W4e3w');
+define('MAP_ACCESS_TOKEN', '');
 define('BASE_ROOT', __DIR__ . '/../public');
 define('UPLOADS_PATH', 'assets/uploads');
 define('UPLOADS_PATH_EVENTS', '/assets/uploads/events/');
@@ -31,12 +31,12 @@ define('ALLOWED_TYPES', ['jpg', 'jpeg', 'png']);
 define('MAX_UPLOAD_SIZE', 1000000);
 
 // SwiftMailer ans Google account paramters
-define('APP_MAIL_HOST', 'smtp.gmail.com');
-define('APP_MAIL_PORT', '465');
-define('APP_MAIL_SECURITY', 'SSL');
-define('APP_MAIL_NAME', 'seb.hkzt@gmail.com');
-define('APP_MAIL_PWD', 'sebmtpWCSggacc-2k18');
-define('APP_MAIL_TO', 'sebstn.hkzt@laposte.net');
-define('APP_MAIL_SUBJECT', 'Taekwondo Olivet');
-define('APP_CAPTCHA_SECRET_KEY', '6LfI1FUUAAAAAEgpW-sWlr1DvyAuC02m0KxfS3zi');
-define('APP_CAPTCHA_SITE_KEY', '6LfI1FUUAAAAAO8dWCkCNJhX271S1My5lHyHdu1N');
+define('APP_MAIL_HOST', '');
+define('APP_MAIL_PORT', '');
+define('APP_MAIL_SECURITY', '');
+define('APP_MAIL_NAME', '');
+define('APP_MAIL_PWD', '');
+define('APP_MAIL_TO', '');
+define('APP_MAIL_SUBJECT', '');
+define('APP_CAPTCHA_SECRET_KEY', '');
+define('APP_CAPTCHA_SITE_KEY', '');
