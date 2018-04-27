@@ -420,7 +420,7 @@ footer .send{
 }
 
 .size{
-    max-height: 280px;
+    height: 280px;
     overflow: hidden;
 }
 
