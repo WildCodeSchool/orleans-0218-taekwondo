@@ -2,23 +2,23 @@
 /**
  * Created by PhpStorm.
  * User: takne
- * Date: 11/04/18
- * Time: 12:06
+ * Date: 27/04/18
+ * Time: 00:56
  */
 
-namespace Model\Event;
+namespace Model\Office\Teacher;
 
 
-class Event
+class Teacher
 {
     private $id;
-    private $date_event;
-    private $title;
+    private $first_name;
+    private $last_name;
     private $description;
     private $picture;
 
     /**
-     * @return int
+     * @return mixed
      */
     public function getId(): int
     {
@@ -26,23 +26,23 @@ class Event
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getDateEvent(): string
+    public function getFirstName(): string
     {
-        return $this->date_event;
+        return $this->first_name;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getTitle(): string
+    public function getLastName(): string
     {
-        return $this->title;
+        return $this->last_name;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getDescription(): string
     {
@@ -52,9 +52,9 @@ class Event
     /**
      * @return mixed
      */
-    public function getPicture()
+    public function getPicture(): string
     {
         return $this->picture;
     }
-}
 
+}

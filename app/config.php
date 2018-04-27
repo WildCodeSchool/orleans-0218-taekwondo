@@ -25,5 +25,7 @@ define('APP_CONTROLLER_SUFFIX', 'Controller');
 define('MAP_ACCESS_TOKEN', 'pk.eyJ1IjoidGFla3dvbmRvb2xpdmV0IiwiYSI6ImNqZmt3bGxhYTA5czgyeG43NzE5d2tucTIifQ.BZ5b1i4ZN9PMGbJ-1W4e3w');
 define('BASE_ROOT', __DIR__ . '/../public');
 define('UPLOADS_PATH', 'assets/uploads');
+define('UPLOADS_PATH_EVENTS', '/assets/uploads/events/');
+define('UPLOADS_PATH_OFFICES', '/assets/uploads/offices/');
 define('ALLOWED_TYPES', ['jpg', 'jpeg', 'png']);
 define('MAX_UPLOAD_SIZE', 1000000);

@@ -2,20 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: takne
- * Date: 11/04/18
- * Time: 17:10
+ * Date: 26/04/18
+ * Time: 11:47
  */
 
 namespace Controller;
-use Model\Event;
+use Model\Office;
 use Model\Session\Alerts;
 use Model\Files;
 
-
-class EventController extends AbstractController
+class OfficeController extends AbstractController
 {
     /**
-     * (client) show specific events thanks to a selector
+     * Display the office's staff
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -23,17 +22,17 @@ class EventController extends AbstractController
      */
     public function index(): string
     {
-        $filter = isset($_GET['filterId']) ? (int)$_GET['filterId'] : 0;
-        $eventManager = new Event\Manager();
+        $officeManager = new Office\Manager();
+        $teacherManager = new Office\Teacher\ManagerTeacher();
 
-        return $this->twig->render('Event/index.html.twig', [
-            'events' => $eventManager->selectEventSelector($filter),
-            'filter' => $filter,
+        return $this->twig->render('Office/index.html.twig', [
+            'offices' => $officeManager->selectAllStaff(),
+            'profs' => $teacherManager->selectAllTeachers(),
         ]);
+
     }
 
     /**
-     * (admin) Show all the events
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -46,58 +45,29 @@ class EventController extends AbstractController
         $alerts = $alertsManager->getAlerts();
         $alertsManager->clean();
 
-        $eventManager = new Event\Manager();
-        return $this->twig->render('Event/Admin/index.html.twig', [
-            'eventsAdmin' => $eventManager->getAll(),
+        $officeManager = new Office\Manager();
+        return $this->twig->render('Office/Admin/index.html.twig', [
+            'officesAdmin' => $officeManager->selectAllStaff(),
             'alerts' => $alerts
         ]);
     }
-
+    
     /**
-     * (Admin)[Form] Delete a event
-     * @param int $id
+     * Create an office
      * @return string
      */
-    public function adminEventDelete(int $id): string
-    {
-        // Verifications
-        if ($id <= 0) header('Location: /admin/events');
-
-        // Try to delete the event
-        $eventManager = new Event\Manager();
-        if (!$eventManager->existsById($id)) header('Location: /admin/events');
-        $state = $eventManager->delete($id);
-
-        // Create a new alert
-        $alert = new Alerts\Alert();
-        $alert->setState($state);
-        if ($alert->getState()) $alert->setMessage('L\'événement a été supprimé.');
-        else $alert->setMessage('Impossible de supprimer l\'événement');
-
-        // Push the alert to the global list
-        $alertsManager = new Alerts\Manager();
-        $alertsManager->addAlert($alert);
-
-        // Redirection
-        header('Location: /admin/events');
-        exit();
-    }
-
-    /**
-     * Create a new event
-     * @return string
-     */
-    public function adminEventCreate(): string
+    public function adminOfficeCreate(): string
     {
         // 'Verifications'
-        if (empty($_POST) || empty($_POST['title']) || empty($_POST['date_event']) || empty($_POST['description'])) {
-            header('Location: /admin/events');
+        if (empty($_POST) || empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['task'])) {
+            header('Location: /admin/offices');
+            exit;
         }
 
         $data = [
-            'title' => trim(strip_tags($_POST['title'])),
-            'date_event' => $_POST['date_event'],
-            'description' => trim(strip_tags($_POST['description'])),
+            'last_name' => strtoupper(trim(strip_tags($_POST['last_name']))),
+            'first_name' => ucfirst(strtolower(trim(strip_tags($_POST['first_name'])))),
+            'task' => ucfirst(strtolower(trim(strip_tags($_POST['task'])))),
             'picture' => null
         ];
 
@@ -119,32 +89,32 @@ class EventController extends AbstractController
                 }
                 if (!$isValidSize) {
                     $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
-                    header('Location: /admin/events');
-                    exit();
                 }
+                header('Location: /admin/offices');
+                exit();
             }
 
             // Upload
-            $data['picture'] = '/' . UPLOADS_PATH . '/events/';
+            $data['picture'] = UPLOADS_PATH_OFFICES;
             $pictureName = uniqid() . '.' . $file->getType();
             $uploadSuccess = $file->upload(BASE_ROOT . $data['picture'], $pictureName);
             if (!$uploadSuccess) {
-                $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image {$file->getName()}."));
-                header('Location: /admin/events');
+                $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Impossible d\'upload l\'image ' . $file->getName()));
+                header('Location: /admin/offices');
                 exit();
             }
             $data['picture'] .= $pictureName;
         }
 
         // Try to create the event
-        $eventManager = new Event\Manager();
-        $state = $eventManager->insert($data);
+        $officeManager = new Office\Manager();
+        $state = $officeManager->insert($data);
 
         // Create a new alert
         $alert = new Alerts\Alert();
         $alert->setState($state);
-        if ($alert->getState()) $alert->setMessage('Evénement ajouté.');
-        else $alert->setMessage('Impossible d\'ajouter l\'événement.');
+        if ($alert->getState()) $alert->setMessage('Bureau ajouté.');
+        else $alert->setMessage('Impossible d\'ajouter le bureau.');
 
         // Push the alert to the global list
         $alertsManager = new Alerts\Manager();
@@ -152,14 +122,60 @@ class EventController extends AbstractController
 
 
         // Redirection
-        header('Location: /admin/events');
+        header('Location: /admin/offices');
         exit();
     }
-
-    public function adminEventUpdateIndex(int $id): string
+  
+    /**
+     * delete an office
+     * @param int $id
+     * @return string
+     */
+    public function adminOfficeDelete(int $id): string
     {
-        $eventManager = new Event\Manager();
-        if (!$eventManager->existsById($id)) {
+        // Verifications
+        if ($id <= 0) {
+            header('Location: /admin/offices');
+            exit;
+        }
+
+        // Try to delete the event
+        $officeManager = new Office\Manager();
+        if (!$officeManager->existsById($id)) {
+            header('Location: /admin/offices');
+            exit;
+        }
+        $state = $officeManager->delete($id);
+
+        // Create a new alert
+        $alert = new Alerts\Alert();
+        $alert->setState($state);
+        if ($alert->getState()) {
+            $alert->setMessage('Le bureau a été supprimé.');
+        }
+        else $alert->setMessage('Impossible de supprimer le bureau');
+
+        // Push the alert to the global list
+        $alertsManager = new Alerts\Manager();
+        $alertsManager->addAlert($alert);
+
+        // Redirection
+        header('Location: /admin/offices');
+        exit();
+    }
+      
+      /**
+     * Update an office
+     * @param int $id
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function adminOfficeUpdateIndex(int $id): string
+    {
+        $officeManager = new Office\Manager();
+        if (!$officeManager->existsById($id)) {
             return '';
         }
 
@@ -167,23 +183,23 @@ class EventController extends AbstractController
         $alerts = $alertsManager->getAlerts();
         $alertsManager->clean();
 
-        return $this->twig->render('Event/Admin/Update/index.html.twig', [
-            'event' => $eventManager->selectOneById($id),
+        return $this->twig->render('Office/Admin/Update/index.html.twig', [
+            'office' => $officeManager->selectOneById($id),
             'alerts' => $alerts
         ]);
     }
 
-    public function adminEventUpdate(int $id)
+    public function adminOfficeUpdate(int $id)
     {
-        $eventManager = new Event\Manager();
-        if (!$eventManager->existsById($id)) {
+        $officeManager = new Office\Manager();
+        if (!$officeManager->existsById($id)) {
             return '';
         }
 
         $data = [
-            'title' => trim(strip_tags($_POST['title'])),
-            'description' => trim(strip_tags($_POST['description'])),
-            'date_event' => (string)$_POST['date_event'],
+            'last_name' => strtoupper(trim(strip_tags($_POST['last_name']))),
+            'first_name' => ucfirst(strtolower(trim(strip_tags($_POST['first_name'])))),
+            'task' => ucfirst(strtolower(trim(strip_tags($_POST['task'])))),
             'picture' => null
         ];
 
@@ -204,19 +220,19 @@ class EventController extends AbstractController
                     $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file type'));
                 }
                 if (!$isValidSize) {
-                    $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
-                    header('Location: /admin/events');
-                    exit();
+                    $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'))
                 }
+                header('Location: /admin/offices');
+                exit();
             }
 
             // Upload
-            $data['picture'] = '/' . UPLOADS_PATH . '/events/';
+            $data['picture'] = UPLOADS_PATH_OFFICES;
             $pictureName = uniqid() . '.' . $file->getType();
             $uploadSuccess = $file->upload(BASE_ROOT . $data['picture'], $pictureName);
             if (!$uploadSuccess) {
                 $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image " . $file->getName() . "."));
-                header('Location: /admin/events');
+                header('Location: /admin/offices');
                 exit();
             }
             $data['picture'] .= $pictureName;
@@ -225,20 +241,19 @@ class EventController extends AbstractController
         }
 
 
-        $state = $eventManager->update($id, $data);
+        $state = $officeManager->update($id, $data);
 
         $alert = new Alerts\Alert();
         $alert->setState($state);
         if ($alert->getState()) {
-            $alert->setMessage('L\événement a été mise à jour.');
+            $alert->setMessage('Le bureau a été mise à jour.');
         } else {
-            $alert->setMessage('Impossible de mettre à jour l\'événement.');
+            $alert->setMessage('Impossible de mettre à jour le bureau.');
         }
 
         $alertsManager = new Alerts\Manager();
         $alertsManager->addAlert($alert);
 
-        header("Location: /admin/events");
+        header("Location: /admin/offices");
         exit();
     }
-}
