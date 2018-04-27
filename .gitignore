@@ -3,5 +3,7 @@
 *.cache
 app/db.php
 .idea/
-/public/assests/images/events
-/public/assests/images/office
+/public/assets/images/office
+/public/assets/images/event
+/public/assets/images/table
+

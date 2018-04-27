@@ -23,6 +23,7 @@ $routes = [
     ],
     'Office' => [
         ['index', '/offices', 'GET'],
+        ['adminIndex', '/admin/offices', 'GET'],
     ],
     'Album' => [
         ['index', '/galleries', 'GET'],
