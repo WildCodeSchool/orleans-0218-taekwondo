@@ -335,14 +335,6 @@ h1 {
     color: #CD2E3A;
 }
 
-.flex-parent{
-    display: flex;
-}
-
-.flex-child{
-    flex: 1;
-}
-
 /* ##### PRESENTATION TAEKWONDO ##### */
 
 .img-taekwondo {
@@ -364,11 +356,6 @@ h1 {
 
 .color-btn {
     background-color: #0047A0;
-}
-
-.thumbnail {
-    background-color: transparent;
-    border: none;
 }
 
 /* ##### FOOTER ##### */
@@ -396,6 +383,7 @@ footer .central{
 footer{
     background-color: rgb(221, 221, 231);
     margin-top: 30px;
+    padding-bottom: 30px;
 }
 
 footer .form-horizontal{
@@ -422,6 +410,41 @@ footer .send{
     margin-right: 15px;
 }
 
+footer .g-recaptcha{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+/* Size img */
+
+.flex-parent{
+    display: flex;
+}
+
+.flex-child{
+    flex: 1;
+}
+
+.size{
+    height: 280px;
+    overflow: hidden;
+}
+
+.sizeLarge{
+    max-height: 550px;
+    overflow: hidden;
+}
+
+.marginCenter{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.teacherStyle{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
 /* ##### PRACTICE ##### */
 
 .practice-title {
@@ -430,4 +453,3 @@ footer .send{
 
 .img-combat {
     margin-top: 90px;
-}
