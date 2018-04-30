@@ -56,6 +56,11 @@ $routes = [
         ['adminBlackBeltDelete', '/admin/black-belt/{id:\d+}/delete', 'POST'],
         ['adminBlackBeltCreate', '/admin/black-belt/create', 'POST']
     ],
+    'Footer' => [
+        ['adminIndex', '/admin/footer', 'GET'],
+        ['adminFooterDelete', '/admin/Footer/{id:\d+}/delete', 'POST'],
+        ['adminFooterCreate', '/admin/link/create', 'POST']
+    ],
     'Presentation' => [
         ['index', '/presentation', 'GET']
     ]

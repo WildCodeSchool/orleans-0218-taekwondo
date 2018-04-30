@@ -386,7 +386,6 @@ footer ul{
 footer li{
     line-height: 2em;
     list-style-type: none;
-
 }
 
 footer address{
@@ -438,4 +437,31 @@ footer .send{
 .marginCenter{
     margin-left: 10%;
     margin-right: 10%;
+}
+
+
+
+/* ###### Admin Footer ######### */
+
+
+
+
+.indexLink li{
+    list-style-type: none;
+
+}
+.createLink label{
+    margin-top: 20px;
+}
+
+.btn-block{
+    margin-top: 20px;
+}
+
+footer ul{
+    padding-left: 0;
+}
+
+footer li{
+    list-style-type: none;
 }
