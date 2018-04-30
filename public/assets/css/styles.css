@@ -415,8 +415,6 @@ footer .g-recaptcha{
     margin-left: 10px;
 }
 
-
-
 /* Size img */
 
 .flex-parent{
@@ -446,3 +444,12 @@ footer .g-recaptcha{
     font-size: 1.5em;
     font-weight: bold;
 }
+
+/* ##### PRACTICE ##### */
+
+.practice-title {
+    margin-top: 90px;
+}
+
+.img-combat {
+    margin-top: 90px;
