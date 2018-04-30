@@ -22,7 +22,7 @@ define('APP_CONTROLLER_NAMESPACE', '\Controller\\');
 define('APP_CONTROLLER_SUFFIX', 'Controller');
 
 // Custom parameters
-define('MAP_ACCESS_TOKEN', 'pk.eyJ1IjoidGFla3dvbmRvb2xpdmV0IiwiYSI6ImNqZmt3bGxhYTA5czgyeG43NzE5d2tucTIifQ.BZ5b1i4ZN9PMGbJ-1W4e3w');
+define('MAP_ACCESS_TOKEN', '');
 define('BASE_ROOT', __DIR__ . '/../public');
 define('UPLOADS_PATH', 'assets/uploads');
 define('UPLOADS_PATH_EVENTS', '/assets/uploads/events/');
