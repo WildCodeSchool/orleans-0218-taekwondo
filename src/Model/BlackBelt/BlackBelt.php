@@ -55,7 +55,7 @@ class BlackBelt
     /**
      * @return string
      */
-    public function getPicture(): string
+    public function getPicture()
     {
         return $this->picture;
     }
