@@ -7,3 +7,4 @@ app/db.php
 /public/assets/images/event/
 /public/assets/images/table/
 /public/assets/uploads/
+app/config.php
