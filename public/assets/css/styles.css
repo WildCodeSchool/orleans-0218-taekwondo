@@ -456,7 +456,7 @@ footer .g-recaptcha{
 
 }
 
-/* ##### PRACTICE ##### */
+/* ##### HISTORY ##### */
 
 .history-title {
     margin-top: 90px;
@@ -472,4 +472,18 @@ footer .g-recaptcha{
 
 .img-flag {
     margin-top: 205px;
+}
+
+/* ##### TECHNICAL ##### */
+
+.kibon {
+    margin-top: 70px;
+}
+
+.img-kibon {
+    height: 200px;
+}
+
+.technical-col {
+    border-bottom: 1px solid #CD2E3A;
 }
