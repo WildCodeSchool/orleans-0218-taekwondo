@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Modification</h3>
+    </div>
+    <div class="panel-body">
+        <form action="update/update" method="POST" role="form" enctype="multipart/form-data" confirm="Modifier la ceinture de : '{{ blackBelt.last_name }} {{ blackBelt.firstName }}' ?">
+            <div class="form-group">
+                <label for="last_name">Nom :</label>
+                <input name="last_name" id="last_name" class="form-control" placeholder="Saisissez un nouveau nom : " value="{{ blackBelt.last_name }}" required/>
+            </div>
+            <div class="form-group">
+                <label for="first_name">Prénom :</label>
+                <input name="first_name" id="first_name" class="form-control" placeholder="Saisissez un nouveau prénom : " value="{{ blackBelt.first_name }}" required/>
+            </div>
+            <div class="form-group">
+                <label for="number_dan">Dan :</label>
+                <input name="number_dan" id="number_dan" class="form-control" placeholder="Saisissez une nouvelle Dan : " value="{{ blackBelt.number_dan }}" required/>
+            </div>
+            <div class="form-group">
+                <label for="date_dan">Date d'obtention :</label>
+                <input type="text" id="date_dan" name="date_dan" class="form-control" placeholder="Saisissez une nouvelle date" value="{{ blackBelt.date_dan }}" required>
+            </div>
+            <div class="form-group">
+                <label>Photo du gestionnaire (facultatif) :</label>
+                <img class="img-responsive" src="{{ office.picture }}">
+
+                <input type="file" name="upload" id="upload" value="{{ office.picture }}"/>
+                <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+            </div>
+            <button type="submit" class="btn btn-default btn-block">Valider</button>
+        </form>
+    </div>
+</div>
