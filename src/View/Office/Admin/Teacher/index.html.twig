@@ -1,0 +1,54 @@
+
+
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Bureaux
+{% endblock %}
+
+{% block content %}
+    <section class="container">
+        <h1>Bureau Technique - Listing</h1>
+        <div class="row">
+            <div class="col-md-4">{% include 'Office/Admin/Teacher/create.html.twig' %}</div>
+                    <div class="col-md-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Bureau Directeur</h2>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Nom - Prénom</th>
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <div class="row">
+                                        {% for teacher in teachersAdmin %}
+                                            <tr>
+                                                <td class="col-md-8">{{ teacher.lastName }} - {{ teacher.firstName }}</td>
+                                                <td class="col-md-2">
+                                                    <form action="teacher/{{ teacher.id }}/update" method="POST">
+                                                        <button type="submit" class="btn btn-warning btn-block">Modifier </button>
+                                                    </form>
+                                                </td>
+                                                <td class="col-md-2">
+                                                    <form action="teacher/{{ teacher.id }}/delete" method="POST" confirm="Supprimer le professeur : '{{ teacher.lastName }} {{ teacher.firstName }}' ?">
+                                                        <button type="submit" class="btn btn-danger btn-block">Supprimer </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+    </section>
+{% endblock %}

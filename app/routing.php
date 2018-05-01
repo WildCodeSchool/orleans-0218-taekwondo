@@ -28,6 +28,11 @@ $routes = [
         ['adminOfficeUpdate', '/admin/office/{id:\d+}/update/update', 'POST'],
         ['adminOfficeDelete', '/admin/office/{id:\d+}/delete', 'POST'],
         ['adminOfficeCreate', '/admin/office/create', 'POST'],
+        ['adminTeacherIndex', '/admin/teachers', 'GET'],
+        ['adminTeacherUpdateIndex', '/admin/teacher/{id:\d+}/update', 'POST'],
+        ['adminTeacherUpdate', '/admin/teacher/{id:\d+}/update/update', 'POST'],
+        ['adminTeacherDelete', '/admin/teacher/{id:\d+}/delete', 'POST'],
+        ['adminTeacherCreate', '/admin/teacher/create', 'POST'],
 
     ],
     'Album' => [
