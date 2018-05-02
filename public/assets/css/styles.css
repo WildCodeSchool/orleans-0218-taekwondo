@@ -358,6 +358,168 @@ h1 {
     background-color: #0047A0;
 }
 
+
+
+/* Size img */
+
+.flex-parent{
+    display: flex;
+}
+
+.flex-child{
+    flex: 1;
+}
+
+.size{
+    height: 280px;
+    overflow: hidden;
+}
+
+.sizeLarge{
+    max-height: 550px;
+    overflow: hidden;
+}
+
+.marginCenter{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ##### FOOTER ##### */
 
 
@@ -413,32 +575,6 @@ footer .send{
     color: white;
     margin-top: 20px;
 }
-
-/* Size img */
-
-.flex-parent{
-    display: flex;
-}
-
-.flex-child{
-    flex: 1;
-}
-
-.size{
-    height: 280px;
-    overflow: hidden;
-}
-
-.sizeLarge{
-    max-height: 550px;
-    overflow: hidden;
-}
-
-.marginCenter{
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
 
 
 /* ###### Admin Footer ######### */
