@@ -26,10 +26,13 @@ $routes = [
     'Office' => [
         ['index', '/offices', 'GET'],
         ['adminIndex', '/admin/offices', 'GET'],
-        ['adminOfficeUpdateIndex', '/admin/office/{id:\d+}/update', 'POST'],
-        ['adminOfficeUpdate', '/admin/office/{id:\d+}/update/update', 'POST'],
+        ['adminOfficeUpdate', '/admin/office/{id:\d+}/update', ['GET', 'POST']],
         ['adminOfficeDelete', '/admin/office/{id:\d+}/delete', 'POST'],
         ['adminOfficeCreate', '/admin/office/create', 'POST'],
+        ['adminTeacherIndex', '/admin/teachers', 'GET'],
+        ['adminTeacherUpdate', '/admin/teacher/{id:\d+}/update', ['GET', 'POST']],
+        ['adminTeacherDelete', '/admin/teacher/{id:\d+}/delete', 'POST'],
+        ['adminTeacherCreate', '/admin/teacher/create', 'POST'],
 
     ],
     'Album' => [
@@ -56,6 +59,7 @@ $routes = [
     'Register' => [
         ['index', '/register', 'GET']
         ['adminIndex', '/admin/black-belts', 'GET'],
+        ['adminBlackBeltUpdate', '/admin/black-belt/{id:\d+}/update', ['GET', 'POST']],
         ['adminBlackBeltDelete', '/admin/black-belt/{id:\d+}/delete', 'POST'],
         ['adminBlackBeltCreate', '/admin/black-belt/create', 'POST']
     ],

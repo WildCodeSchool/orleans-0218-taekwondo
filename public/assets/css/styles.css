@@ -436,6 +436,11 @@ footer .g-recaptcha{
 }
 
 .marginCenter{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.teacher{
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -443,6 +448,14 @@ footer .g-recaptcha{
 .teacherStyle{
     font-size: 1.5em;
     font-weight: bold;
+}
+
+.testphoto{
+    object-fit: cover;
+}
+
+.returnSize{
+    font-size: 1.5em;
 }
 
 /* ##### PRACTICE ##### */

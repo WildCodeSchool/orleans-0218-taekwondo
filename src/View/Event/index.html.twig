@@ -29,7 +29,7 @@
             {% if loop.index is odd %}<div class="row text-center flex-parent">{% endif %}
                 <div class="col-sm-6 col-md-6 flex-child">
                     <div class="thumbnail fullheight">
-                        <img src="{{ event.picture }}" alt="flyers de l'événement" />
+                        <img src="{{ event.picture }}" {% if event.picture != null %}alt="flyers de l'événement" {% endif %}/>
                         <div class="caption">
                             <h3>{{ event.title }}</h3>
                             <p>{{ event.dateEvent | date('d/m/Y') }}</p>
