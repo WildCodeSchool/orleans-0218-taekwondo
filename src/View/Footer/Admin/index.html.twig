@@ -1,0 +1,54 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block content %}
+    <section class="container">
+        <h1>Liens - Listing</h1>
+        <div class="row">
+            <div class="col-md-4">{% include 'Footer/Admin/create.html.twig' %}</div>
+            <div class="col-md-8">
+                <div class="panel panel-default indexLink">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Les liens présents dans le bas-de-page</h2>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Nom, adresse et commentaire</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <div class="row">
+                                    {% for link in links %}
+                                        <tr>
+                                            <td class="col-md-8">
+                                                Nom du lien : <strong>{{ link.textOfLink }}</strong>
+                                                    <ul>
+                                                <li><a href="{{ link.webAddress }}" target="_blank" >{{ link.webAddress }}</a></li>
+
+
+                                                        {%  if link.linkTitle  %}
+                                                            <li>{{ link.linkTitle }}</li>
+                                                        {% endif %}
+
+
+                                                    </ul>
+
+                                            </td>
+
+                                            <td class="col-md-2">
+                                                <form action="Footer/{{ link.id }}/delete" method="POST" confirm="Supprimer le lien : '{{ link.textOfLink }}' ?">
+                                                    <button type="submit" class="btn btn-danger btn-block">Supprimer </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
