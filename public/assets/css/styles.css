@@ -493,6 +493,17 @@ footer .g-recaptcha{
     margin-top: 90px;
 }
 
-#lexicon li {
-    list-style-type: none;
+dl {
+    margin: 0px;
+    padding: 0px;
 }
+
+dt, dd {
+  padding-top: 10px;
+}
+
+hr {
+    width: 50%;
+    border: 1px solid #CD2E3A;
+}
+
