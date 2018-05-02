@@ -13,7 +13,7 @@
  *
  */
 
-define('APP_DB_HOST', null);
-define('APP_DB_USER', null);
-define('APP_DB_PWD', null);
-define('APP_DB_NAME', null);
+define('APP_DB_HOST', '');
+define('APP_DB_USER', '');
+define('APP_DB_PWD', '');
+define('APP_DB_NAME', '');

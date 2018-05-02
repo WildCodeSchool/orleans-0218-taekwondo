@@ -14,7 +14,7 @@ class BlackBelt
     private $id;
     private $first_name;
     private $last_name;
-    private $date_dan_black_belt;
+    private $date_dan;
     private $picture;
     private $number_dan;
 
@@ -44,18 +44,18 @@ class BlackBelt
     }
 
     /**
-     * @return string
+     * @return int
      */
 
-    public function getDateDanBlackBelt(): string
+    public function getDateDan(): int
     {
-        return $this->date_dan_black_belt;
+        return $this->date_dan;
     }
 
     /**
      * @return string
      */
-    public function getPicture(): string
+    public function getPicture()
     {
         return $this->picture;
     }
