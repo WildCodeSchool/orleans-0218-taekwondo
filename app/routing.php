@@ -12,6 +12,8 @@
 $routes = [
     'Home' => [
         ['index', '/', 'GET'],
+        ['contactCreate', '/contact/create', 'POST'],
+
     ],
     'Event' => [
         ['index', '/events', 'GET'],
@@ -52,7 +54,10 @@ $routes = [
         ['index', '/admin', 'GET']
     ],
     'BlackBelt' => [
-        ['index', '/black-belts', 'GET'],
+        ['index', '/black-belts', 'GET']
+    ],
+    'Register' => [
+        ['index', '/register', 'GET']
         ['adminIndex', '/admin/black-belts', 'GET'],
         ['adminBlackBeltUpdate', '/admin/black-belt/{id:\d+}/update', ['GET', 'POST']],
         ['adminBlackBeltDelete', '/admin/black-belt/{id:\d+}/delete', 'POST'],
@@ -61,5 +66,4 @@ $routes = [
     'Presentation' => [
         ['index', '/presentation', 'GET']
     ]
-
 ];

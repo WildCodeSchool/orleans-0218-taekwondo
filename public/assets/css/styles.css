@@ -383,6 +383,7 @@ footer .central{
 footer{
     background-color: rgb(221, 221, 231);
     margin-top: 30px;
+    padding-bottom: 30px;
 }
 
 footer .form-horizontal{
@@ -407,6 +408,11 @@ footer .send{
     background-color: #0047A0;
     margin-top: 20px;
     margin-right: 15px;
+}
+
+footer .g-recaptcha{
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 /* Size img */
@@ -435,6 +441,11 @@ footer .send{
 }
 
 .teacher{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.teacherStyle{
     font-size: 1.5em;
     font-weight: bold;
 }
@@ -446,3 +457,66 @@ footer .send{
 .returnSize{
     font-size: 1.5em;
 }
+
+/* ##### PRACTICE ##### */
+
+.practice-title {
+    margin-top: 90px;
+}
+
+.img-combat {
+    margin-top: 90px;
+
+}
+
+/* ##### HISTORY ##### */
+
+.history-title {
+    margin-top: 90px;
+}
+
+.img-carte {
+    margin-top: 150px;
+}
+
+.img-transition {
+    height: 200px;
+}
+
+.img-flag {
+    margin-top: 205px;
+}
+
+/* ##### TECHNICAL ##### */
+
+.kibon {
+    margin-top: 70px;
+}
+
+.img-kibon {
+    height: 200px;
+}
+
+.technical-col {
+    border-bottom: 1px solid #CD2E3A;
+}
+
+/* ##### LEXICON ##### */
+.lexicon-title {
+    margin-top: 90px;
+}
+
+dl {
+    margin: 0px;
+    padding: 0px;
+}
+
+dt, dd {
+  padding-top: 10px;
+}
+
+hr {
+    width: 50%;
+    border: 1px solid #CD2E3A;
+}
+
