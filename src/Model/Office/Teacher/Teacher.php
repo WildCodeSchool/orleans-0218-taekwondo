@@ -52,7 +52,7 @@ class Teacher
     /**
      * @return mixed
      */
-    public function getPicture()
+    public function getPicture(): ?string
     {
         return $this->picture;
     }

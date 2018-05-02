@@ -161,99 +161,97 @@ class BlackBeltController extends AbstractController
 
     /**
      * @param int $id
-     * @return string
+     * @return null|string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function adminBlackBeltUpdateIndex(int $id): ?string
-    {
-        $blackBeltManager = new BlackBelt\Manager();
-        if (!$blackBeltManager->existsById($id)) {
-            return null;
-        }
-
-        $alertsManager = new Alerts\Manager();
-        $alerts = $alertsManager->getAlerts();
-        $alertsManager->clean();
-
-        return $this->twig->render('BlackBelt/Admin/Update/index.html.twig', [
-            'blackBelt' => $blackBeltManager->selectOneById($id),
-            'alerts' => $alerts
-        ]);
-    }
-
-    /**
-     * @param int $id
-     * @return string
-     */
     public function adminBlackBeltUpdate(int $id): ?string
     {
-        $blackBeltManager = new BlackBelt\Manager();
-        if (!$blackBeltManager->existsById($id)) {
-            return null;
-        }
 
-        $data = [
-            'first_name' => trim(strip_tags($_POST['first_name'])),
-            'last_name' => trim(strip_tags($_POST['last_name'])),
-            'number_dan' => (int)trim(strip_tags($_POST['number_dan'])),
-            'date_dan' =>(int)trim($_POST['date_dan']) ,
-            'picture' => null
-        ];
+        if ((isset($_POST)) && (!empty($_POST['last_name']))){
+            $blackBeltManager = new BlackBelt\Manager();
+            if (!$blackBeltManager->existsById($id)) {
+                return null;
+            }
 
-        if ((!empty($_FILES['upload'])) && (!empty($_FILES['upload']['name']))) {
+            $data = [
+                'first_name' => trim(strip_tags($_POST['first_name'])),
+                'last_name' => trim(strip_tags($_POST['last_name'])),
+                'number_dan' => (int)trim(strip_tags($_POST['number_dan'])),
+                'date_dan' => (int)trim($_POST['date_dan']),
+                'picture' => null
+            ];
 
-            // Initiate the alerts manager & handle files from $_FILES
+            if ((!empty($_FILES['upload'])) && (!empty($_FILES['upload']['name']))) {
+
+                // Initiate the alerts manager & handle files from $_FILES
+                $alertsManager = new Alerts\Manager();
+                $filesHandler = new Files\Handler($_FILES['upload']);
+                $file = $filesHandler->getFiles()[0];
+
+                // 'Verifications'
+                $isValidFile = $file->isValidFile(ALLOWED_TYPES);
+                $isValidSize = $file->isValidSize(MAX_UPLOAD_SIZE);
+
+                // Alerts if verifications have failed
+                if (!$isValidFile || !$isValidSize) {
+                    if (!$isValidFile) {
+                        $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file type'));
+                    }
+                    if (!$isValidSize) {
+                        $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
+                    }
+                    header('Location: /admin/black-belts');
+                    exit();
+                }
+
+                // Upload
+                $data['picture'] = UPLOADS_PATH_OFFICES;
+                $pictureName = uniqid() . '.' . $file->getType();
+                $uploadSuccess = $file->upload(BASE_ROOT . $data['picture'], $pictureName);
+                if (!$uploadSuccess) {
+                    $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image " . $file->getName() . "."));
+                    header('Location: /admin/black-belts');
+                    exit();
+                }
+                $data['picture'] .= $pictureName;
+            } else {
+                unset($data['picture']);
+            }
+
+
+            $state = $blackBeltManager->update($id, $data);
+
+            $alert = new Alerts\Alert();
+            $alert->setState($state);
+            if ($alert->getState()) {
+                $alert->setMessage('La ceinture a été mise à jour.');
+            } else {
+                $alert->setMessage('Impossible de mettre à jour la ceinture.');
+            }
+
             $alertsManager = new Alerts\Manager();
-            $filesHandler = new Files\Handler($_FILES['upload']);
-            $file = $filesHandler->getFiles()[0];
+            $alertsManager->addAlert($alert);
 
-            // 'Verifications'
-            $isValidFile = $file->isValidFile(ALLOWED_TYPES);
-            $isValidSize = $file->isValidSize(MAX_UPLOAD_SIZE);
+            header("Location: /admin/black-belts");
+            exit();
 
-            // Alerts if verifications have failed
-            if (!$isValidFile || !$isValidSize) {
-                if (!$isValidFile) {
-                    $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file type'));
-                }
-                if (!$isValidSize) {
-                    $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage('Invalid file size'));
-                }
-                header('Location: /admin/black-belts');
-                exit();
+        } else {
+
+            $blackBeltManager = new BlackBelt\Manager();
+            if (!$blackBeltManager->existsById($id)) {
+                return null;
             }
 
-            // Upload
-            $data['picture'] = UPLOADS_PATH_OFFICES;
-            $pictureName = uniqid() . '.' . $file->getType();
-            $uploadSuccess = $file->upload(BASE_ROOT . $data['picture'], $pictureName);
-            if (!$uploadSuccess) {
-                $alertsManager->addAlert((new Alerts\Alert())->setState(false)->setMessage("Impossible d'upload l'image " . $file->getName() . "."));
-                header('Location: /admin/black-belts');
-                exit();
-            }
-            $data['picture'] .= $pictureName;
-        } else {
-            unset($data['picture']);
+            $alertsManager = new Alerts\Manager();
+            $alerts = $alertsManager->getAlerts();
+            $alertsManager->clean();
+
+            return $this->twig->render('BlackBelt/Admin/Update/index.html.twig', [
+                'blackBelt' => $blackBeltManager->selectOneById($id),
+                'alerts' => $alerts
+            ]);
         }
-
-
-        $state = $blackBeltManager->update($id, $data);
-
-        $alert = new Alerts\Alert();
-        $alert->setState($state);
-        if ($alert->getState()) {
-            $alert->setMessage('La ceinture a été mise à jour.');
-        } else {
-            $alert->setMessage('Impossible de mettre à jour la ceinture.');
-        }
-
-        $alertsManager = new Alerts\Manager();
-        $alertsManager->addAlert($alert);
-
-        header("Location: /admin/black-belts");
-        exit();
     }
 }

@@ -3,7 +3,7 @@
         <h3 class="panel-title">Modification</h3>
     </div>
     <div class="panel-body">
-        <form action="update/update" method="POST" role="form" enctype="multipart/form-data" confirm="Modifier la ceinture de : '{{ blackBelt.last_name }} {{ blackBelt.firstName }}' ?">
+        <form action="update" method="POST" role="form" enctype="multipart/form-data" confirm="Modifier la ceinture de : '{{ blackBelt.last_name }} {{ blackBelt.firstName }}' ?">
             <div class="form-group">
                 <label for="last_name">Nom :</label>
                 <input name="last_name" id="last_name" class="form-control" placeholder="Saisissez un nouveau nom : " value="{{ blackBelt.last_name }}" required/>
