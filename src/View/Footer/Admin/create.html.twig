@@ -1,0 +1,25 @@
+<!-- Créer une nouvelle catégorie -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Créer un nouveau lien</h3>
+    </div>
+    <div class="panel-body createLink">
+        <!-- Formulaire de création -->
+        <form action="link/create" method="POST" role="form">
+
+            <div class="form-group">
+                <label for="name">Nom du lien</label>
+                <input type="text" class="form-control" placeholder="Nom du lien" id="name" name="name" />
+
+                <label for="address">Adresse du lien</label>
+                <input type="text" class="form-control" placeholder="www." id="address" name="address" />
+
+                <label for="comment">Commentaire du lien [Optionnel]</label>
+                <p>Apparaîtra sous forme de bulle lors du survol du curseur de la souris</p>
+                <input type="text" class="form-control" placeholder="Commentaire" id="comment" name="comment"/>
+
+                <button type="submit" class="btn btn-primary btn-block">Créer</button>
+            </div>
+        </form>
+    </div>
+</div>

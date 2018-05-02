@@ -2,114 +2,106 @@
 <section class="trigram trigram-fire">
 
 
-    <footer>
-
-
+    <footer id="footer">
 
         <div class="container">
 
             <div class="row">
 
-                <div class="col-xs-12">
-                    <div class="alert alert-info" role="alert">Vous désirez en savoir plus sur notre club, n'hésitez pas à nous contacter !</div>
+
+
+                <div class="col-lg-4 col-md-4 col-sd-6 col-xs-12">
+
+
+                    <h4>Le club</h4>
+                    <hr>
+
+                        <ul class="list-unstyled">
+
+                            <li>
+                                <img src="http://via.placeholder.com/100x100" height=""/>
+                            </li>
+
+
+                            <li>
+
+                            <address>
+                                <div class="name_club">Club Keumgang Taekwondo</div>
+                                138 Allée François Villon<br>
+                                45160 Olivet<br>
+                            </address>
+                            </li>
+
+                            <li>
+                                <div class="phone">
+                                    <p>06.24.43.35.21</p>
+                                </div>
+                            </li>
+
+                        </ul>
+
                 </div>
 
-                <form class="form-horizontal" method="post" action="/contact/create">
-                    <div class="form-group form-group-lg">
-                        <label for="courriel" class="col-lg-2 col-md-2 control-label">Votre courriel</label>
-                        <div class="col-lg-10 col-md-10 ">
-                            <input type="email" class="form-control" id="courriel" name="courriel" placeholder="" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group form-group-lg">
-                        <label for="message" class="col-lg-2 col-md-2 control-label">Votre message</label>
-                        <div class="col-lg-10 col-md-10">
-                            <textarea class="form-control " rows="5" name="message" id="message" required></textarea>
-                        </div>
-
-
-                        <div class="form-group form-group-lg">
-                            <div class="col-md-offset-2 col-lg-10 col-md-10 text-right">
-                                <div class="g-recaptcha" data-sitekey="{{ constant('APP_CAPTCHA_SITE_KEY') }}"></div>
-
-                                <button type="submit" class="send btn btn-primary btn-lg">Envoyer votre message</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-lg-3 col-md-3 col-sd-6 col-xs-12">
-
-                <ul>
-
-                    {% for link in links %}
-
-                        {% if  loop.index <= (loop.length /2) %}
-                        <li><a href="{{ link.webAddress }}" target="_blank" title="{{ link.linkTitle }}" >{{ link.textOfLink }}</a></li>
-                        {% endif %}
-
-                    {% endfor %}
-
-                </ul>
-
-            </div>
 
 
 
-            <div class="col-lg-5 col-md-5 col-sd-6col-xs-12">
+                <div class="col-lg-4 col-md-4 col-sd-6 col-xs-12">
 
-                <div class="row central">
+
+                    <h4>Liens utiles</h4>
+                    <hr>
+
+
 
                     <ul>
 
-                        <div class="col-lg-4 col-md-4 col-sd-12 col-sd-12">
-                            <img src="http://via.placeholder.com/100x100" height=""/>
-                        </div>
+                            {% for link in links %}
 
-                        <div class="col-lg-8 col-md-8 col-sd-12">
-                            <div class="adress">
-                                <p class="name_club">Club Keumgang Taekwondo</p>
-                                <p>138 Allée François Villon</p>
-                                <p>45160 Olivet</p>
-                            </div>
-                            <div class="phone">
-                                <p>06.24.43.35.21</p>
-                            </div>
-                        </div>
-                    </ul>
+                                {% if  loop.index <= (loop.length) %}
+                                    <li><a href="{{ link.webAddress }}" target="_blank" title="{{ link.linkTitle }}" >{{ link.textOfLink }}</a></li>
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </ul>
 
                 </div>
 
-            </div>
+
+                <div class="col-lg-4 col-md-4 col-sd-12 col-xs-12">
+
+                    <h4>Pour nous contacter</h4>
+                    <hr>
 
 
 
-            <div class="col-lg-4 col-md-4 col-sd-12 col-xs-12">
+                    <form method="post" action="/contact/create">
 
-                <ul>
+                            <div class="form-group">
+                                <label for="courriel">Votre courriel :</label>
+                                <input type="email" class="form-control"  id="courriel" name="courriel" placeholder="">
+                            </div>
 
-                    {% for link in links %}
 
-                        {% if  loop.index > (loop.length /2) %}
-                            <li><a href="{{ link.webAddress }}" target="_blank" title="{{ link.linkTitle }}" >{{ link.textOfLink }}</a></li>
-                        {% endif %}
+                            <div class="form-group">
+                                <label for="message" class="control-label">Votre message :</label>
+                                    <textarea class="form-control " rows="5" name="message" id="message" ></textarea>
+                            </div>
 
-                    {% endfor %}
 
-                </ul>
+                            <div class="form-group">
+                                <div class="text-right">
+                                    <div class="g-recaptcha" data-sitekey="{{ constant('APP_CAPTCHA_SITE_KEY') }}"></div>
 
-            </div>
+                                    <button type="submit" class="send btn ">Envoyer votre message</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                </div>
 
         </div>
-
-    </div>
-
+        </div>
 </footer>
+</section>
