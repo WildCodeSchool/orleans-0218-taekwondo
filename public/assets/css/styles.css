@@ -487,3 +487,12 @@ footer .g-recaptcha{
 .technical-col {
     border-bottom: 1px solid #CD2E3A;
 }
+
+/* ##### LEXICON ##### */
+.lexicon-title {
+    margin-top: 90px;
+}
+
+#lexicon li {
+    list-style-type: none;
+}
