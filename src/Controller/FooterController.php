@@ -51,16 +51,18 @@ class FooterController extends AbstractController
         }
 
 
-        // J'ajoute un 'http://' devant l'adresse si elle n'en possède pas
-        $webAddress = trim(strip_tags($_POST['address']));
-        $webAddress = preg_replace('/www/', 'http://www', $webAddress, 1);
-
+        // Je vérifie qu'il s'agisse bien d'une adresse valide
+        if (!filter_var($_POST['address'], FILTER_VALIDATE_URL)){
+            header('Location: /admin/footer');
+            exit();
+        }
 
         $data = [
             'text_of_link' => trim(strip_tags($_POST['name'])),
-            'web_address' => $webAddress,
+            'web_address' => trim(strip_tags($_POST['address'])),
             'link_title' => trim($_POST['comment']) ,
         ];
+
 
         // Try to create the footer
         $footerManager = new Footer\Manager();
