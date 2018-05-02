@@ -520,3 +520,6 @@ hr {
     border: 1px solid #CD2E3A;
 }
 
+@media (max-width: 992px) {
+    .flex-parent { display : block ;}
+}
