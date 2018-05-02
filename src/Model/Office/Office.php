@@ -50,9 +50,9 @@ class Office
     }
 
     /**
-     * @return mixed
+     * @return mixed string or null
      */
-    public function getPicture(): string
+    public function getPicture(): ?string
     {
         return $this->picture;
     }

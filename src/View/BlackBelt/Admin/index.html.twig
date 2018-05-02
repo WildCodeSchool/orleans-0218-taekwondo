@@ -14,7 +14,7 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>Prénom NOM / Numéro de Dan / Date d'obtention</th>
+                                <th>Prénom Nom / Numéro de Dan / Date d'obtention</th>
                                 <th>Supprimer</th>
                             </tr>
                             </thead>
@@ -23,6 +23,11 @@
                                     {% for dan, blackBelt in blackBelts %}
                                         <tr>
                                             <td class="col-md-8">{{ blackBelt.firstName }} {{ blackBelt.lastName }} : {{ blackBelt.numberDan }} ° Dan obtenu le {{ blackBelt.dateDan }}</td>
+                                            <td class="col-md-2">
+                                                <a href="black-belt/{{ blackBelt.id }}/update" class="btn btn-warning btn-block">
+                                                    Modifier
+                                                </a>
+                                            </td>
                                             <td class="col-md-2">
                                                 <form action="black-belt/{{ blackBelt.id }}/delete" method="POST" confirm="Supprimer la ceinture noire '{{ blackBelt.firstName }} {{ blackBelt.lastName }}' ?">
                                                     <button type="submit" class="btn btn-danger btn-block">Supprimer </button>
