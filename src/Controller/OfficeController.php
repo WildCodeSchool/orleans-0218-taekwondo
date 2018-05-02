@@ -182,7 +182,7 @@ class OfficeController extends AbstractController
         $alerts = $alertsManager->getAlerts();
         $alertsManager->clean();
 
-        return $this->twig->render('Office/Admin/Update/index.html.twig', [
+        return $this->twig->render('Office/Admin/Staff/Update/index.html.twig', [
             'office' => $officeManager->selectOneById($id),
             'alerts' => $alerts
         ]);
