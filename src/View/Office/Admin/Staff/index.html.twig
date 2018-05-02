@@ -31,9 +31,9 @@
                                             <tr>
                                                 <td class="col-md-8">{{ office.lastName }} - {{ office.firstName }} - {{ office.Task }}</td>
                                                 <td class="col-md-2">
-                                                    <form action="office/{{ office.id }}/update" method="POST">
-                                                        <button type="submit" class="btn btn-warning btn-block">Modifier </button>
-                                                    </form>
+                                                    <a href="office/{{ office.id }}/update" class="btn btn-warning btn-block">
+                                                        Modifier
+                                                    </a>
                                                 </td>
                                                 <td class="col-md-2">
                                                     <form action="office/{{ office.id }}/delete" method="POST" confirm="Supprimer le bureau : '{{ office.task }}' ?">

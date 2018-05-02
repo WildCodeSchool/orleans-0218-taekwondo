@@ -24,9 +24,9 @@
                                         <tr>
                                             <td class="col-md-8">{{ blackBelt.firstName }} {{ blackBelt.lastName }} : {{ blackBelt.numberDan }} ° Dan obtenu le {{ blackBelt.dateDan }}</td>
                                             <td class="col-md-2">
-                                                <form action="black-belt/{{ blackBelt.id }}/update" method="POST">
-                                                    <button type="submit" class="btn btn-warning btn-block">Modifier </button>
-                                                </form>
+                                                <a href="black-belt/{{ blackBelt.id }}/update" class="btn btn-warning btn-block">
+                                                    Modifier
+                                                </a>
                                             </td>
                                             <td class="col-md-2">
                                                 <form action="black-belt/{{ blackBelt.id }}/delete" method="POST" confirm="Supprimer la ceinture noire '{{ blackBelt.firstName }} {{ blackBelt.lastName }}' ?">

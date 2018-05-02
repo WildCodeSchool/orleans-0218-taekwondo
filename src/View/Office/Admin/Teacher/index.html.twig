@@ -31,9 +31,9 @@
                                             <tr>
                                                 <td class="col-md-8">{{ teacher.lastName }} - {{ teacher.firstName }}</td>
                                                 <td class="col-md-2">
-                                                    <form action="teacher/{{ teacher.id }}/update" method="POST">
-                                                        <button type="submit" class="btn btn-warning btn-block">Modifier </button>
-                                                    </form>
+                                                    <a href="teacher/{{ teacher.id }}/update" class="btn btn-warning btn-block">
+                                                        Modifier
+                                                    </a>
                                                 </td>
                                                 <td class="col-md-2">
                                                     <form action="teacher/{{ teacher.id }}/delete" method="POST" confirm="Supprimer le professeur : '{{ teacher.lastName }} {{ teacher.firstName }}' ?">

@@ -24,12 +24,12 @@ $routes = [
     'Office' => [
         ['index', '/offices', 'GET'],
         ['adminIndex', '/admin/offices', 'GET'],
-        ['adminOfficeUpdateIndex', '/admin/office/{id:\d+}/update', 'POST'],
+        ['adminOfficeUpdateIndex', '/admin/office/{id:\d+}/update', 'GET'],
         ['adminOfficeUpdate', '/admin/office/{id:\d+}/update/update', 'POST'],
         ['adminOfficeDelete', '/admin/office/{id:\d+}/delete', 'POST'],
         ['adminOfficeCreate', '/admin/office/create', 'POST'],
         ['adminTeacherIndex', '/admin/teachers', 'GET'],
-        ['adminTeacherUpdateIndex', '/admin/teacher/{id:\d+}/update', 'POST'],
+        ['adminTeacherUpdateIndex', '/admin/teacher/{id:\d+}/update', 'GET'],
         ['adminTeacherUpdate', '/admin/teacher/{id:\d+}/update/update', 'POST'],
         ['adminTeacherDelete', '/admin/teacher/{id:\d+}/delete', 'POST'],
         ['adminTeacherCreate', '/admin/teacher/create', 'POST'],
@@ -56,7 +56,7 @@ $routes = [
     'BlackBelt' => [
         ['index', '/black-belts', 'GET'],
         ['adminIndex', '/admin/black-belts', 'GET'],
-        ['adminBlackBeltUpdateIndex', '/admin/black-belt/{id:\d+}/update', 'POST'],
+        ['adminBlackBeltUpdateIndex', '/admin/black-belt/{id:\d+}/update', 'GET'],
         ['adminBlackBeltUpdate', '/admin/black-belt/{id:\d+}/update/update', 'POST'],
         ['adminBlackBeltDelete', '/admin/black-belt/{id:\d+}/delete', 'POST'],
         ['adminBlackBeltCreate', '/admin/black-belt/create', 'POST']

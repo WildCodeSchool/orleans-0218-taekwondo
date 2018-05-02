@@ -171,11 +171,11 @@ class OfficeController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function adminOfficeUpdateIndex(int $id): string
+    public function adminOfficeUpdateIndex(int $id): ?string
     {
         $officeManager = new Office\Manager();
         if (!$officeManager->existsById($id)) {
-            return '';
+            return null;
         }
 
         $alertsManager = new Alerts\Manager();
