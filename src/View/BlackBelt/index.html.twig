@@ -1,19 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <section class="blackBelt">
+    <section class="blackBelt img-blackbelt">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Les ceintures noires</h2>
+                    <h2 class="strong">Les ceintures noires</h2>
                 </div>
             </div>
 
             {% for dan, blackBelts in dans %}
                 <div class="row text-center">
-                    <h3>{{ dan }}° Dan</h3>
+                    <h3><span class="strong">{{ dan }}° Dan</span></h3>
                 </div>
-                <div class="row text-center img-blackbelt">
+                <div class="row text-center">
                     {%  for blackBelt in blackBelts %}
                            <div class="col-sm-3 col-md-3">
                                 <div class="thumbnail person">

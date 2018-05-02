@@ -335,6 +335,27 @@ h1 {
     color: #CD2E3A;
 }
 
+.img-blackbelt { position: relative; }
+.img-blackbelt:before {
+    background-image: url("../images/blackbelt/south-korea.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity:0.5;
+    width: 100%;
+    height: 100%;
+    content: '';
+    z-index: -1;
+}
+
+.strong {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
 /* ##### PRESENTATION TAEKWONDO ##### */
 
 .img-taekwondo {
