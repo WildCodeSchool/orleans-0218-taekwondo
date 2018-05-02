@@ -442,3 +442,7 @@ footer .send{
 .testphoto{
     object-fit: cover;
 }
+
+.returnSize{
+    font-size: 1.5em;
+}

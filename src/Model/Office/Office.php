@@ -52,7 +52,7 @@ class Office
     /**
      * @return mixed string or null
      */
-    public function getPicture()
+    public function getPicture(): ?string
     {
         return $this->picture;
     }

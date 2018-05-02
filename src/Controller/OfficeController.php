@@ -131,7 +131,7 @@ class OfficeController extends AbstractController
      * @param int $id
      * @return string
      */
-    public function adminOfficeDelete(int $id): string
+    public function adminOfficeDelete(int $id): ?string
     {
         // Verifications
         if ($id <= 0) {
@@ -188,11 +188,11 @@ class OfficeController extends AbstractController
         ]);
     }
 
-    public function adminOfficeUpdate(int $id)
+    public function adminOfficeUpdate(int $id): ?string
     {
         $officeManager = new Office\Manager();
         if (!$officeManager->existsById($id)) {
-            return '';
+            return null;
         }
 
         $data = [
@@ -396,11 +396,11 @@ class OfficeController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function adminTeacherUpdateIndex(int $id): string
+    public function adminTeacherUpdateIndex(int $id): ?string
     {
         $teacherManager = new Office\Teacher\ManagerTeacher();
         if (!$teacherManager->existsById($id)) {
-            return '';
+            return null;
         }
 
         $alertsManager = new Alerts\Manager();
@@ -413,11 +413,11 @@ class OfficeController extends AbstractController
         ]);
     }
 
-    public function adminTeacherUpdate(int $id)
+    public function adminTeacherUpdate(int $id): ?string
     {
         $teacherManager = new Office\Teacher\ManagerTeacher();
         if (!$teacherManager->existsById($id)) {
-            return '';
+            return null;
         }
 
         $data = [

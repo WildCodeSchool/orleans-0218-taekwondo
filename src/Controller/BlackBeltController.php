@@ -166,11 +166,11 @@ class BlackBeltController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function adminBlackBeltUpdateIndex(int $id): string
+    public function adminBlackBeltUpdateIndex(int $id): ?string
     {
         $blackBeltManager = new BlackBelt\Manager();
         if (!$blackBeltManager->existsById($id)) {
-            return '';
+            return null;
         }
 
         $alertsManager = new Alerts\Manager();
@@ -187,11 +187,11 @@ class BlackBeltController extends AbstractController
      * @param int $id
      * @return string
      */
-    public function adminBlackBeltUpdate(int $id)
+    public function adminBlackBeltUpdate(int $id): ?string
     {
         $blackBeltManager = new BlackBelt\Manager();
         if (!$blackBeltManager->existsById($id)) {
-            return '';
+            return null;
         }
 
         $data = [
