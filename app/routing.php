@@ -62,7 +62,8 @@ $routes = [
     ],
 
     'Register' => [
-        ['index', '/register', 'GET']
+        ['index', '/register', 'GET'],
+        ],
 
     'Footer' => [
         ['adminIndex', '/admin/footer', 'GET'],
