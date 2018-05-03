@@ -68,5 +68,8 @@ $routes = [
     ],
     'Presentation' => [
         ['index', '/presentation', 'GET'],
-    ]
+    ],
+    'Contact' => [
+        ['index', '/contact', 'GET'],
+    ],
 ];
