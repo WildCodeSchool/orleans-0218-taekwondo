@@ -1,107 +1,64 @@
 
 <section class="trigram trigram-fire">
 
-
     <footer id="footer">
-
         <div class="container">
-
             <div class="row">
-
-
-
                 <div class="col-lg-4 col-md-4 col-sd-6 col-xs-12">
-
-
                     <h4>Le club</h4>
-                    <hr>
-
+                    <hr/>
                         <ul class="list-unstyled">
-
                             <li>
                                 <img src="http://via.placeholder.com/100x100" height=""/>
                             </li>
-
-
                             <li>
-
-                            <address>
-                                <div class="name_club">Club Keumgang Taekwondo</div>
-                                138 Allée François Villon<br>
-                                45160 Olivet<br>
-                            </address>
+                                <address>
+                                    <div class="name_club">Club Keumgang Taekwondo</div>
+                                    138 Allée François Villon<br>
+                                    45160 Olivet<br>
+                                </address>
                             </li>
-
                             <li>
                                 <div class="phone">
                                     <p>06.24.43.35.21</p>
                                 </div>
                             </li>
-
                         </ul>
-
                 </div>
-
-
-
 
                 <div class="col-lg-4 col-md-4 col-sd-6 col-xs-12">
-
-
                     <h4>Liens utiles</h4>
-                    <hr>
-
-
-
+                    <hr/>
                     <ul>
-
-                            {% for link in links %}
-
-                                {% if  loop.index <= (loop.length) %}
-                                    <li><a href="{{ link.webAddress }}" target="_blank" title="{{ link.linkTitle }}" >{{ link.textOfLink }}</a></li>
-                                {% endif %}
-
-                            {% endfor %}
-
-                        </ul>
-
+                        {% for link in links %}
+                            {% if  loop.index <= (loop.length) %}
+                                <li><a href="{{ link.webAddress }}" target="_blank" title="{{ link.linkTitle }}" >{{ link.textOfLink }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                 </div>
-
 
                 <div class="col-lg-4 col-md-4 col-sd-12 col-xs-12">
-
                     <h4>Pour nous contacter</h4>
-                    <hr>
-
-
-
+                    <hr/>
                     <form method="post" action="/contact/create">
-
-                            <div class="form-group">
-                                <label for="courriel">Votre courriel :</label>
-                                <input type="email" class="form-control"  id="courriel" name="courriel" placeholder="">
+                        <div class="form-group">
+                            <label for="courriel">Votre courriel :</label>
+                            <input type="email" class="form-control"  id="courriel" name="courriel" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="control-label">Votre message :</label>
+                                <textarea class="form-control " rows="5" name="message" id="message" ></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-right">
+                                <div class="g-recaptcha" data-sitekey="{{ constant('APP_CAPTCHA_SITE_KEY') }}"></div>
+                                <button type="submit" class="send btn ">Envoyer votre message</button>
                             </div>
-
-
-                            <div class="form-group">
-                                <label for="message" class="control-label">Votre message :</label>
-                                    <textarea class="form-control " rows="5" name="message" id="message" ></textarea>
-                            </div>
-
-
-                            <div class="form-group">
-                                <div class="text-right">
-                                    <div class="g-recaptcha" data-sitekey="{{ constant('APP_CAPTCHA_SITE_KEY') }}"></div>
-
-                                    <button type="submit" class="send btn ">Envoyer votre message</button>
-                                </div>
-                            </div>
-
-                        </form>
-
+                        </div>
+                    </form>
                 </div>
-
+            </div>
         </div>
-        </div>
-</footer>
+    </footer>
 </section>
