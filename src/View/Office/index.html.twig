@@ -8,7 +8,7 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
                         <div class="size">
-                            <img class="img-responsive" src="{{ staff.picture }}" alt="flyers de l'événement">
+                            <img class="img-responsive center-block " src="{{ staff.picture }}" {% if prof.picture != null %} alt="photo du responsable" {% endif %}>
                         </div>
                         <div class="caption">
                             <p>{{ staff.firstName }} {{ staff.LastName }}</p>
@@ -24,15 +24,17 @@
         </div>
 
         <h2>Présentation du "Bureau Technique"</h2>
-        <div class="row text-center">
+        <div class="row">
             {% for prof in profs %}
                 <div class="col-sm-12 col-md-12">
                     <div class="thumbnail">
+                        {% if prof.picture != null %}
                         <div class="sizeLarge">
-                            <img class="img-responsive" src="{{ prof.picture }}" alt="professeur">
+                            <img class="img-responsive center-block" src="{{ prof.picture }}" alt="professeur">
                         </div>
+                        {% endif %}
                         <div class="caption marginCenter">
-                            <p class="teacherStyle">{{ prof.firstName }} {{ prof.LastName }}</p>
+                            <p class="teacher text-center">{{ prof.firstName }} {{ prof.LastName }}</p>
                             <p>{{ prof.description }}</p>
                         </div>
                     </div>

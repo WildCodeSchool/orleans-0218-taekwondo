@@ -7,6 +7,11 @@
     {% include 'Home/access.html.twig' %}
 {% endblock %}
 
+{% block footer %}
+            {% include '_footer.html.twig' %}
+
+{% endblock %}
+
 {% block stylesheet %}
     {{parent()}}
     <link rel="stylesheet" href="assets/plugins/leaflet/leaflet.css"/>

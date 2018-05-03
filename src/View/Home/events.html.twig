@@ -3,9 +3,9 @@
         <h2>Évènements à venir</h2>
         <div class="row text-center flex-parent">
             {% for event in events %}
-                <div class="col-sm-6 col-md-4 flex-child">
+                <div class="col-sm-12 col-md-4 flex-child">
                     <div class="thumbnail fullheight">
-                        <img src="{{ event.picture }}" alt="flyers de l'événement">
+                        <img src="{{ event.picture }}" {% if event.picture != null %}alt="flyers de l'événement"{% endif %}>
                         <div class="caption">
                             <h3>{{ event.title }}</h3>
                             <p>{{ event.dateEvent | date('d/m/Y') }}</p>

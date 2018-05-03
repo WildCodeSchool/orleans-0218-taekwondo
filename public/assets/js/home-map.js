@@ -17,8 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Our markers
     let points = JSON.parse(Map._container.getAttribute('data-json'));
     for (let point of points) {
+        const icon = L.icon({
+            iconUrl: '/assets/images/markers/red-1.png'
+        });
+
         point.marker = L
-            .marker([point.lat, point.lng])
+            .marker([point.lat, point.lng], { icon })
             .bindPopup(`<p><b>${point.name}</b><br/>${point.infos}<br/><a href="#">${point.address}</a></p>`)
             .addTo(Map);
     

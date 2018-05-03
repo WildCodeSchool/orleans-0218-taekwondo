@@ -13,7 +13,6 @@ $routes = [
     'Home' => [
         ['index', '/', 'GET'],
         ['contactCreate', '/contact/create', 'POST'],
-
     ],
     'Event' => [
         ['index', '/events', 'GET'],
@@ -26,11 +25,13 @@ $routes = [
     'Office' => [
         ['index', '/offices', 'GET'],
         ['adminIndex', '/admin/offices', 'GET'],
-        ['adminOfficeUpdateIndex', '/admin/office/{id:\d+}/update', 'POST'],
-        ['adminOfficeUpdate', '/admin/office/{id:\d+}/update/update', 'POST'],
+        ['adminOfficeUpdate', '/admin/office/{id:\d+}/update', ['GET', 'POST']],
         ['adminOfficeDelete', '/admin/office/{id:\d+}/delete', 'POST'],
         ['adminOfficeCreate', '/admin/office/create', 'POST'],
-
+        ['adminTeacherIndex', '/admin/teachers', 'GET'],
+        ['adminTeacherUpdate', '/admin/teacher/{id:\d+}/update', ['GET', 'POST']],
+        ['adminTeacherDelete', '/admin/teacher/{id:\d+}/delete', 'POST'],
+        ['adminTeacherCreate', '/admin/teacher/create', 'POST'],
     ],
     'Album' => [
         ['index', '/galleries', 'GET'],
@@ -53,11 +54,22 @@ $routes = [
     'BlackBelt' => [
         ['index', '/black-belts', 'GET'],
         ['adminIndex', '/admin/black-belts', 'GET'],
+        ['adminBlackBeltUpdate', '/admin/black-belt/{id:\d+}/update', ['GET', 'POST']],
         ['adminBlackBeltDelete', '/admin/black-belt/{id:\d+}/delete', 'POST'],
         ['adminBlackBeltCreate', '/admin/black-belt/create', 'POST']
     ],
+    'Register' => [
+        ['index', '/register', 'GET'],
+    ],
+    'Footer' => [
+        ['adminIndex', '/admin/footer', 'GET'],
+        ['adminFooterDelete', '/admin/Footer/{id:\d+}/delete', 'POST'],
+        ['adminFooterCreate', '/admin/link/create', 'POST']
+    ],
     'Presentation' => [
-        ['index', '/presentation', 'GET']
-    ]
-
+        ['index', '/presentation', 'GET'],
+    ],
+    'Contact' => [
+        ['index', '/contact', 'GET'],
+    ],
 ];

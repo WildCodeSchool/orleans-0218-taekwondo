@@ -8,13 +8,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Administration TKO</a>
+            <a class="navbar-brand" href="/admin">Administration TKO</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse navbar-right">
             <ul class="nav navbar-nav" id="navMenu">
-                <li><a href="/admin">accueil</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
                         albums <span class="caret"></span>
@@ -26,7 +25,17 @@
                 </li>
                 <li><a href="/admin/events">événements</a></li>
                 <li><a href="/admin/black-belts">Ceintures noires</a></li>
-                <li><a href="/admin/offices">bureaux</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+                        Bureaux <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/admin/offices">Bureau directeur</a></li>
+                        <li><a href="/admin/teachers">Bureau technique</a></li>
+                    </ul>
+                <li><a href="/admin/footer">Liens</a></li>
+
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>
