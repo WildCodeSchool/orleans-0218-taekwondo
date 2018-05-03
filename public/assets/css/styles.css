@@ -556,6 +556,10 @@ footer li{
 
 /* ##### TECHNICAL ##### */
 
+.technical-title {
+    margin-top: 90px;
+}
+
 .kibon {
     margin-top: 70px;
 }
