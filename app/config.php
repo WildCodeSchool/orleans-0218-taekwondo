@@ -22,7 +22,10 @@ define('APP_CONTROLLER_NAMESPACE', '\Controller\\');
 define('APP_CONTROLLER_SUFFIX', 'Controller');
 
 // Custom parameters
+
 define('MAP_ACCESS_TOKEN', '');
+
+define('BASE_ROOT', __DIR__ . '/../public');
 define('UPLOADS_PATH', 'assets/uploads');
 define('UPLOADS_PATH_EVENTS', '/assets/uploads/events/');
 define('UPLOADS_PATH_OFFICES', '/assets/uploads/offices/');
@@ -39,5 +42,7 @@ define('APP_MAIL_TO', '');
 define('APP_MAIL_SUBJECT', 'Taekwondo Olivet');
 
 // reCAPTCHA
+
 define('APP_CAPTCHA_SECRET_KEY', '');
 define('APP_CAPTCHA_SITE_KEY', '');
+
